@@ -274,15 +274,6 @@ public class Ventana extends javax.swing.JFrame {
          jpnPaneles.validate();
     }//GEN-LAST:event_btnProyectosActionPerformed
 
-    
-    
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Ventana().setVisible(true);
-            }
-        });
-    }
 
      
     // Variables declaration - do not modify//GEN-BEGIN:variables

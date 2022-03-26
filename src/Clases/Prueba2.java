@@ -8,8 +8,8 @@ package Clases;
  *
  * @author Cristoelateo
  */
-public class L {
+public class Prueba2 {
     public static void main(String[] args) {
-        System.out.println("Hola");
+        System.out.println("sdasda");
     }
 }
