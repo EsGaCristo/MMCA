@@ -50,7 +50,6 @@ public class Ventana extends javax.swing.JFrame {
         btnCerrarSesion = new javax.swing.JButton();
         jpnCentral = new javax.swing.JPanel();
         jpnTitulo = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         jpnPaneles = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -98,7 +97,7 @@ public class Ventana extends javax.swing.JFrame {
         btnCliente.setForeground(new java.awt.Color(255, 255, 255));
         btnCliente.setText("CLIENTES");
         btnCliente.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        btnCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnCliente.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 botonMouseEntered(evt);
@@ -119,7 +118,7 @@ public class Ventana extends javax.swing.JFrame {
         btnCotizaciones.setForeground(new java.awt.Color(255, 255, 255));
         btnCotizaciones.setText("COTIZACIONES");
         btnCotizaciones.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        btnCotizaciones.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCotizaciones.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnCotizaciones.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 botonMouseEntered(evt);
@@ -140,7 +139,7 @@ public class Ventana extends javax.swing.JFrame {
         btnProyectos.setForeground(new java.awt.Color(255, 255, 255));
         btnProyectos.setText("PROYECTOS");
         btnProyectos.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        btnProyectos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnProyectos.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnProyectos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 botonMouseEntered(evt);
@@ -162,7 +161,7 @@ public class Ventana extends javax.swing.JFrame {
         btnCerrarSesion.setText("CERRAR SESION");
         btnCerrarSesion.setToolTipText("");
         btnCerrarSesion.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        btnCerrarSesion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCerrarSesion.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnCerrarSesion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 botonMouseEntered(evt);
@@ -182,13 +181,6 @@ public class Ventana extends javax.swing.JFrame {
 
         jpnTitulo.setBackground(new java.awt.Color(251, 229, 218));
         jpnTitulo.setPreferredSize(new java.awt.Dimension(854, 40));
-
-        jLabel1.setFont(new java.awt.Font("Cooper Black", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Control De Servicios");
-        jLabel1.setToolTipText("");
-        jpnTitulo.add(jLabel1);
-
         jpnCentral.add(jpnTitulo, java.awt.BorderLayout.NORTH);
 
         jpnPaneles.setBackground(new java.awt.Color(251, 229, 218));
@@ -281,7 +273,6 @@ public class Ventana extends javax.swing.JFrame {
     private javax.swing.JButton btnCliente;
     private javax.swing.JButton btnCotizaciones;
     private javax.swing.JButton btnProyectos;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jpnCentral;
