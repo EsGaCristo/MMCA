@@ -46,7 +46,9 @@ public class Ventana extends javax.swing.JFrame {
         jpnItems = new javax.swing.JPanel();
         btnCliente = new javax.swing.JButton();
         btnCotizaciones = new javax.swing.JButton();
+        btnServicios = new javax.swing.JButton();
         btnProyectos = new javax.swing.JButton();
+        btnPersonal = new javax.swing.JButton();
         btnCerrarSesion = new javax.swing.JButton();
         jpnCentral = new javax.swing.JPanel();
         jpnTitulo = new javax.swing.JPanel();
@@ -90,7 +92,8 @@ public class Ventana extends javax.swing.JFrame {
 
         jpnMenu.add(jpnlogo, java.awt.BorderLayout.NORTH);
 
-        jpnItems.setLayout(new java.awt.GridLayout(4, 1));
+        jpnItems.setBackground(new java.awt.Color(251, 229, 218));
+        jpnItems.setLayout(new java.awt.GridLayout(6, 1));
 
         btnCliente.setBackground(new java.awt.Color(241, 172, 133));
         btnCliente.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -134,6 +137,23 @@ public class Ventana extends javax.swing.JFrame {
         });
         jpnItems.add(btnCotizaciones);
 
+        btnServicios.setBackground(new java.awt.Color(241, 172, 133));
+        btnServicios.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnServicios.setForeground(new java.awt.Color(255, 255, 255));
+        btnServicios.setText("SERVICIOS");
+        btnServicios.setToolTipText("");
+        btnServicios.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        btnServicios.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnServicios.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnServiciosbotonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnServiciosbotonMouseExited(evt);
+            }
+        });
+        jpnItems.add(btnServicios);
+
         btnProyectos.setBackground(new java.awt.Color(241, 172, 133));
         btnProyectos.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnProyectos.setForeground(new java.awt.Color(255, 255, 255));
@@ -154,6 +174,23 @@ public class Ventana extends javax.swing.JFrame {
             }
         });
         jpnItems.add(btnProyectos);
+
+        btnPersonal.setBackground(new java.awt.Color(241, 172, 133));
+        btnPersonal.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnPersonal.setForeground(new java.awt.Color(255, 255, 255));
+        btnPersonal.setText("PERSONAL");
+        btnPersonal.setToolTipText("");
+        btnPersonal.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        btnPersonal.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnPersonal.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnPersonalbotonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnPersonalbotonMouseExited(evt);
+            }
+        });
+        jpnItems.add(btnPersonal);
 
         btnCerrarSesion.setBackground(new java.awt.Color(241, 172, 133));
         btnCerrarSesion.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -266,13 +303,31 @@ public class Ventana extends javax.swing.JFrame {
          jpnPaneles.validate();
     }//GEN-LAST:event_btnProyectosActionPerformed
 
+    private void btnServiciosbotonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnServiciosbotonMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnServiciosbotonMouseEntered
+
+    private void btnServiciosbotonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnServiciosbotonMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnServiciosbotonMouseExited
+
+    private void btnPersonalbotonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPersonalbotonMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnPersonalbotonMouseEntered
+
+    private void btnPersonalbotonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPersonalbotonMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnPersonalbotonMouseExited
+
 
      
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCerrarSesion;
     private javax.swing.JButton btnCliente;
     private javax.swing.JButton btnCotizaciones;
+    private javax.swing.JButton btnPersonal;
     private javax.swing.JButton btnProyectos;
+    private javax.swing.JButton btnServicios;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jpnCentral;

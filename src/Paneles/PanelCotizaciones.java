@@ -141,6 +141,11 @@ public class PanelCotizaciones extends javax.swing.JPanel {
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Agregar");
         jButton1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         txtPU.setText("P.U.");
         txtPU.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -217,6 +222,9 @@ public class PanelCotizaciones extends javax.swing.JPanel {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
+        jScrollPane2.setBackground(new java.awt.Color(251, 229, 218));
+
+        jTable2.setBackground(new java.awt.Color(251, 229, 218));
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -239,6 +247,7 @@ public class PanelCotizaciones extends javax.swing.JPanel {
                 "Concepto", "Cantidad", "P.U", "Importe"
             }
         ));
+        jTable2.setSelectionBackground(new java.awt.Color(241, 172, 133));
         jScrollPane2.setViewportView(jTable2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -303,6 +312,10 @@ public class PanelCotizaciones extends javax.swing.JPanel {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
