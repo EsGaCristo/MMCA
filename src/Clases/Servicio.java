@@ -1,6 +1,8 @@
 
 package Clases;
 
+import java.math.BigDecimal;
+
 /**
  *
  * @author Ivanr
@@ -8,13 +10,15 @@ package Clases;
 public class Servicio {
     private int CodServicio;
     private String Concepto;
-    private double precio;
+    private BigDecimal precio;
+    private int tipoServicio;
     private String Provedor;
 
-    public Servicio(int CodServicio, String Concepto, double precio, String Provedor) {
+    public Servicio(int CodServicio, String Concepto, BigDecimal precio,int tipoServicio, String Provedor) {
         this.CodServicio = CodServicio;
         this.Concepto = Concepto;
         this.precio = precio;
+        this.tipoServicio=tipoServicio;
         this.Provedor = Provedor;
     }
     
@@ -35,11 +39,11 @@ public class Servicio {
         this.Concepto = Consepto;
     }
 
-    public double getPrecio() {
+    public BigDecimal getPrecio() {
         return precio;
     }
 
-    public void setPrecio(double precio) {
+    public void setPrecio(BigDecimal precio) {
         this.precio = precio;
     }
 
@@ -49,6 +53,11 @@ public class Servicio {
 
     public void setProvedor(String Provedor) {
         this.Provedor = Provedor;
+    }
+
+    @Override
+    public String toString() {
+        return "Servicio{" + "CodServicio=" + CodServicio + ", Concepto=" + Concepto + ", precio=" + precio + ", tipoServicio=" + tipoServicio + ", Provedor=" + Provedor + '}';
     }
     
     

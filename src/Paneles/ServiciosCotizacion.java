@@ -5,9 +5,18 @@
  */
 package Paneles;
 
+import Clases.Servicio;
 import Clases.tipoServicio;
 import Principal.BaseDatos;
+import java.awt.Color;
+import java.math.BigDecimal;
 import java.sql.*;
+import java.util.ArrayList;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import javax.swing.UIManager;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -15,11 +24,15 @@ import java.sql.*;
  */
 public class ServiciosCotizacion extends javax.swing.JFrame {
     public  Connection conexion;
-     BaseDatos bd= new BaseDatos();
+    DefaultTableModel dtm;
+    BaseDatos bd= new BaseDatos();
+    ArrayList<Servicio> servicios = new ArrayList();
 
     public ServiciosCotizacion() {
         initComponents();
         this.setLocationRelativeTo(null);
+        dtm=(DefaultTableModel) tblServicios.getModel();
+        
         LLenarCombo();
     }
 
@@ -58,11 +71,12 @@ public class ServiciosCotizacion extends javax.swing.JFrame {
         btnBuscarServicio = new javax.swing.JButton();
         cbxTipoServicio = new javax.swing.JComboBox<>();
         jspTable = new javax.swing.JScrollPane();
-        jTable10 = new javax.swing.JTable();
+        tblServicios = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(251, 229, 218));
         setMinimumSize(new java.awt.Dimension(543, 300));
+        setPreferredSize(new java.awt.Dimension(543, 400));
         setSize(new java.awt.Dimension(543, 300));
         getContentPane().setLayout(new java.awt.BorderLayout(10, 10));
 
@@ -99,47 +113,33 @@ public class ServiciosCotizacion extends javax.swing.JFrame {
 
         cbxTipoServicio.setBackground(new java.awt.Color(241, 172, 133));
         cbxTipoServicio.setForeground(new java.awt.Color(241, 172, 133));
+        cbxTipoServicio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxTipoServicioActionPerformed(evt);
+            }
+        });
         jpnEncabezados.add(cbxTipoServicio);
 
         jPanel1.add(jpnEncabezados, java.awt.BorderLayout.PAGE_START);
 
         jspTable.setBackground(new java.awt.Color(251, 229, 218));
         jspTable.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jspTable.setForeground(new java.awt.Color(251, 229, 218));
+        jspTable.setForeground(new java.awt.Color(0, 0, 0));
 
-        jTable10.setBackground(new java.awt.Color(251, 229, 218));
-        jTable10.setForeground(new java.awt.Color(251, 229, 218));
-        jTable10.setModel(new javax.swing.table.DefaultTableModel(
+        tblServicios.setBackground(new java.awt.Color(251, 229, 218));
+        tblServicios.setForeground(new java.awt.Color(0, 0, 0));
+        tblServicios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "CODIGO ", "CONCEPTO", "P.U.", "PROVEDOR"
             }
         ));
-        jTable10.setGridColor(new java.awt.Color(251, 229, 218));
-        jTable10.setSelectionBackground(new java.awt.Color(241, 172, 133));
-        jTable10.setSelectionForeground(new java.awt.Color(241, 172, 133));
-        jspTable.setViewportView(jTable10);
+        tblServicios.setGridColor(new java.awt.Color(251, 229, 218));
+        tblServicios.setSelectionBackground(new java.awt.Color(241, 172, 133));
+        tblServicios.setSelectionForeground(new java.awt.Color(241, 172, 133));
+        jspTable.setViewportView(tblServicios);
 
         jPanel1.add(jspTable, java.awt.BorderLayout.CENTER);
 
@@ -149,13 +149,73 @@ public class ServiciosCotizacion extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBuscarServicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarServicioActionPerformed
-        // TODO add your handling code here:
+        buscar();
     }//GEN-LAST:event_btnBuscarServicioActionPerformed
 
     private void txtNombreServicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreServicioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNombreServicioActionPerformed
 
+    private void cbxTipoServicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxTipoServicioActionPerformed
+        System.out.println("accion");
+    }//GEN-LAST:event_cbxTipoServicioActionPerformed
+
+    
+    /////////////////////////////////////////////////
+        ////////////////////////buscar//////////////////////////////////
+     private void buscar() {
+        servicios.clear();
+        eliminarTb();
+         
+        ResultSet resultado=null;
+        Connection connection=null;
+        Statement statement=null;
+        try {
+            connection = bd.getConexion();
+            statement = connection.createStatement();
+            String nom= txtNombreServicio.getText();
+            tipoServicio nose=(tipoServicio)cbxTipoServicio.getSelectedItem();
+            int id=nose.getId_tipoServicio();
+            
+            String selectSql = "SELECT * from SERVICIOS where CONCEPTO LIKE '%"+nom+"%' AND TIPO_SERVICIO ='"+id+"'";
+            resultado= statement.executeQuery(selectSql);
+          
+            while(resultado.next()){
+            Servicio servicis = new Servicio(resultado.getInt("COD_SERVICIO"),resultado.getString("CONCEPTO"),resultado.getBigDecimal("PRECIO_UNITARIO"),
+            resultado.getInt("TIPO_SERVICIO"),resultado.getString("PROVEEDOR"));
+            System.out.println(servicis);
+            servicios.add(servicis);
+            
+            }
+           
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            
+        }finally{
+            bd.cerrar(statement, resultado);
+            llenarTabla();
+        }
+    }
+     
+     public void llenarTabla(){
+         Object O[]=null;
+         for (int i = 0; i < servicios.size(); i++) {
+            dtm.addRow(O);
+            Servicio ser = (Servicio) servicios.get(i);  
+           dtm.setValueAt(ser.getCodServicio(), i, 0);
+            dtm.setValueAt(ser.getConsepto(), i, 1);
+            dtm.setValueAt(ser.getPrecio(), i, 2);
+            dtm.setValueAt(ser.getProvedor(), i, 3);
+            }
+     }
+     
+    public void eliminarTb(){
+        int a = tblServicios.getRowCount()-1;
+        for (int i = a; i >= 0; i--) {          
+        dtm.removeRow(dtm.getRowCount()-1);
+        }
+        //cargaTicket();
+    }
     /**
      * @param args the command line arguments
      */
@@ -197,9 +257,9 @@ public class ServiciosCotizacion extends javax.swing.JFrame {
     private javax.swing.JComboBox<tipoServicio> cbxTipoServicio;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTable jTable10;
     private javax.swing.JPanel jpnEncabezados;
     private javax.swing.JScrollPane jspTable;
+    private javax.swing.JTable tblServicios;
     private javax.swing.JTextField txtNombreServicio;
     // End of variables declaration//GEN-END:variables
 }
