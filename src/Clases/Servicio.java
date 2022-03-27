@@ -7,13 +7,13 @@ package Clases;
  */
 public class Servicio {
     private int CodServicio;
-    private String Consepto;
+    private String Concepto;
     private double precio;
     private String Provedor;
 
-    public Servicio(int CodServicio, String Consepto, double precio, String Provedor) {
+    public Servicio(int CodServicio, String Concepto, double precio, String Provedor) {
         this.CodServicio = CodServicio;
-        this.Consepto = Consepto;
+        this.Concepto = Concepto;
         this.precio = precio;
         this.Provedor = Provedor;
     }
@@ -28,11 +28,11 @@ public class Servicio {
     }
 
     public String getConsepto() {
-        return Consepto;
+        return Concepto;
     }
 
     public void setConsepto(String Consepto) {
-        this.Consepto = Consepto;
+        this.Concepto = Consepto;
     }
 
     public double getPrecio() {
