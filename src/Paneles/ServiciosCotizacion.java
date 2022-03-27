@@ -5,19 +5,43 @@
  */
 package Paneles;
 
+import Clases.tipoServicio;
+import Principal.BaseDatos;
+import java.sql.*;
+
 /**
  *
  * @author Ivanr
  */
 public class ServiciosCotizacion extends javax.swing.JFrame {
+    public  Connection conexion;
+     BaseDatos bd= new BaseDatos();
 
-    /**
-     * Creates new form ServiciosCotizacion
-     */
     public ServiciosCotizacion() {
         initComponents();
+        this.setLocationRelativeTo(null);
+        LLenarCombo();
     }
 
+    public void LLenarCombo(){
+        ResultSet resultado=null;
+        Connection connection=null;
+        Statement statement=null;
+        try {
+            connection = bd.getConexion();
+            statement = connection.createStatement();
+            String nom= txtNombreServicio.getText();
+            String selectSql = "SELECT * from TIPOSSERVICIO";
+            resultado= statement.executeQuery(selectSql);
+           while(resultado.next()){
+               tipoServicio tiposer = new tipoServicio(resultado.getInt("ID_TIPO"),resultado.getString("NOMBRE") );
+               cbxTipoServicio.addItem(tiposer);
+           }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+           
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -27,21 +51,110 @@ public class ServiciosCotizacion extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jPanel1 = new javax.swing.JPanel();
+        jpnEncabezados = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        txtNombreServicio = new javax.swing.JTextField();
+        btnBuscarServicio = new javax.swing.JButton();
+        cbxTipoServicio = new javax.swing.JComboBox<>();
+        jspTable = new javax.swing.JScrollPane();
+        jTable10 = new javax.swing.JTable();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 637, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 352, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(251, 229, 218));
+        setMinimumSize(new java.awt.Dimension(543, 300));
+        setSize(new java.awt.Dimension(543, 300));
+        getContentPane().setLayout(new java.awt.BorderLayout(10, 10));
+
+        jPanel1.setBackground(new java.awt.Color(251, 229, 218));
+        jPanel1.setForeground(new java.awt.Color(251, 229, 218));
+        jPanel1.setLayout(new java.awt.BorderLayout(10, 10));
+
+        jpnEncabezados.setBackground(new java.awt.Color(251, 229, 218));
+        jpnEncabezados.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jpnEncabezados.setForeground(new java.awt.Color(251, 229, 218));
+        jpnEncabezados.setLayout(new java.awt.GridLayout(2, 2));
+
+        jLabel1.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel1.setText("Buscar Servicio:");
+        jpnEncabezados.add(jLabel1);
+
+        txtNombreServicio.setText("Nombre Servicio");
+        txtNombreServicio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombreServicioActionPerformed(evt);
+            }
+        });
+        jpnEncabezados.add(txtNombreServicio);
+
+        btnBuscarServicio.setBackground(new java.awt.Color(241, 172, 133));
+        btnBuscarServicio.setText("Buscar");
+        btnBuscarServicio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarServicioActionPerformed(evt);
+            }
+        });
+        jpnEncabezados.add(btnBuscarServicio);
+
+        cbxTipoServicio.setBackground(new java.awt.Color(241, 172, 133));
+        cbxTipoServicio.setForeground(new java.awt.Color(241, 172, 133));
+        jpnEncabezados.add(cbxTipoServicio);
+
+        jPanel1.add(jpnEncabezados, java.awt.BorderLayout.PAGE_START);
+
+        jspTable.setBackground(new java.awt.Color(251, 229, 218));
+        jspTable.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jspTable.setForeground(new java.awt.Color(251, 229, 218));
+
+        jTable10.setBackground(new java.awt.Color(251, 229, 218));
+        jTable10.setForeground(new java.awt.Color(251, 229, 218));
+        jTable10.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jTable10.setGridColor(new java.awt.Color(251, 229, 218));
+        jTable10.setSelectionBackground(new java.awt.Color(241, 172, 133));
+        jTable10.setSelectionForeground(new java.awt.Color(241, 172, 133));
+        jspTable.setViewportView(jTable10);
+
+        jPanel1.add(jspTable, java.awt.BorderLayout.CENTER);
+
+        getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnBuscarServicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarServicioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnBuscarServicioActionPerformed
+
+    private void txtNombreServicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreServicioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombreServicioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -69,6 +182,7 @@ public class ServiciosCotizacion extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(ServiciosCotizacion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -79,5 +193,13 @@ public class ServiciosCotizacion extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBuscarServicio;
+    private javax.swing.JComboBox<tipoServicio> cbxTipoServicio;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JTable jTable10;
+    private javax.swing.JPanel jpnEncabezados;
+    private javax.swing.JScrollPane jspTable;
+    private javax.swing.JTextField txtNombreServicio;
     // End of variables declaration//GEN-END:variables
 }
