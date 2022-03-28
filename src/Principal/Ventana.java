@@ -11,6 +11,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Properties;
 import javax.swing.JOptionPane;
 
@@ -25,9 +26,9 @@ public class Ventana extends javax.swing.JFrame {
     JPanel jpnClientes = new Panelclientes(); 
     JPanel jpnServicios = new PanelServicios(); 
     JPanel jpnCotizaciones = new PanelCotizaciones();
+    JPanel jpnProductos = new PanelProductos();
     public Ventana() {
         initComponents();
-        //conectar();
         bd.conectar();
         jpnPaneles.add(jpnClientes);
         
@@ -152,6 +153,11 @@ public class Ventana extends javax.swing.JFrame {
                 btnServiciosbotonMouseExited(evt);
             }
         });
+        btnServicios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnServiciosActionPerformed(evt);
+            }
+        });
         jpnItems.add(btnServicios);
 
         btnProyectos.setBackground(new java.awt.Color(241, 172, 133));
@@ -207,6 +213,11 @@ public class Ventana extends javax.swing.JFrame {
                 botonMouseExited(evt);
             }
         });
+        btnCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCerrarSesionActionPerformed(evt);
+            }
+        });
         jpnItems.add(btnCerrarSesion);
 
         jpnMenu.add(jpnItems, java.awt.BorderLayout.CENTER);
@@ -247,10 +258,10 @@ public class Ventana extends javax.swing.JFrame {
      //////////////////conectar/////////////////////
     private void conectar() {
 
-        String URL = "jdbc:sqlserver://DESKTOP-CT7T632:1433;"
-                    +"database=MMCA;"
-                    +"user=MMCA;"
-                    +"password=12345;"
+        String URL = "jdbc:sqlserver://sql5107.site4now.net:1433;"
+                    +"database=db_a84ab7_mmca;"
+                    +"user=db_a84ab7_mmca_admin;"
+                    +"password=MMCA2022;"
                     +"loginTimeout=30;";
         try {
             //Class.forName("com.mysql.cj.jdbc.Driver");
@@ -280,6 +291,7 @@ public class Ventana extends javax.swing.JFrame {
     private void btnClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClienteActionPerformed
          jpnServicios.setVisible(false);
          jpnCotizaciones.setVisible(false);
+         jpnProductos.setVisible(false);
          jpnClientes.setVisible(true);
          jpnPaneles.add(jpnClientes);
          jpnPaneles.validate();
@@ -291,6 +303,7 @@ public class Ventana extends javax.swing.JFrame {
          jpnCotizaciones.setVisible(true);
          jpnClientes.setVisible(false);
          jpnServicios.setVisible(false);
+         jpnProductos.setVisible(false);
          jpnPaneles.add(jpnCotizaciones);
          jpnPaneles.validate();
     }//GEN-LAST:event_btnCotizacionesActionPerformed
@@ -299,6 +312,7 @@ public class Ventana extends javax.swing.JFrame {
         jpnServicios.setVisible(true);
          jpnClientes.setVisible(false);
          jpnCotizaciones.setVisible(false);
+         jpnProductos.setVisible(false);
          jpnPaneles.add(jpnServicios);
          jpnPaneles.validate();
     }//GEN-LAST:event_btnProyectosActionPerformed
@@ -318,6 +332,42 @@ public class Ventana extends javax.swing.JFrame {
     private void btnPersonalbotonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPersonalbotonMouseExited
         // TODO add your handling code here:
     }//GEN-LAST:event_btnPersonalbotonMouseExited
+
+    private void btnServiciosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnServiciosActionPerformed
+         jpnServicios.setVisible(true);
+         jpnProductos.setVisible(false);
+         jpnClientes.setVisible(false);
+         jpnCotizaciones.setVisible(false);
+         jpnPaneles.add(jpnServicios);
+         jpnPaneles.validate();
+    }//GEN-LAST:event_btnServiciosActionPerformed
+
+    private void btnCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarSesionActionPerformed
+        Statement statement=null;
+        PreparedStatement updateSql = null;
+        Connection connection=null;
+        ResultSet resultado=null;
+        try{
+        connection = bd.getConexion();
+        statement = connection.createStatement();
+        
+        String url = "select * from Personal where estado = 1";        
+        resultado= statement.executeQuery(url);
+            if (resultado.next()) {
+
+                updateSql = connection.prepareStatement("UPDATE PERSONAL SET ESTADO = 0 WHERE NOMBRE_USUARIO = '"+
+                        resultado.getString("NOMBRE_USUARIO")+"'");
+                updateSql.executeUpdate();
+                new login().setVisible(true);  
+                this.setVisible(false);
+                
+            }
+        }catch(Exception ex){
+                ex.printStackTrace();
+        }finally{
+        bd.cerrar(statement, resultado);
+        }  
+    }//GEN-LAST:event_btnCerrarSesionActionPerformed
 
 
      
