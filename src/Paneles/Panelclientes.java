@@ -83,7 +83,6 @@ public class Panelclientes extends javax.swing.JPanel {
 
         jLabel2.setBackground(new java.awt.Color(0, 0, 0));
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 48)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Registro de Clientes");
         jpnTituloClientes.add(jLabel2);
 
@@ -93,12 +92,10 @@ public class Panelclientes extends javax.swing.JPanel {
         jpnInfoCuerpo.setLayout(new java.awt.GridLayout(6, 4));
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 30)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Nombre(s):");
         jpnInfoCuerpo.add(jLabel3);
 
         jLabel4.setFont(new java.awt.Font("Dialog", 1, 30)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Apellidos:");
         jpnInfoCuerpo.add(jLabel4);
 
@@ -117,12 +114,10 @@ public class Panelclientes extends javax.swing.JPanel {
         jpnInfoCuerpo.add(txtApellidos);
 
         jLabel5.setFont(new java.awt.Font("Dialog", 1, 30)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Direccion:");
         jpnInfoCuerpo.add(jLabel5);
 
         jLabel6.setFont(new java.awt.Font("Dialog", 1, 30)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Correo electronico:");
         jpnInfoCuerpo.add(jLabel6);
 
@@ -133,12 +128,10 @@ public class Panelclientes extends javax.swing.JPanel {
         jpnInfoCuerpo.add(txtCorreo);
 
         jLabel7.setFont(new java.awt.Font("Dialog", 1, 30)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Telefono:");
         jpnInfoCuerpo.add(jLabel7);
 
         jLabel8.setFont(new java.awt.Font("Dialog", 1, 30)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Descripcion:");
         jpnInfoCuerpo.add(jLabel8);
 
@@ -160,7 +153,6 @@ public class Panelclientes extends javax.swing.JPanel {
         jPanel1.setBackground(new java.awt.Color(251, 229, 218));
 
         btnLimpiar.setBackground(new java.awt.Color(251, 229, 218));
-        btnLimpiar.setForeground(new java.awt.Color(0, 0, 0));
         btnLimpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/limpiar.png"))); // NOI18N
         btnLimpiar.setText("Limpiar");
         btnLimpiar.setBorder(null);
@@ -184,7 +176,7 @@ public class Panelclientes extends javax.swing.JPanel {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(112, Short.MAX_VALUE)
                 .addComponent(btnLimpiar)
                 .addGap(83, 83, 83))
         );
@@ -201,7 +193,6 @@ public class Panelclientes extends javax.swing.JPanel {
         jPanel7.setBackground(new java.awt.Color(251, 229, 218));
 
         btnAgregar.setBackground(new java.awt.Color(251, 229, 218));
-        btnAgregar.setForeground(new java.awt.Color(0, 0, 0));
         btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/agregar.png"))); // NOI18N
         btnAgregar.setText("Agregar");
         btnAgregar.setBorder(null);
@@ -225,7 +216,7 @@ public class Panelclientes extends javax.swing.JPanel {
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(108, Short.MAX_VALUE)
                 .addComponent(btnAgregar)
                 .addGap(83, 83, 83))
         );
@@ -242,7 +233,6 @@ public class Panelclientes extends javax.swing.JPanel {
         jPanel8.setBackground(new java.awt.Color(251, 229, 218));
 
         btnBuscar.setBackground(new java.awt.Color(251, 229, 218));
-        btnBuscar.setForeground(new java.awt.Color(0, 0, 0));
         btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/buscar.png"))); // NOI18N
         btnBuscar.setText("Buscar");
         btnBuscar.setBorder(null);
@@ -266,7 +256,7 @@ public class Panelclientes extends javax.swing.JPanel {
         jPanel8Layout.setHorizontalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(116, Short.MAX_VALUE)
                 .addComponent(btnBuscar)
                 .addGap(83, 83, 83))
         );
@@ -283,7 +273,6 @@ public class Panelclientes extends javax.swing.JPanel {
         jPanel9.setBackground(new java.awt.Color(251, 229, 218));
 
         btnEliminar.setBackground(new java.awt.Color(251, 229, 218));
-        btnEliminar.setForeground(new java.awt.Color(0, 0, 0));
         btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/boton-eliminar-carpeta.png"))); // NOI18N
         btnEliminar.setText("Eliminar");
         btnEliminar.setBorder(null);
@@ -307,7 +296,7 @@ public class Panelclientes extends javax.swing.JPanel {
         jPanel9Layout.setHorizontalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(108, Short.MAX_VALUE)
                 .addComponent(btnEliminar)
                 .addGap(83, 83, 83))
         );
@@ -324,7 +313,6 @@ public class Panelclientes extends javax.swing.JPanel {
         jPanel10.setBackground(new java.awt.Color(251, 229, 218));
 
         btnActualizar.setBackground(new java.awt.Color(251, 229, 218));
-        btnActualizar.setForeground(new java.awt.Color(0, 0, 0));
         btnActualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Actualizar.png"))); // NOI18N
         btnActualizar.setText("Actualizar");
         btnActualizar.setBorder(null);
@@ -348,7 +336,7 @@ public class Panelclientes extends javax.swing.JPanel {
         jPanel10Layout.setHorizontalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(98, Short.MAX_VALUE)
                 .addComponent(btnActualizar)
                 .addGap(83, 83, 83))
         );
@@ -365,7 +353,6 @@ public class Panelclientes extends javax.swing.JPanel {
         jPanel11.setBackground(new java.awt.Color(251, 229, 218));
 
         btnVisualizar.setBackground(new java.awt.Color(251, 229, 218));
-        btnVisualizar.setForeground(new java.awt.Color(0, 0, 0));
         btnVisualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Visualizar.png"))); // NOI18N
         btnVisualizar.setText("Visualizar");
         btnVisualizar.setBorder(null);
@@ -384,7 +371,7 @@ public class Panelclientes extends javax.swing.JPanel {
         jPanel11Layout.setHorizontalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(100, Short.MAX_VALUE)
                 .addComponent(btnVisualizar)
                 .addGap(83, 83, 83))
         );

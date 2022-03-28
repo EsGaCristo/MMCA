@@ -334,12 +334,13 @@ public class Ventana extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPersonalbotonMouseExited
 
     private void btnServiciosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnServiciosActionPerformed
-         jpnServicios.setVisible(true);
-         jpnProductos.setVisible(false);
+         jpnProductos.setVisible(true);
          jpnClientes.setVisible(false);
          jpnCotizaciones.setVisible(false);
-         jpnPaneles.add(jpnServicios);
-         jpnPaneles.validate();
+         jpnPaneles.add(jpnProductos);
+         jpnPaneles.validate() ; 
+        
+        
     }//GEN-LAST:event_btnServiciosActionPerformed
 
     private void btnCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarSesionActionPerformed
