@@ -1,16 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Paneles;
+
+import Clases.Servicio;
 
 /**
  *
  * @author Ivanr
  */
 public class PanelCotizaciones extends javax.swing.JPanel {
-
+    private Servicio controlServicio;
     /**
      * Creates new form PanelCotizaciones
      */
@@ -37,7 +35,7 @@ public class PanelCotizaciones extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         txtConcepto = new javax.swing.JTextField();
         jButton5 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        btAgregar = new javax.swing.JButton();
         txtPU = new javax.swing.JTextField();
         jButton6 = new javax.swing.JButton();
         txtCantidad = new javax.swing.JTextField();
@@ -141,14 +139,14 @@ public class PanelCotizaciones extends javax.swing.JPanel {
             }
         });
 
-        jButton1.setBackground(new java.awt.Color(241, 172, 133));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Agregar");
-        jButton1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btAgregar.setBackground(new java.awt.Color(241, 172, 133));
+        btAgregar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btAgregar.setForeground(new java.awt.Color(255, 255, 255));
+        btAgregar.setText("Agregar");
+        btAgregar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btAgregarActionPerformed(evt);
             }
         });
 
@@ -191,7 +189,7 @@ public class PanelCotizaciones extends javax.swing.JPanel {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtConcepto, javax.swing.GroupLayout.PREFERRED_SIZE, 436, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(58, 58, 58)
                                 .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -215,7 +213,7 @@ public class PanelCotizaciones extends javax.swing.JPanel {
                         .addComponent(txtConcepto, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton5)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
@@ -315,20 +313,27 @@ public class PanelCotizaciones extends javax.swing.JPanel {
     }//GEN-LAST:event_txtPUMousePressed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
+       
     }//GEN-LAST:event_jButton4ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void btAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAgregarActionPerformed
+         System.out.println(controlServicio);
+    }//GEN-LAST:event_btAgregarActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         new ServiciosCotizacion().setVisible(true);
+        System.out.println(controlServicio);
+        
     }//GEN-LAST:event_jButton5ActionPerformed
 
+    public void setControlServicio(Servicio controlServicio) {
+        this.controlServicio = controlServicio;
+    }
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btAgregar;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;

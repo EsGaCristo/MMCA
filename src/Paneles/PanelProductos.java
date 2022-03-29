@@ -5,6 +5,7 @@
  */
 package Paneles;
 
+import Clases.Servicio;
 import Clases.tipoServicio;
 import Principal.BaseDatos;
 import java.awt.Color;
@@ -13,10 +14,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -25,12 +28,17 @@ import javax.swing.UIManager;
 public class PanelProductos extends javax.swing.JPanel {
      public  Connection conexion;
      BaseDatos bd= new BaseDatos();
+     ArrayList<Servicio> servicios = new ArrayList();
+      DefaultTableModel dtm;
     /**
      * Creates new form PanelProductos
      */
     public PanelProductos() {
         initComponents();
+        dtm=(DefaultTableModel) jTable1.getModel();
         LLenarCombo();
+        buscar();
+        llenarTabla();
     }
   private void insertar() {
 
@@ -122,7 +130,46 @@ public class PanelProductos extends javax.swing.JPanel {
         }
 
     }  
+    
+ public void llenarTabla(){
+         Object O[]=null;
+         for (int i = 0; i < servicios.size(); i++) {
+            dtm.addRow(O);
+            Servicio ser = (Servicio) servicios.get(i);  
+           dtm.setValueAt(ser.getCodServicio(), i, 0);
+            dtm.setValueAt(ser.getConsepto(), i, 1);
+            dtm.setValueAt(ser.getPrecio(), i, 2);
+            dtm.setValueAt(ser.getProvedor(), i, 3);
+            }
+     }
  
+     private void buscar() {         
+        ResultSet resultado=null;
+        Connection connection=null;
+        Statement statement=null;
+        try {
+            connection = bd.getConexion();
+            statement = connection.createStatement();
+            
+            String selectSql = "SELECT * from SERVICIOS";
+            resultado= statement.executeQuery(selectSql);
+          
+            while(resultado.next()){
+            Servicio servicis = new Servicio(resultado.getInt("COD_SERVICIO"),resultado.getString("CONCEPTO"),resultado.getBigDecimal("PRECIO_UNITARIO"),
+            resultado.getInt("TIPO_SERVICIO"),resultado.getString("PROVEEDOR"));
+            //System.out.println(servicis);
+            servicios.add(servicis);
+            
+            }
+           
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            
+        }finally{
+            bd.cerrar(statement, resultado);
+            llenarTabla();
+        }
+    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
