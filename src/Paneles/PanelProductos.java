@@ -30,7 +30,7 @@ public class PanelProductos extends javax.swing.JPanel {
      BaseDatos bd= new BaseDatos();
      ArrayList<Servicio> servicios = new ArrayList();
       DefaultTableModel dtm;
-    
+    //paul
     public PanelProductos() {
         initComponents();
         dtm=(DefaultTableModel) tbl1.getModel();
@@ -100,22 +100,20 @@ public class PanelProductos extends javax.swing.JPanel {
         }
     }
     
- private void borrar() {
-
+ private void borrar() {   
         int resultado;
-
         try {
             PreparedStatement enunciado;
-            enunciado = bd.getConexion().prepareStatement("delete from CLIENTE where NOMBRE=?");
-            //enunciado.setString(1, txtNombre.getText());
+            enunciado = bd.getConexion().prepareStatement("delete from SERVICIOS where COD_SERVICIO=?");
+            enunciado.setInt(1, Integer.parseInt(txtID.getText()));
             
             resultado = enunciado.executeUpdate();
             if (resultado > 0) {
                 UIManager.put("OptionPane.background", Color.decode("#FBE5DA"));
                 UIManager.getLookAndFeelDefaults().put("Panel.background", Color.decode("#FBE5DA"));
                 UIManager.put("Button.background", Color.decode("#FBE5DA"));
-                Icon icono = new ImageIcon(getClass().getResource("/imagenes/cliente no encontrado.png"));
-                JOptionPane.showMessageDialog(null,"Cliente Eliminado Correctamente ", "Mensaje", JOptionPane.PLAIN_MESSAGE, icono);
+                Icon icono = new ImageIcon(getClass().getResource("/imagenes/pngwing.com (1) (1).png"));
+                JOptionPane.showMessageDialog(null,"Servicio Eliminado Correctamente ", "Mensaje", JOptionPane.PLAIN_MESSAGE, icono);
             } else {
                 UIManager.put("OptionPane.background", Color.decode("#FBE5DA"));
                 UIManager.getLookAndFeelDefaults().put("Panel.background", Color.decode("#FBE5DA"));
@@ -127,7 +125,7 @@ public class PanelProductos extends javax.swing.JPanel {
             ex.printStackTrace();
         }
 
-    }  
+    }    
     
  public void llenarTabla(){
          Object O[]=null;
@@ -273,6 +271,11 @@ private void buscar2() {
                 "Id", "Nombre", "Proveedor", "PrecioUnitario", "TipoServicio"
             }
         ));
+        tbl1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbl1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tbl1);
 
         btnAgregar.setBackground(new java.awt.Color(255, 204, 204));
@@ -363,14 +366,14 @@ private void buscar2() {
                                 .addComponent(jLabel9)
                                 .addGap(18, 18, 18)
                                 .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel6)
                         .addGap(37, 37, 37)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(txtPU, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel7)
                                 .addGap(18, 18, 18)
                                 .addComponent(cmbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -462,9 +465,26 @@ private void buscar2() {
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-
+        borrar();
     }//GEN-LAST:event_btnEliminarActionPerformed
 
+    private void tbl1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl1MouseClicked
+        limpiar();
+        int col = tbl1.getSelectedRow();
+        txtID.setText(tbl1.getModel().getValueAt(col, 0).toString());
+        txtConcepto.setText(tbl1.getModel().getValueAt(col, 1).toString());
+        txtPU.setText(tbl1.getModel().getValueAt(col, 2).toString());
+        txtProveedor.setText(tbl1.getModel().getValueAt(col, 3).toString());
+        cmbTipo.setSelectedItem(tbl1.getModel().getValueAt(col, 4));
+    }//GEN-LAST:event_tbl1MouseClicked
+    public void limpiar(){
+        txtConcepto.setText("");
+        txtProveedor.setText("");
+        txtID.setText("");
+        txtPU.setText("");
+        cmbTipo.setSelectedIndex(0);
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;
