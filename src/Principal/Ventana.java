@@ -27,6 +27,8 @@ public class Ventana extends javax.swing.JFrame {
     JPanel jpnServicios = new PanelServicios(); 
     JPanel jpnCotizaciones = new PanelCotizaciones();
     JPanel jpnProductos = new PanelProductos();
+    JPanel jpnPersonal = new PanelPersonal();
+
     public Ventana() {
         initComponents();
         bd.conectar();
@@ -196,6 +198,11 @@ public class Ventana extends javax.swing.JFrame {
                 btnPersonalbotonMouseExited(evt);
             }
         });
+        btnPersonal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPersonalActionPerformed(evt);
+            }
+        });
         jpnItems.add(btnPersonal);
 
         btnCerrarSesion.setBackground(new java.awt.Color(241, 172, 133));
@@ -266,7 +273,7 @@ public class Ventana extends javax.swing.JFrame {
         try {
             //Class.forName("com.mysql.cj.jdbc.Driver");
             conexion = (Connection) DriverManager.getConnection(URL);
-            System.out.println("conexion exitosa BD MMCA");
+            //System.out.println("conexion exitosa BD MMCA");
         } catch (SQLException ex) {
             System.out.println(ex.toString());
             //System.exit(0);
@@ -289,6 +296,7 @@ public class Ventana extends javax.swing.JFrame {
     
     
     private void btnClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClienteActionPerformed
+         jpnPersonal.setVisible(false); 
          jpnServicios.setVisible(false);
          jpnCotizaciones.setVisible(false);
          jpnProductos.setVisible(false);
@@ -301,6 +309,7 @@ public class Ventana extends javax.swing.JFrame {
 
     private void btnCotizacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCotizacionesActionPerformed
          jpnCotizaciones.setVisible(true);
+         jpnPersonal.setVisible(false);
          jpnClientes.setVisible(false);
          jpnServicios.setVisible(false);
          jpnProductos.setVisible(false);
@@ -309,7 +318,8 @@ public class Ventana extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCotizacionesActionPerformed
 
     private void btnProyectosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProyectosActionPerformed
-        jpnServicios.setVisible(true);
+         jpnServicios.setVisible(true);
+         jpnPersonal.setVisible(false);
          jpnClientes.setVisible(false);
          jpnCotizaciones.setVisible(false);
          jpnProductos.setVisible(false);
@@ -336,6 +346,7 @@ public class Ventana extends javax.swing.JFrame {
     private void btnServiciosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnServiciosActionPerformed
          jpnProductos.setVisible(true);
          jpnClientes.setVisible(false);
+         jpnPersonal.setVisible(false);
          jpnCotizaciones.setVisible(false);
          jpnPaneles.add(jpnProductos);
          jpnPaneles.validate() ; 
@@ -369,6 +380,15 @@ public class Ventana extends javax.swing.JFrame {
         bd.cerrar(statement, resultado);
         }  
     }//GEN-LAST:event_btnCerrarSesionActionPerformed
+
+    private void btnPersonalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPersonalActionPerformed
+        jpnProductos.setVisible(false);
+         jpnClientes.setVisible(false);
+         jpnCotizaciones.setVisible(false);
+         jpnPersonal.setVisible(true);
+         jpnPaneles.add(jpnPersonal);
+         jpnPaneles.validate() ; 
+    }//GEN-LAST:event_btnPersonalActionPerformed
 
 
      
