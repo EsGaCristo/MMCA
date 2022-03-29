@@ -28,14 +28,14 @@ public class ServiciosCotizacion extends javax.swing.JFrame {
     DefaultTableModel dtm;
     BaseDatos bd= new BaseDatos();
     ArrayList<Servicio> servicios = new ArrayList();
-    PanelCotizaciones pnlCot  = new  PanelCotizaciones();
+
+   
 
     public ServiciosCotizacion() {
         initComponents();
         this.setLocationRelativeTo(null);
         dtm=(DefaultTableModel) tblServicios.getModel();
-        
-        LLenarCombo();
+       LLenarCombo();
     }
 
     public void LLenarCombo(){
@@ -193,7 +193,10 @@ public class ServiciosCotizacion extends javax.swing.JFrame {
         if(evt.getClickCount()==2){
             int cod= (int) dtm.getValueAt(tblServicios.getSelectedRow(), 0);
             Servicio servic=obtenerServicio(cod);
-            pnlCot.setControlServicio(servic);
+            PanelCotizaciones.servicios.add(servic);
+            PanelCotizaciones.controlServicio=servic;
+            System.out.println("servic = " + servic);
+            PanelCotizaciones pn = new  PanelCotizaciones();
             dispose();
         }
     }//GEN-LAST:event_tblServiciosMouseClicked
@@ -202,7 +205,10 @@ public class ServiciosCotizacion extends javax.swing.JFrame {
        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
             int cod= (int) dtm.getValueAt(tblServicios.getSelectedRow(), 0);
             Servicio servic=obtenerServicio(cod);
-            pnlCot.setControlServicio(servic);
+            PanelCotizaciones.servicios.add(servic);
+            PanelCotizaciones.controlServicio=servic;
+            System.out.println("servic = " + servic);
+            PanelCotizaciones pn = new  PanelCotizaciones();
             dispose();
        }
     }//GEN-LAST:event_tblServiciosKeyReleased
@@ -218,6 +224,7 @@ public class ServiciosCotizacion extends javax.swing.JFrame {
         return servicioo;
     }
     
+   
     /////////////////////////////////////////////////
         ////////////////////////buscar//////////////////////////////////
      private void buscar() {
