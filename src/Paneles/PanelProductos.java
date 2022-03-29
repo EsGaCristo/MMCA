@@ -30,6 +30,7 @@ public class PanelProductos extends javax.swing.JPanel {
      BaseDatos bd= new BaseDatos();
      ArrayList<Servicio> servicios = new ArrayList();
       DefaultTableModel dtm;
+      tipoServicio servicio;
     //paul
     public PanelProductos() {
         initComponents();
@@ -145,6 +146,43 @@ public class PanelProductos extends javax.swing.JPanel {
             dtm.setValueAt(ser.getProvedor(), i, 2);
             }
      }
+public void Validar(){
+int n=cmbTipo.getItemCount();
+        switch (n){
+
+            case 0:{
+
+                System.out.println("Usted eligió la opcion 1.");
+                servicio.setId_tipoServicio(0);
+                break;
+
+            }
+
+            case 2:{
+
+                System.out.println("Usted eligió la opcion 2.");
+                servicio.setId_tipoServicio(1);
+                break;
+
+            }
+
+            case 3:{
+                servicio.setId_tipoServicio(2);
+                System.out.println("Usted eligió la opcion 3.");
+
+                break;
+
+            }
+
+            default: {
+
+                System.out.println("Opcion incorrecta");
+
+            }
+
+      }//cierra SWITCH
+
+}
 
 private void buscar2() {
          
@@ -161,18 +199,14 @@ private void buscar2() {
             if(resultado.next()){
                 txtConcepto.setText(resultado.getString("CONCEPTO"));
                 txtProveedor.setText(resultado.getString("PROVEEDOR"));
-
                 txtPU.setText(resultado.getString("PRECIO_UNITARIO"));
+                txtID.setText(resultado.getString("COD_SERVICIO"));
+              //  cmbTipo.setSelectedIndex(servicio.getId_tipoServicio());
+                
 
 
 
-
-               /* txtApellidos.setText(resultado.getString("APELLIDOS"));
-                txtDireccion.setText(resultado.getString("DIRECCION"));
-                txtCorreo.setText(resultado.getString("CORREO"));
-                txtTelefono.setText(resultado.getString("CEL_CLIENTE"));
-                txtDescripcion.setText(resultado.getString("DESCRIPCION"));
-*/
+              
 
                 UIManager.put("OptionPane.background", Color.decode("#FBE5DA"));
                 UIManager.getLookAndFeelDefaults().put("Panel.background", Color.decode("#FBE5DA"));
@@ -352,6 +386,11 @@ private void buscar2() {
         jLabel8.setText("Proveedor");
 
         cmbTipo.setFont(new java.awt.Font("Dubai Light", 0, 24)); // NOI18N
+        cmbTipo.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cmbTipoItemStateChanged(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -397,7 +436,7 @@ private void buscar2() {
                                 .addComponent(btnEditar)
                                 .addGap(35, 35, 35)
                                 .addComponent(btnEliminar)))
-                        .addGap(63, 198, Short.MAX_VALUE))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(289, 289, 289)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -431,7 +470,7 @@ private void buscar2() {
                     .addComponent(txtPU, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7)
                     .addComponent(cmbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAgregar)
                     .addComponent(btnBuscar)
@@ -466,7 +505,7 @@ private void buscar2() {
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
     buscar2();
-
+    //Validar();
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
@@ -489,6 +528,13 @@ private void buscar2() {
         txtProveedor.setText(tbl1.getModel().getValueAt(col, 3).toString());
         cmbTipo.setSelectedItem(tbl1.getModel().getValueAt(col, 4));
     }//GEN-LAST:event_tbl1MouseClicked
+
+    private void cmbTipoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbTipoItemStateChanged
+    
+        
+        
+    
+    }//GEN-LAST:event_cmbTipoItemStateChanged
     public void limpiar(){
         txtConcepto.setText("");
         txtProveedor.setText("");
