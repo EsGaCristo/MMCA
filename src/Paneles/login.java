@@ -57,6 +57,16 @@ public class login extends javax.swing.JFrame {
         jLabel2.setText("USUARIO");
 
         txtUsuario.setText("Inserte el Usuario");
+        txtUsuario.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                txtUsuarioMouseMoved(evt);
+            }
+        });
+        txtUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                txtUsuarioMousePressed(evt);
+            }
+        });
         txtUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtUsuarioActionPerformed(evt);
@@ -68,6 +78,16 @@ public class login extends javax.swing.JFrame {
         jLabel3.setText("Contraseña");
 
         txtContraseña.setText("Inserte la contraseña");
+        txtContraseña.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                txtContraseñaMouseMoved(evt);
+            }
+        });
+        txtContraseña.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                txtContraseñaMousePressed(evt);
+            }
+        });
 
         btnLog.setBackground(new java.awt.Color(255, 204, 204));
         btnLog.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/iniciar-sesion.png"))); // NOI18N
@@ -124,6 +144,30 @@ public class login extends javax.swing.JFrame {
     private void btnLogActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogActionPerformed
         buscar();
     }//GEN-LAST:event_btnLogActionPerformed
+
+    private void txtUsuarioMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtUsuarioMouseMoved
+       if (txtUsuario.getText().equals("")) {
+            txtUsuario.setText("Inserte el Usuario");
+        }
+    }//GEN-LAST:event_txtUsuarioMouseMoved
+
+    private void txtContraseñaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtContraseñaMousePressed
+       if (txtContraseña.getText().equals("Inserte la contraseña") && !txtContraseña.getText().equals("")) {
+            txtContraseña.setText("");
+        }
+    }//GEN-LAST:event_txtContraseñaMousePressed
+
+    private void txtUsuarioMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtUsuarioMousePressed
+        if (txtUsuario.getText().equals("Inserte el Usuario") && !txtUsuario.getText().equals("")) {
+            txtUsuario.setText("");
+        }
+    }//GEN-LAST:event_txtUsuarioMousePressed
+
+    private void txtContraseñaMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtContraseñaMouseMoved
+        if (txtContraseña.getText().equals("")) {
+            txtContraseña.setText("Inserte el contraseña");
+        }
+    }//GEN-LAST:event_txtContraseñaMouseMoved
     
     
     ////////////////////////buscar//////////////////////////////////
@@ -201,8 +245,8 @@ public class login extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new login().setVisible(false);
-                new Ventana().setVisible(true);  
+                new login().setVisible(true);
+                new Ventana().setVisible(false);  
                 
             }
         });
