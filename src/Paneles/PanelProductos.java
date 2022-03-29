@@ -5,6 +5,7 @@
  */
 package Paneles;
 
+import Clases.Servicio;
 import Clases.tipoServicio;
 import Principal.BaseDatos;
 import java.awt.Color;
@@ -13,10 +14,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -25,12 +28,15 @@ import javax.swing.UIManager;
 public class PanelProductos extends javax.swing.JPanel {
      public  Connection conexion;
      BaseDatos bd= new BaseDatos();
-    /**
-     * Creates new form PanelProductos
-     */
+     ArrayList<Servicio> servicios = new ArrayList();
+      DefaultTableModel dtm;
+    //paul
     public PanelProductos() {
         initComponents();
+        dtm=(DefaultTableModel) tbl1.getModel();
         LLenarCombo();
+        buscar();
+        llenarTabla();
     }
   private void insertar() {
 
@@ -51,10 +57,7 @@ public class PanelProductos extends javax.swing.JPanel {
             enunciado.setBigDecimal(2,num);
             enunciado.setInt(3,tipo);
             enunciado.setString(4,txtProveedor.getText());
-            
-           
-  
-            
+
             resultado = enunciado.executeUpdate();
             if (resultado > 0) {
                 UIManager.put("OptionPane.background", Color.decode("#FBE5DA"));
@@ -75,6 +78,11 @@ public class PanelProductos extends javax.swing.JPanel {
 
     }
   
+    public void actualizar(){
+        
+        llenarTabla();
+    }
+
     public void LLenarCombo(){
         ResultSet resultado=null;
         Connection connection=null;
@@ -94,22 +102,20 @@ public class PanelProductos extends javax.swing.JPanel {
         }
     }
     
- private void borrar() {
-
+ private void borrar() {   
         int resultado;
-
         try {
             PreparedStatement enunciado;
-            enunciado = bd.getConexion().prepareStatement("delete from CLIENTE where NOMBRE=?");
-            //enunciado.setString(1, txtNombre.getText());
+            enunciado = bd.getConexion().prepareStatement("delete from SERVICIOS where COD_SERVICIO=?");
+            enunciado.setInt(1, Integer.parseInt(txtID.getText()));
             
             resultado = enunciado.executeUpdate();
             if (resultado > 0) {
                 UIManager.put("OptionPane.background", Color.decode("#FBE5DA"));
                 UIManager.getLookAndFeelDefaults().put("Panel.background", Color.decode("#FBE5DA"));
                 UIManager.put("Button.background", Color.decode("#FBE5DA"));
-                Icon icono = new ImageIcon(getClass().getResource("/imagenes/cliente no encontrado.png"));
-                JOptionPane.showMessageDialog(null,"Cliente Eliminado Correctamente ", "Mensaje", JOptionPane.PLAIN_MESSAGE, icono);
+                Icon icono = new ImageIcon(getClass().getResource("/imagenes/pngwing.com (1) (1).png"));
+                JOptionPane.showMessageDialog(null,"Servicio Eliminado Correctamente ", "Mensaje", JOptionPane.PLAIN_MESSAGE, icono);
             } else {
                 UIManager.put("OptionPane.background", Color.decode("#FBE5DA"));
                 UIManager.getLookAndFeelDefaults().put("Panel.background", Color.decode("#FBE5DA"));
@@ -121,8 +127,99 @@ public class PanelProductos extends javax.swing.JPanel {
             ex.printStackTrace();
         }
 
-    }  
+    }    
+    
+ public void llenarTabla(){
+         Object O[]=null;
+         for (int i = 0; i < servicios.size(); i++) {
+            dtm.addRow(O);
+            Servicio ser = (Servicio) servicios.get(i);  
+           dtm.setValueAt(ser.getCodServicio(), i, 0);
+            dtm.setValueAt(ser.getConsepto(), i, 1);
+            dtm.setValueAt(ser.getPrecio(), i, 3);
+            dtm.setValueAt(ser.getProvedor(), i, 2);
+            }
+     }
+
+private void buscar2() {
+         
+        ResultSet resultado=null;
+        Connection connection=null;
+        Statement statement=null;
+        try {
+            connection = bd.getConexion();
+            statement = connection.createStatement();
+            String concepto= txtConcepto.getText();
+            String selectSql = "SELECT * FROM SERVICIOS WHERE concepto='"+concepto+"'";
+            resultado= statement.executeQuery(selectSql);
+            
+            if(resultado.next()){
+                txtConcepto.setText(resultado.getString("CONCEPTO"));
+                txtProveedor.setText(resultado.getString("PROVEEDOR"));
+
+                txtPU.setText(resultado.getString("PRECIO_UNITARIO"));
+
+
+
+
+               /* txtApellidos.setText(resultado.getString("APELLIDOS"));
+                txtDireccion.setText(resultado.getString("DIRECCION"));
+                txtCorreo.setText(resultado.getString("CORREO"));
+                txtTelefono.setText(resultado.getString("CEL_CLIENTE"));
+                txtDescripcion.setText(resultado.getString("DESCRIPCION"));
+*/
+
+                UIManager.put("OptionPane.background", Color.decode("#FBE5DA"));
+                UIManager.getLookAndFeelDefaults().put("Panel.background", Color.decode("#FBE5DA"));
+                UIManager.put("Button.background", Color.decode("#FBE5DA"));
+                Icon icono = new ImageIcon(getClass().getResource("/imagenes/busqueda.png"));
+                JOptionPane.showMessageDialog(null,"Cliente Encontrado Correctamente ", "Mensaje", JOptionPane.PLAIN_MESSAGE, icono);  
+
+            }else{
+                UIManager.put("OptionPane.background", Color.decode("#FBE5DA"));
+                UIManager.getLookAndFeelDefaults().put("Panel.background", Color.decode("#FBE5DA"));
+                UIManager.put("Button.background", Color.decode("#FBE5DA"));
+                Icon icono = new ImageIcon(getClass().getResource("/imagenes/cliente no encontrado.png"));
+                JOptionPane.showMessageDialog(null,"Cliente No Encontrado, intentelo nuevamente", "Mensaje", JOptionPane.PLAIN_MESSAGE, icono);
+                 
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            
+        }finally{
+            bd.cerrar(statement, resultado);
+        }
+        
+        
+    }
+
  
+     private void buscar() {         
+        ResultSet resultado=null;
+        Connection connection=null;
+        Statement statement=null;
+        try {
+            connection = bd.getConexion();
+            statement = connection.createStatement();
+            
+            String selectSql = "SELECT * from SERVICIOS";
+            resultado= statement.executeQuery(selectSql);
+          
+            while(resultado.next()){
+            Servicio servicis = new Servicio(resultado.getInt("COD_SERVICIO"),resultado.getString("CONCEPTO"),resultado.getBigDecimal("PRECIO_UNITARIO"),
+            resultado.getInt("TIPO_SERVICIO"),resultado.getString("PROVEEDOR"));
+            servicios.add(servicis);
+            
+            }
+           
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            
+        }finally{
+            bd.cerrar(statement, resultado);
+            llenarTabla();
+        }
+    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -131,7 +228,7 @@ public class PanelProductos extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tbl1 = new javax.swing.JTable();
         btnAgregar = new javax.swing.JButton();
         btnBuscar = new javax.swing.JButton();
         btnEditar = new javax.swing.JButton();
@@ -156,12 +253,12 @@ public class PanelProductos extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Dubai", 2, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(204, 0, 102));
         jLabel1.setText("Gestion de servicios");
-        jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.CROSSHAIR_CURSOR));
+        jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/servicios-de-apoyo.png"))); // NOI18N
 
-        jTable1.setFont(new java.awt.Font("Dubai", 0, 24)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tbl1.setFont(new java.awt.Font("Dubai", 0, 14)); // NOI18N
+        tbl1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -173,10 +270,15 @@ public class PanelProductos extends javax.swing.JPanel {
                 {null, null, null, null, null}
             },
             new String [] {
-                "Nombre", "Codigo", "Proveedor", "PrecioUnitario", "TipoServicio"
+                "Id", "Nombre", "Proveedor", "PrecioUnitario", "TipoServicio"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        tbl1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbl1MouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tbl1);
 
         btnAgregar.setBackground(new java.awt.Color(255, 204, 204));
         btnAgregar.setFont(new java.awt.Font("Dubai", 2, 24)); // NOI18N
@@ -234,6 +336,7 @@ public class PanelProductos extends javax.swing.JPanel {
 
         txtConcepto.setFont(new java.awt.Font("Dubai", 0, 18)); // NOI18N
 
+        txtID.setEditable(false);
         txtID.setFont(new java.awt.Font("Dubai", 0, 18)); // NOI18N
 
         txtProveedor.setFont(new java.awt.Font("Dubai", 0, 18)); // NOI18N
@@ -353,10 +456,12 @@ public class PanelProductos extends javax.swing.JPanel {
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         insertar();
+        //actualizar();
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        // TODO add your handling code here:
+    buscar2();
+
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
@@ -364,9 +469,28 @@ public class PanelProductos extends javax.swing.JPanel {
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-
+        borrar();
+        limpiar();
+        //actualizar();
     }//GEN-LAST:event_btnEliminarActionPerformed
 
+    private void tbl1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl1MouseClicked
+        limpiar();
+        int col = tbl1.getSelectedRow();
+        txtID.setText(tbl1.getModel().getValueAt(col, 0).toString());
+        txtConcepto.setText(tbl1.getModel().getValueAt(col, 1).toString());
+        txtPU.setText(tbl1.getModel().getValueAt(col, 2).toString());
+        txtProveedor.setText(tbl1.getModel().getValueAt(col, 3).toString());
+        cmbTipo.setSelectedItem(tbl1.getModel().getValueAt(col, 4));
+    }//GEN-LAST:event_tbl1MouseClicked
+    public void limpiar(){
+        txtConcepto.setText("");
+        txtProveedor.setText("");
+        txtID.setText("");
+        txtPU.setText("");
+        cmbTipo.setSelectedIndex(0);
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;
@@ -384,7 +508,7 @@ public class PanelProductos extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tbl1;
     private javax.swing.JTextField txtConcepto;
     private javax.swing.JTextField txtID;
     private javax.swing.JTextField txtPU;
