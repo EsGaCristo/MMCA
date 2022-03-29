@@ -97,6 +97,7 @@
             <Component class="javax.swing.JTextField" name="txtNombreServicio">
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNombreServicioActionPerformed"/>
+                <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtNombreServicioKeyReleased"/>
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnBuscarServicio">
@@ -163,10 +164,10 @@
                 </Property>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="4" rowCount="0">
-                    <Column editable="true" title="CODIGO " type="java.lang.Object"/>
-                    <Column editable="true" title="CONCEPTO" type="java.lang.Object"/>
-                    <Column editable="true" title="P.U." type="java.lang.Object"/>
-                    <Column editable="true" title="PROVEDOR" type="java.lang.Object"/>
+                    <Column editable="false" title="CODIGO " type="java.lang.Object"/>
+                    <Column editable="false" title="CONCEPTO" type="java.lang.Object"/>
+                    <Column editable="false" title="P.U." type="java.lang.Object"/>
+                    <Column editable="false" title="PROVEDOR" type="java.lang.Object"/>
                   </Table>
                 </Property>
                 <Property name="toolTipText" type="java.lang.String" value=""/>
@@ -207,6 +208,10 @@
                   <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblServiciosMouseClicked"/>
+                <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tblServiciosKeyReleased"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

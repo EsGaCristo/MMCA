@@ -9,6 +9,7 @@ import Clases.Servicio;
 import Clases.tipoServicio;
 import Principal.BaseDatos;
 import java.awt.Color;
+import java.awt.event.KeyEvent;
 import java.math.BigDecimal;
 import java.sql.*;
 import java.util.ArrayList;
@@ -27,6 +28,7 @@ public class ServiciosCotizacion extends javax.swing.JFrame {
     DefaultTableModel dtm;
     BaseDatos bd= new BaseDatos();
     ArrayList<Servicio> servicios = new ArrayList();
+    PanelCotizaciones pnlCot  = new  PanelCotizaciones();
 
     public ServiciosCotizacion() {
         initComponents();
@@ -99,6 +101,11 @@ public class ServiciosCotizacion extends javax.swing.JFrame {
                 txtNombreServicioActionPerformed(evt);
             }
         });
+        txtNombreServicio.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtNombreServicioKeyReleased(evt);
+            }
+        });
         jpnEncabezados.add(txtNombreServicio);
 
         btnBuscarServicio.setBackground(new java.awt.Color(241, 172, 133));
@@ -134,11 +141,29 @@ public class ServiciosCotizacion extends javax.swing.JFrame {
             new String [] {
                 "CODIGO ", "CONCEPTO", "P.U.", "PROVEDOR"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         tblServicios.setToolTipText("");
         tblServicios.setGridColor(new java.awt.Color(251, 229, 218));
         tblServicios.setSelectionBackground(new java.awt.Color(241, 172, 133));
         tblServicios.setSelectionForeground(new java.awt.Color(0, 0, 0));
+        tblServicios.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblServiciosMouseClicked(evt);
+            }
+        });
+        tblServicios.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                tblServiciosKeyReleased(evt);
+            }
+        });
         jspTable.setViewportView(tblServicios);
 
         jPanel1.add(jspTable, java.awt.BorderLayout.CENTER);
@@ -160,6 +185,38 @@ public class ServiciosCotizacion extends javax.swing.JFrame {
         System.out.println("accion");
     }//GEN-LAST:event_cbxTipoServicioActionPerformed
 
+    private void txtNombreServicioKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreServicioKeyReleased
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER)buscar();
+    }//GEN-LAST:event_txtNombreServicioKeyReleased
+
+    private void tblServiciosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblServiciosMouseClicked
+        if(evt.getClickCount()==2){
+            int cod= (int) dtm.getValueAt(tblServicios.getSelectedRow(), 0);
+            Servicio servic=obtenerServicio(cod);
+            pnlCot.setControlServicio(servic);
+            dispose();
+        }
+    }//GEN-LAST:event_tblServiciosMouseClicked
+
+    private void tblServiciosKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblServiciosKeyReleased
+       if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            int cod= (int) dtm.getValueAt(tblServicios.getSelectedRow(), 0);
+            Servicio servic=obtenerServicio(cod);
+            pnlCot.setControlServicio(servic);
+            dispose();
+       }
+    }//GEN-LAST:event_tblServiciosKeyReleased
+    
+    private Servicio obtenerServicio(int codd){
+        Servicio servicioo=null;
+        for (int i = 0; i < servicios.size(); i++) {
+
+            Servicio ser = (Servicio) servicios.get(i); 
+            if(codd==ser.getCodServicio())servicioo=ser;
+            }
+        
+        return servicioo;
+    }
     
     /////////////////////////////////////////////////
         ////////////////////////buscar//////////////////////////////////
@@ -183,7 +240,7 @@ public class ServiciosCotizacion extends javax.swing.JFrame {
             while(resultado.next()){
             Servicio servicis = new Servicio(resultado.getInt("COD_SERVICIO"),resultado.getString("CONCEPTO"),resultado.getBigDecimal("PRECIO_UNITARIO"),
             resultado.getInt("TIPO_SERVICIO"),resultado.getString("PROVEEDOR"));
-            System.out.println(servicis);
+            //System.out.println(servicis);
             servicios.add(servicis);
             
             }
