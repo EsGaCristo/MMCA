@@ -94,7 +94,6 @@ public class ServiciosCotizacion extends javax.swing.JFrame {
         jLabel1.setText("Buscar Servicio:");
         jpnEncabezados.add(jLabel1);
 
-        txtNombreServicio.setText("Nombre Servicio");
         txtNombreServicio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNombreServicioActionPerformed(evt);
@@ -124,8 +123,10 @@ public class ServiciosCotizacion extends javax.swing.JFrame {
 
         jspTable.setBackground(new java.awt.Color(251, 229, 218));
         jspTable.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jspTable.setForeground(new java.awt.Color(251, 229, 218));
 
         tblServicios.setBackground(new java.awt.Color(251, 229, 218));
+        tblServicios.setForeground(new java.awt.Color(0, 0, 0));
         tblServicios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -134,9 +135,10 @@ public class ServiciosCotizacion extends javax.swing.JFrame {
                 "CODIGO ", "CONCEPTO", "P.U.", "PROVEDOR"
             }
         ));
+        tblServicios.setToolTipText("");
         tblServicios.setGridColor(new java.awt.Color(251, 229, 218));
         tblServicios.setSelectionBackground(new java.awt.Color(241, 172, 133));
-        tblServicios.setSelectionForeground(new java.awt.Color(241, 172, 133));
+        tblServicios.setSelectionForeground(new java.awt.Color(0, 0, 0));
         jspTable.setViewportView(tblServicios);
 
         jPanel1.add(jspTable, java.awt.BorderLayout.CENTER);

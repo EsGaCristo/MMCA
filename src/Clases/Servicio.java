@@ -7,6 +7,7 @@ import java.math.BigDecimal;
  *
  * @author Ivanr
  */
+
 public class Servicio {
     private int CodServicio;
     private String Concepto;
