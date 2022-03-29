@@ -78,9 +78,14 @@ public class PanelProductos extends javax.swing.JPanel {
 
     }
   
-    public void actualizar(){
-        
-        llenarTabla();
+    public void actualizar(){        
+        for (int i = 0; i >=dtm.getRowCount()-1 ; i++) {
+            dtm.removeRow(i);
+        }
+        dtm.setRowCount(0);
+    servicios.clear();
+    buscar();
+    llenarTabla();
     }
 
     public void LLenarCombo(){
@@ -456,7 +461,7 @@ private void buscar2() {
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         insertar();
-        //actualizar();
+        actualizar();
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
@@ -471,6 +476,7 @@ private void buscar2() {
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         borrar();
         limpiar();
+        actualizar();
         //actualizar();
     }//GEN-LAST:event_btnEliminarActionPerformed
 
