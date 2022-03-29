@@ -124,10 +124,8 @@ public class ServiciosCotizacion extends javax.swing.JFrame {
 
         jspTable.setBackground(new java.awt.Color(251, 229, 218));
         jspTable.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jspTable.setForeground(new java.awt.Color(0, 0, 0));
 
         tblServicios.setBackground(new java.awt.Color(251, 229, 218));
-        tblServicios.setForeground(new java.awt.Color(0, 0, 0));
         tblServicios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 

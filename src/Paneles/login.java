@@ -56,7 +56,7 @@ public class login extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel2.setText("USUARIO");
 
-        txtUsuario.setText("Inserte el Usuario");
+        txtUsuario.setText("IVAN");
         txtUsuario.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
                 txtUsuarioMouseMoved(evt);
@@ -77,7 +77,7 @@ public class login extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel3.setText("Contraseña");
 
-        txtContraseña.setText("Inserte la contraseña");
+        txtContraseña.setText("12345");
         txtContraseña.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
                 txtContraseñaMouseMoved(evt);
@@ -181,7 +181,6 @@ public class login extends javax.swing.JFrame {
             statement = connection.createStatement();
             String user= txtUsuario.getText();
             String pass= txtContraseña.getText();
-            System.out.println("pass = " + pass+" user");
             String selectSql = "SELECT * from Personal where NOMBRE_USUARIO='"+user+"' AND CONTRASEÑA='"+pass+"'";
             resultado= statement.executeQuery(selectSql);
   
