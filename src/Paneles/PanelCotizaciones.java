@@ -2,18 +2,25 @@
 package Paneles;
 
 import Clases.Servicio;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author Ivanr
  */
 public class PanelCotizaciones extends javax.swing.JPanel {
-    private Servicio controlServicio;
+    //private Servicio controlServicio;
+    public static ArrayList<Servicio> servicios = new ArrayList();
+    DefaultTableModel dtm;
+    public static Servicio controlServicio;
     /**
      * Creates new form PanelCotizaciones
      */
     public PanelCotizaciones() {
         initComponents();
+        dtm=(DefaultTableModel) tblCotizacion.getModel();
+        llenarTxt();
     }
 
     /**
@@ -37,10 +44,10 @@ public class PanelCotizaciones extends javax.swing.JPanel {
         jButton5 = new javax.swing.JButton();
         btAgregar = new javax.swing.JButton();
         txtPU = new javax.swing.JTextField();
-        jButton6 = new javax.swing.JButton();
+        btnTerminar = new javax.swing.JButton();
         txtCantidad = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        tblCotizacion = new javax.swing.JTable();
         jSpinner1 = new javax.swing.JSpinner();
 
         setBackground(new java.awt.Color(251, 229, 218));
@@ -157,14 +164,14 @@ public class PanelCotizaciones extends javax.swing.JPanel {
             }
         });
 
-        jButton6.setBackground(new java.awt.Color(241, 172, 133));
-        jButton6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButton6.setForeground(new java.awt.Color(255, 255, 255));
-        jButton6.setText("Terminar");
-        jButton6.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        btnTerminar.setBackground(new java.awt.Color(241, 172, 133));
+        btnTerminar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnTerminar.setForeground(new java.awt.Color(255, 255, 255));
+        btnTerminar.setText("Terminar");
+        btnTerminar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnTerminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                btnTerminarActionPerformed(evt);
             }
         });
 
@@ -200,7 +207,7 @@ public class PanelCotizaciones extends javax.swing.JPanel {
                                 .addComponent(txtPU, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(15, 15, 15))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnTerminar, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(84, 84, 84))))))
         );
         jPanel2Layout.setVerticalGroup(
@@ -221,14 +228,14 @@ public class PanelCotizaciones extends javax.swing.JPanel {
                             .addComponent(txtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtPU, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnTerminar, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
         jScrollPane2.setBackground(new java.awt.Color(251, 229, 218));
 
-        jTable2.setBackground(new java.awt.Color(251, 229, 218));
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        tblCotizacion.setBackground(new java.awt.Color(251, 229, 218));
+        tblCotizacion.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -250,8 +257,8 @@ public class PanelCotizaciones extends javax.swing.JPanel {
                 "Concepto", "Cantidad", "P.U", "Importe"
             }
         ));
-        jTable2.setSelectionBackground(new java.awt.Color(241, 172, 133));
-        jScrollPane2.setViewportView(jTable2);
+        tblCotizacion.setSelectionBackground(new java.awt.Color(241, 172, 133));
+        jScrollPane2.setViewportView(tblCotizacion);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -287,9 +294,9 @@ public class PanelCotizaciones extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton6ActionPerformed
+    private void btnTerminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTerminarActionPerformed
+        llenarTxt();
+    }//GEN-LAST:event_btnTerminarActionPerformed
 
     private void txtIdProyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdProyActionPerformed
        
@@ -317,7 +324,8 @@ public class PanelCotizaciones extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void btAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAgregarActionPerformed
-         System.out.println(controlServicio);
+         llenarTabla();
+         System.out.println("agregar = ");
     }//GEN-LAST:event_btAgregarActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -325,27 +333,44 @@ public class PanelCotizaciones extends javax.swing.JPanel {
         System.out.println(controlServicio);
         
     }//GEN-LAST:event_jButton5ActionPerformed
+    
+     public void llenarTabla(){
+         Object O[]=null;
+         for (int i = 0; i < servicios.size(); i++) {
+            dtm.addRow(O);
+            Servicio ser = (Servicio) servicios.get(i);  
+            dtm.setValueAt(ser.getConsepto(), i, 0);
+            dtm.setValueAt(txtCantidad.getText(), i, 1);
+            dtm.setValueAt(ser.getPrecio(), i, 2);
+            dtm.setValueAt(ser.getPrecio(), i, 3);
+             System.out.println("concepto = " + ser.getConsepto());
+            }
+     }
+     
+    
 
-    public void setControlServicio(Servicio controlServicio) {
-        this.controlServicio = controlServicio;
+      public void llenarTxt(){
+          try{
+         txtConcepto.setText(controlServicio.getConsepto());
+         txtPU.setText(controlServicio.getPrecio().toString());
+          }catch(NullPointerException npe){System.out.println("no hay datos aun" );}
     }
-    
-    
+          
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAgregar;
+    private javax.swing.JButton btnTerminar;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSpinner jSpinner1;
-    private javax.swing.JTable jTable2;
+    private javax.swing.JTable tblCotizacion;
     private javax.swing.JTextField txtCantidad;
     private javax.swing.JTextField txtConcepto;
     private javax.swing.JTextField txtIdProy;
