@@ -57,10 +57,7 @@ public class PanelProductos extends javax.swing.JPanel {
             enunciado.setBigDecimal(2,num);
             enunciado.setInt(3,tipo);
             enunciado.setString(4,txtProveedor.getText());
-            
-           
-  
-            
+
             resultado = enunciado.executeUpdate();
             if (resultado > 0) {
                 UIManager.put("OptionPane.background", Color.decode("#FBE5DA"));
@@ -81,6 +78,11 @@ public class PanelProductos extends javax.swing.JPanel {
 
     }
   
+    public void actualizar(){
+        
+        llenarTabla();
+    }
+
     public void LLenarCombo(){
         ResultSet resultado=null;
         Connection connection=null;
@@ -334,6 +336,7 @@ private void buscar2() {
 
         txtConcepto.setFont(new java.awt.Font("Dubai", 0, 18)); // NOI18N
 
+        txtID.setEditable(false);
         txtID.setFont(new java.awt.Font("Dubai", 0, 18)); // NOI18N
 
         txtProveedor.setFont(new java.awt.Font("Dubai", 0, 18)); // NOI18N
@@ -423,7 +426,7 @@ private void buscar2() {
                     .addComponent(txtPU, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7)
                     .addComponent(cmbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAgregar)
                     .addComponent(btnBuscar)
@@ -453,6 +456,7 @@ private void buscar2() {
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         insertar();
+        //actualizar();
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
@@ -466,6 +470,8 @@ private void buscar2() {
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         borrar();
+        limpiar();
+        //actualizar();
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void tbl1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl1MouseClicked
