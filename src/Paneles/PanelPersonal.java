@@ -183,6 +183,15 @@ public class PanelPersonal extends javax.swing.JPanel {
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         agregar();
     }//GEN-LAST:event_btnAddActionPerformed
+    public void actualizar(){        
+        for (int i = 0; i >=dtm.getRowCount()-1 ; i++) {
+            dtm.removeRow(i);
+        }
+        dtm.setRowCount(0);
+    personal.clear();
+    buscar();
+    llenarTabla();
+    }
     public void agregar(){
         int rango;
         if (cmbPermisos.getSelectedItem().equals("Administrador")) {
@@ -192,6 +201,9 @@ public class PanelPersonal extends javax.swing.JPanel {
         }else{rango = 3;}
         Personal user = new Personal(txtNombre.getText(),txtPass.getText(),rango);
         user.insertar();
+        actualizar();
+        txtNombre.setText("");
+        txtPass.setText("");
     }
 
      private void buscar() {         

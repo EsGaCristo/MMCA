@@ -32,6 +32,11 @@ public class Personal {
         throw new UnsupportedOperationException("Not supported yet."); 
     }
 
+    public Personal(String string, int rango) {
+        this.nombre = string;
+        this.rango = rango;
+    }
+
     public String getNombre() {
         return nombre;
     }
@@ -74,7 +79,7 @@ public class Personal {
                 UIManager.getLookAndFeelDefaults().put("Panel.background", Color.decode("#FBE5DA"));
                 UIManager.put("Button.background", Color.decode("#FBE5DA"));
                 Icon icono = new ImageIcon(getClass().getResource("/imagenes/insertado.png"));
-                JOptionPane.showMessageDialog(null,"Cliente Insertado Correctamente ", "Mensaje", JOptionPane.PLAIN_MESSAGE, icono);
+                JOptionPane.showMessageDialog(null,"Usuario Insertado Correctamente ", "Mensaje", JOptionPane.PLAIN_MESSAGE, icono);
             } else {
                 UIManager.put("OptionPane.background", Color.decode("#FBE5DA"));
                 UIManager.getLookAndFeelDefaults().put("Panel.background", Color.decode("#FBE5DA"));
