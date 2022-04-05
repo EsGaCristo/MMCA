@@ -24,7 +24,7 @@ public class BaseDatos {
             try {
             //Class.forName("com.mysql.cj.jdbc.Driver");
             conexion = (Connection) DriverManager.getConnection(URL);
-            System.out.println("conexion exitosa BD MMCA");
+            //System.out.println("conexion exitosa BD MMCA");
         } catch (SQLException ex) {
             System.out.println(ex.toString());
             //System.exit(0);

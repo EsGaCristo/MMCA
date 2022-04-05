@@ -548,7 +548,7 @@ private void buscar2() {
     }//GEN-LAST:event_cmbTipoItemStateChanged
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        new Categorias().setVisible(true);
+        new Categorias_JFrame().setVisible(true);
         
     }//GEN-LAST:event_jButton1ActionPerformed
     public void limpiar(){
