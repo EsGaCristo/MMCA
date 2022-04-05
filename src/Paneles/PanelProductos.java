@@ -54,7 +54,7 @@ public class PanelProductos extends javax.swing.JPanel {
                     + "TIPO_SERVICIO,PROVEEDOR) values (?,?,?,?)");
             
             
-            enunciado.setString(1, txtConcepto.getText());
+            enunciado.setString(1, txtNombre.getText());
             enunciado.setBigDecimal(2,num);
             enunciado.setInt(3,tipo);
             enunciado.setString(4,txtProveedor.getText());
@@ -192,12 +192,12 @@ private void buscar2() {
         try {
             connection = bd.getConexion();
             statement = connection.createStatement();
-            String concepto= txtConcepto.getText();
+            String concepto= txtNombre.getText();
             String selectSql = "SELECT * FROM SERVICIOS WHERE concepto='"+concepto+"'";
             resultado= statement.executeQuery(selectSql);
             
             if(resultado.next()){
-                txtConcepto.setText(resultado.getString("CONCEPTO"));
+                txtNombre.setText(resultado.getString("CONCEPTO"));
                 txtProveedor.setText(resultado.getString("PROVEEDOR"));
                 txtPU.setText(resultado.getString("PRECIO_UNITARIO"));
                 txtID.setText(resultado.getString("COD_SERVICIO"));
@@ -259,6 +259,50 @@ private void buscar2() {
             llenarTabla();
         }
     }
+
+private void editar(){
+
+        int resultado;
+        String str = txtPU.getText();
+        BigDecimal num = new BigDecimal(str);
+        
+         tipoServicio nose=(tipoServicio)cmbTipo.getSelectedItem();
+         int tipo=nose.getId_tipoServicio();
+
+
+        try {
+            PreparedStatement enunciado;
+            enunciado = bd.getConexion().prepareStatement("update SERVICIOS set CONCEPTO=?, PRECIO_UNITARIO=?, TIPO_SERVICIO=?, "
+                    + "PROVEEDOR=? where COD_SERVICIO=?");
+            
+            enunciado.setString(1, txtNombre.getText());
+            enunciado.setBigDecimal(2, num);
+            enunciado.setInt(3,tipo);
+            enunciado.setString(4,txtProveedor.getText());
+            enunciado.setInt(5,Integer.parseInt(txtID.getText()));
+            
+  
+            
+            resultado = enunciado.executeUpdate();
+            if (resultado > 0) {
+                UIManager.put("OptionPane.background", Color.decode("#FBE5DA"));
+                UIManager.getLookAndFeelDefaults().put("Panel.background", Color.decode("#FBE5DA"));
+                UIManager.put("Button.background", Color.decode("#FBE5DA"));
+                Icon icono = new ImageIcon(getClass().getResource("/imagenes/actualizado.png"));
+                JOptionPane.showMessageDialog(null,"Cliente Actualizado Correctamente ", "Mensaje", JOptionPane.PLAIN_MESSAGE, icono);
+            } else {
+                UIManager.put("OptionPane.background", Color.decode("#FBE5DA"));
+                UIManager.getLookAndFeelDefaults().put("Panel.background", Color.decode("#FBE5DA"));
+                UIManager.put("Button.background", Color.decode("#FBE5DA"));
+                Icon icono = new ImageIcon(getClass().getResource("/imagenes/error.png"));
+                JOptionPane.showMessageDialog(null,"Error ", "Mensaje", JOptionPane.PLAIN_MESSAGE, icono);
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -277,7 +321,7 @@ private void buscar2() {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        txtConcepto = new javax.swing.JTextField();
+        txtNombre = new javax.swing.JTextField();
         txtID = new javax.swing.JTextField();
         txtProveedor = new javax.swing.JTextField();
         txtPU = new javax.swing.JTextField();
@@ -374,7 +418,7 @@ private void buscar2() {
         jLabel9.setFont(new java.awt.Font("Dubai", 0, 18)); // NOI18N
         jLabel9.setText("Codigo");
 
-        txtConcepto.setFont(new java.awt.Font("Dubai", 0, 18)); // NOI18N
+        txtNombre.setFont(new java.awt.Font("Dubai", 0, 18)); // NOI18N
 
         txtID.setEditable(false);
         txtID.setFont(new java.awt.Font("Dubai", 0, 18)); // NOI18N
@@ -414,46 +458,45 @@ private void buscar2() {
                                 .addGap(7, 7, 7)
                                 .addComponent(jLabel3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtConcepto, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jLabel5))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGap(26, 26, 26)
-                                        .addComponent(jLabel8))))
+                                        .addComponent(jLabel8))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(26, 26, 26)
+                                        .addComponent(jLabel6))))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(8, 8, 8)
                                 .addComponent(jLabel9)
                                 .addGap(18, 18, 18)
-                                .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(39, 39, 39)
-                                .addComponent(jLabel6)))
-                        .addGap(42, 42, 42)
+                                .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(11, 11, 11)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(1, 1, 1)
                                 .addComponent(txtPU, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel7)
-                                .addGap(47, 47, 47)
+                                .addGap(179, 179, 179)
                                 .addComponent(cmbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(txtProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(50, 50, 50)
-                                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGap(54, 54, 54))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 782, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(btnAgregar)
-                                .addGap(46, 46, 46)
-                                .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(28, 28, 28)
-                                .addComponent(btnEditar)
-                                .addGap(35, 35, 35)
-                                .addComponent(btnEliminar)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 782, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jLabel7)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(btnAgregar)
+                            .addGap(46, 46, 46)
+                            .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(28, 28, 28)
+                            .addComponent(btnEditar)
+                            .addGap(35, 35, 35)
+                            .addComponent(btnEliminar))))
+                .addGap(98, 98, 98))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(289, 289, 289)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -472,7 +515,7 @@ private void buscar2() {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(jLabel5)
-                    .addComponent(txtConcepto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -498,7 +541,9 @@ private void buscar2() {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 981, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -518,8 +563,9 @@ private void buscar2() {
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-     
-   
+   editar();     
+   actualizar();
+   limpiar();
 
     }//GEN-LAST:event_btnEditarActionPerformed
 
@@ -534,10 +580,11 @@ private void buscar2() {
         limpiar();
         int col = tbl1.getSelectedRow();
         txtID.setText(tbl1.getModel().getValueAt(col, 0).toString());
-        txtConcepto.setText(tbl1.getModel().getValueAt(col, 1).toString());
-        txtPU.setText(tbl1.getModel().getValueAt(col, 2).toString());
-        txtProveedor.setText(tbl1.getModel().getValueAt(col, 3).toString());
+        txtNombre.setText(tbl1.getModel().getValueAt(col, 1).toString());
+        txtPU.setText(tbl1.getModel().getValueAt(col, 3).toString());
+        txtProveedor.setText(tbl1.getModel().getValueAt(col, 2).toString());
         cmbTipo.setSelectedItem(tbl1.getModel().getValueAt(col, 4));
+
     }//GEN-LAST:event_tbl1MouseClicked
 
     private void cmbTipoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbTipoItemStateChanged
@@ -552,7 +599,7 @@ private void buscar2() {
         
     }//GEN-LAST:event_jButton1ActionPerformed
     public void limpiar(){
-        txtConcepto.setText("");
+        txtNombre.setText("");
         txtProveedor.setText("");
         txtID.setText("");
         txtPU.setText("");
@@ -578,8 +625,8 @@ private void buscar2() {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tbl1;
-    private javax.swing.JTextField txtConcepto;
     private javax.swing.JTextField txtID;
+    private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtPU;
     private javax.swing.JTextField txtProveedor;
     // End of variables declaration//GEN-END:variables
