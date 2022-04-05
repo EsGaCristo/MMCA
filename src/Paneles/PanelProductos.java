@@ -361,7 +361,7 @@ private void buscar2() {
         });
 
         jLabel3.setFont(new java.awt.Font("Dubai", 0, 18)); // NOI18N
-        jLabel3.setText("Concepto");
+        jLabel3.setText("Nombre");
 
         jLabel5.setFont(new java.awt.Font("Dubai", 0, 18)); // NOI18N
 
@@ -509,6 +509,7 @@ private void buscar2() {
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         insertar();
         actualizar();
+        limpiar();
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
@@ -517,7 +518,9 @@ private void buscar2() {
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-        // TODO add your handling code here:
+     
+   
+
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
