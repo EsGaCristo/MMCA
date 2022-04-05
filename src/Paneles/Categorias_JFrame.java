@@ -20,6 +20,9 @@ public class Categorias_JFrame extends javax.swing.JFrame {
 
     public Categorias_JFrame() {
         initComponents();
+        dtm=(DefaultTableModel) tblCat.getModel();
+        buscar();
+        llenarTabla();
     }
 
     /**
@@ -33,19 +36,20 @@ public class Categorias_JFrame extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblCat = new javax.swing.JTable();
         btnAgregar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
         btnEditar = new javax.swing.JButton();
         btnEliminar1 = new javax.swing.JButton();
         txtCat = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(251, 229, 218));
 
-        jTable1.setBackground(new java.awt.Color(251, 229, 218));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblCat.setBackground(new java.awt.Color(251, 229, 218));
+        tblCat.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null}
             },
@@ -53,7 +57,7 @@ public class Categorias_JFrame extends javax.swing.JFrame {
                 "Categorias"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblCat);
 
         btnAgregar.setBackground(new java.awt.Color(255, 204, 204));
         btnAgregar.setFont(new java.awt.Font("Dubai", 2, 24)); // NOI18N
@@ -94,7 +98,8 @@ public class Categorias_JFrame extends javax.swing.JFrame {
             }
         });
 
-        txtCat.setText("jTextField1");
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel1.setText("Categorias");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -104,21 +109,19 @@ public class Categorias_JFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnEditar)
+                        .addGap(184, 184, 184))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(btnEditar)
-                                .addGap(184, 184, 184))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(btnAgregar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txtCat, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtCat, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnEliminar1))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(376, 376, 376))
         );
@@ -126,9 +129,12 @@ public class Categorias_JFrame extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(44, 44, 44)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btnAgregar)
-                    .addComponent(txtCat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtCat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(btnEditar)
                 .addGap(18, 18, 18)
@@ -196,12 +202,12 @@ public class Categorias_JFrame extends javax.swing.JFrame {
             connection = bd.getConexion();
             statement = connection.createStatement();
             
-            String selectSql = "SELECT * from TIPOSERVICIO";
+            String selectSql = "SELECT * from TIPOSSERVICIO";
             resultado= statement.executeQuery(selectSql);
           
             while(resultado.next()){
-            Categorias p2 = new Categorias(resultado.getString("NOMBRE"));
-            categorias.add(p2);
+            Categorias c = new Categorias(resultado.getString("NOMBRE"));
+            categorias.add(c);
             }
            
         } catch (Exception ex) {
@@ -217,8 +223,7 @@ public class Categorias_JFrame extends javax.swing.JFrame {
          for (int i = 0; i < categorias.size(); i++) {
             dtm.addRow(O);
             Categorias cat = (Categorias) categorias.get(i);  
-           dtm.setValueAt(cat.getId(), i, 0);
-           dtm.setValueAt(cat.getNombre(), i, 1);
+           dtm.setValueAt(cat.getNombre(), i, 0);
             }
      }
     /**
@@ -262,9 +267,10 @@ public class Categorias_JFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnEliminar1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tblCat;
     private javax.swing.JTextField txtCat;
     // End of variables declaration//GEN-END:variables
 }
