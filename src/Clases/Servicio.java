@@ -26,6 +26,16 @@ public class Servicio {
         this.cantidad=0;
     }
 
+    public Servicio(int CodServicio, String Concepto, BigDecimal precio, int tipoServicio, String Provedor, int cantidad) {
+        this.CodServicio = CodServicio;
+        this.Concepto = Concepto;
+        this.precio = precio;
+        this.tipoServicio = tipoServicio;
+        this.Provedor = Provedor;
+        this.cantidad = cantidad;
+    }
+
+    
     public int getCantidad() {
         return cantidad;
     }

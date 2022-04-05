@@ -2,8 +2,13 @@
 package Paneles;
 
 import Clases.Servicio;
+import Clases.tipoServicio;
+import Principal.BaseDatos;
 import java.math.BigDecimal;
 import java.math.MathContext;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
@@ -17,6 +22,7 @@ public class PanelCotizaciones extends javax.swing.JPanel {
     public static ArrayList<Servicio> serviciosc = new ArrayList();
     DefaultTableModel dtm;
     public static Servicio controlServicio;
+    BaseDatos bd= new BaseDatos();
     /**
      * Creates new form PanelCotizaciones
      */
@@ -38,7 +44,7 @@ public class PanelCotizaciones extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         txtIdProy = new javax.swing.JTextField();
-        jButton3 = new javax.swing.JButton();
+        btnBucarCot = new javax.swing.JButton();
         btnGuardarCotizacion = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
@@ -51,6 +57,7 @@ public class PanelCotizaciones extends javax.swing.JPanel {
         txtCantidad = new javax.swing.JTextField();
         lblMonto = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        btnAplicar = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblCotizacion = new javax.swing.JTable();
         jSpinner1 = new javax.swing.JSpinner();
@@ -89,11 +96,16 @@ public class PanelCotizaciones extends javax.swing.JPanel {
             }
         });
 
-        jButton3.setBackground(new java.awt.Color(241, 172, 133));
-        jButton3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("Buscar cotizacion");
-        jButton3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnBucarCot.setBackground(new java.awt.Color(241, 172, 133));
+        btnBucarCot.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnBucarCot.setForeground(new java.awt.Color(255, 255, 255));
+        btnBucarCot.setText("Buscar cotizacion");
+        btnBucarCot.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnBucarCot.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBucarCotActionPerformed(evt);
+            }
+        });
 
         btnGuardarCotizacion.setBackground(new java.awt.Color(241, 172, 133));
         btnGuardarCotizacion.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -119,7 +131,7 @@ public class PanelCotizaciones extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnGuardarCotizacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 287, Short.MAX_VALUE))
+                    .addComponent(btnBucarCot, javax.swing.GroupLayout.DEFAULT_SIZE, 287, Short.MAX_VALUE))
                 .addContainerGap(104, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -131,7 +143,7 @@ public class PanelCotizaciones extends javax.swing.JPanel {
                     .addComponent(txtIdProy, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBucarCot, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(14, Short.MAX_VALUE))
         );
@@ -213,6 +225,17 @@ public class PanelCotizaciones extends javax.swing.JPanel {
         jLabel4.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
         jLabel4.setText("MONTO:");
 
+        btnAplicar.setBackground(new java.awt.Color(241, 172, 133));
+        btnAplicar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnAplicar.setForeground(new java.awt.Color(255, 255, 255));
+        btnAplicar.setText("Aplicar");
+        btnAplicar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnAplicar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAplicarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -222,8 +245,10 @@ public class PanelCotizaciones extends javax.swing.JPanel {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(btAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(58, 58, 58)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnAplicar, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnTerminar, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(84, 84, 84))
@@ -256,7 +281,8 @@ public class PanelCotizaciones extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton5)))
+                            .addComponent(jButton5)
+                            .addComponent(btnAplicar)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -381,26 +407,72 @@ public class PanelCotizaciones extends javax.swing.JPanel {
     }//GEN-LAST:event_formFocusGained
 
     private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
-      
-        llenarTxt();
-        System.out.println("clic" );
+
     }//GEN-LAST:event_formMouseClicked
 
     private void txtCantidadFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCantidadFocusLost
-        llenarTxt();
-        System.out.println("focus ganado" );
+   
     }//GEN-LAST:event_txtCantidadFocusLost
 
     
     private void jPanel1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPanel1FocusGained
-        llenarTxt();
-        System.out.println("focus ganado" );
+        
     }//GEN-LAST:event_jPanel1FocusGained
 
     private void jPanel2FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPanel2FocusGained
-        llenarTxt();
-        System.out.println("focus ganado" );
+        
     }//GEN-LAST:event_jPanel2FocusGained
+
+    private void btnAplicarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAplicarActionPerformed
+        llenarTxt();
+    }//GEN-LAST:event_btnAplicarActionPerformed
+
+    private void btnBucarCotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBucarCotActionPerformed
+        buscarCot();
+        System.out.println("se ejecuto esto");
+        //llenarTabla2();
+    }//GEN-LAST:event_btnBucarCotActionPerformed
+    private void buscarCot() {
+        servicios.clear();
+        eliminarTb();
+         
+        ResultSet resultado=null;
+        Connection connection=null;
+        Statement statement=null;
+       
+        try {
+            connection = bd.getConexion();
+            statement = connection.createStatement();
+             int IDCOT = Integer.parseInt(txtIdProy.getText());
+            String selectSql = "{call sp_obtn_coti ("+IDCOT+")}";
+            resultado= statement.executeQuery(selectSql);
+          
+            while(resultado.next()){
+                System.out.println("seejecuta");
+            Servicio servicis = new Servicio(resultado.getInt("COD_SERVICIO"),resultado.getString("CONCEPTO"),resultado.getBigDecimal("PRECIO_UNITARIO"),
+            resultado.getInt("TIPO_SERVICIO"),resultado.getString("PROVEEDOR"),resultado.getInt("CANTIDAD"));
+            //System.out.println(servicis);
+            servicios.add(servicis);
+            
+            }
+           
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            
+        }finally{
+            bd.cerrar(statement, resultado);
+            llenarTabla2();
+            
+        }
+    }
+    
+       public void eliminarTb(){
+        int a = tblCotizacion.getRowCount()-1;
+        for (int i = a; i >= 0; i--) {          
+        dtm.removeRow(dtm.getRowCount()-1);
+        }
+        //cargaTicket();
+    }
     
      public void llenarTabla(){
          BigDecimal sum = new BigDecimal(0) ;
@@ -410,7 +482,7 @@ public class PanelCotizaciones extends javax.swing.JPanel {
             dtm.addRow(O);
             Servicio ser = (Servicio) servicios.get(i);  
             dtm.setValueAt(ser.getConsepto(), i, 0);
-            dtm.setValueAt(txtCantidad.getText(), i, 1);
+            dtm.setValueAt(ser.getCantidad(), i, 1);
             dtm.setValueAt(ser.getPrecio(), i, 2);
             int numEntero = Integer.parseInt(txtCantidad.getText());
             BigDecimal cant = new BigDecimal(numEntero);
@@ -424,6 +496,26 @@ public class PanelCotizaciones extends javax.swing.JPanel {
          lblMonto.setText(sum.toString());
      }
      
+     public void llenarTabla2(){
+         BigDecimal sum = new BigDecimal(0) ;
+         Object O[]=null;
+         for (int i = 0; i < servicios.size(); i++) {
+
+            dtm.addRow(O);
+            Servicio ser = (Servicio) servicios.get(i);  
+            dtm.setValueAt(ser.getConsepto(), i, 0);
+            dtm.setValueAt(ser.getCantidad(), i, 1);
+            dtm.setValueAt(ser.getPrecio(), i, 2);
+            BigDecimal cant = new BigDecimal(ser.getCantidad());
+            BigDecimal impor= cant.multiply(ser.getPrecio());
+            dtm.setValueAt(impor , i, 3);
+            sum=sum.add(impor);
+             System.out.println("concepto = " + ser.getConsepto());
+             System.out.println(servicios.get(i));
+            }
+         
+         lblMonto.setText(sum.toString());
+     }
     
 
       public void llenarTxt(){
@@ -436,9 +528,10 @@ public class PanelCotizaciones extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAgregar;
+    private javax.swing.JButton btnAplicar;
+    private javax.swing.JButton btnBucarCot;
     private javax.swing.JButton btnGuardarCotizacion;
     private javax.swing.JButton btnTerminar;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
