@@ -156,7 +156,7 @@ public class Panelclientes extends javax.swing.JPanel {
         btnLimpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/limpiar.png"))); // NOI18N
         btnLimpiar.setText("Limpiar");
         btnLimpiar.setBorder(null);
-        btnLimpiar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnLimpiar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnLimpiar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 botonMouseEntered(evt);
@@ -196,7 +196,7 @@ public class Panelclientes extends javax.swing.JPanel {
         btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/agregar.png"))); // NOI18N
         btnAgregar.setText("Agregar");
         btnAgregar.setBorder(null);
-        btnAgregar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAgregar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnAgregar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 botonMouseEntered(evt);
@@ -236,7 +236,7 @@ public class Panelclientes extends javax.swing.JPanel {
         btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/buscar.png"))); // NOI18N
         btnBuscar.setText("Buscar");
         btnBuscar.setBorder(null);
-        btnBuscar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnBuscar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 botonMouseEntered(evt);
@@ -276,7 +276,7 @@ public class Panelclientes extends javax.swing.JPanel {
         btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/boton-eliminar-carpeta.png"))); // NOI18N
         btnEliminar.setText("Eliminar");
         btnEliminar.setBorder(null);
-        btnEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnEliminar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 botonMouseEntered(evt);
@@ -316,7 +316,7 @@ public class Panelclientes extends javax.swing.JPanel {
         btnActualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Actualizar.png"))); // NOI18N
         btnActualizar.setText("Actualizar");
         btnActualizar.setBorder(null);
-        btnActualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnActualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnActualizar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 botonMouseEntered(evt);
@@ -356,13 +356,18 @@ public class Panelclientes extends javax.swing.JPanel {
         btnVisualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Visualizar.png"))); // NOI18N
         btnVisualizar.setText("Visualizar");
         btnVisualizar.setBorder(null);
-        btnVisualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnVisualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnVisualizar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 botonMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 botonMouseExited(evt);
+            }
+        });
+        btnVisualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVisualizarActionPerformed(evt);
             }
         });
 
@@ -582,6 +587,10 @@ public class Panelclientes extends javax.swing.JPanel {
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
         actualizar();
     }//GEN-LAST:event_btnActualizarActionPerformed
+
+    private void btnVisualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisualizarActionPerformed
+      new VisualizarClientes().setVisible(true);  // TODO add your handling code here:
+    }//GEN-LAST:event_btnVisualizarActionPerformed
 
     
 
