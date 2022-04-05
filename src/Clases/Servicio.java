@@ -9,11 +9,13 @@ import java.math.BigDecimal;
  */
 
 public class Servicio {
+
     private int CodServicio;
     private String Concepto;
     private BigDecimal precio;
     private int tipoServicio;
     private String Provedor;
+    private  int cantidad;
 
     public Servicio(int CodServicio, String Concepto, BigDecimal precio,int tipoServicio, String Provedor) {
         this.CodServicio = CodServicio;
@@ -21,6 +23,15 @@ public class Servicio {
         this.precio = precio;
         this.tipoServicio=tipoServicio;
         this.Provedor = Provedor;
+        this.cantidad=0;
+    }
+
+    public int getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
     }
     
     
@@ -58,8 +69,9 @@ public class Servicio {
 
     @Override
     public String toString() {
-        return "Servicio{" + "CodServicio=" + CodServicio + ", Concepto=" + Concepto + ", precio=" + precio + ", tipoServicio=" + tipoServicio + ", Provedor=" + Provedor + '}';
+        return "Servicio{" + "CodServicio=" + CodServicio + ", Concepto=" + Concepto + ", precio=" + precio + ", tipoServicio=" + tipoServicio + ", Provedor=" + Provedor + ", cantidad=" + cantidad + '}';
     }
-    
+
+   
     
 }
