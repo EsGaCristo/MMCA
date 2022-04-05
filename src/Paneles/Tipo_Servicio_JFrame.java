@@ -6,10 +6,16 @@ package Paneles;
 
 import Clases.Categorias;
 import Principal.BaseDatos;
+import java.awt.Color;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
 
 public class Tipo_Servicio_JFrame extends javax.swing.JFrame {
@@ -27,6 +33,7 @@ public class Tipo_Servicio_JFrame extends javax.swing.JFrame {
     
     public void limpiar(){
         txtCat.setText("");
+        txtID.setText("");
     }
 
     /**
@@ -201,7 +208,9 @@ public class Tipo_Servicio_JFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnEliminar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminar1ActionPerformed
-        // TODO add your handling code here:
+        borrar();
+        limpiar();
+        actualizar();
     }//GEN-LAST:event_btnEliminar1ActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
@@ -216,7 +225,33 @@ public class Tipo_Servicio_JFrame extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_tblCatMouseClicked
-    
+     private void borrar() {   
+        int resultado;
+        try {
+            PreparedStatement enunciado;
+            enunciado = bd.getConexion().prepareStatement("delete from TIPOSSERVICIO where ID_TIPO=?");
+            enunciado.setInt(1, Integer.parseInt(txtID.getText()));
+            
+            resultado = enunciado.executeUpdate();
+            if (resultado > 0) {
+                UIManager.put("OptionPane.background", Color.decode("#FBE5DA"));
+                UIManager.getLookAndFeelDefaults().put("Panel.background", Color.decode("#FBE5DA"));
+                UIManager.put("Button.background", Color.decode("#FBE5DA"));
+                Icon icono = new ImageIcon(getClass().getResource("/imagenes/pngwing.com (1) (1).png"));
+                JOptionPane.showMessageDialog(null,"Servicio Eliminado Correctamente ", "Mensaje", JOptionPane.PLAIN_MESSAGE, icono);
+            } else {
+                UIManager.put("OptionPane.background", Color.decode("#FBE5DA"));
+                UIManager.getLookAndFeelDefaults().put("Panel.background", Color.decode("#FBE5DA"));
+                UIManager.put("Button.background", Color.decode("#FBE5DA"));
+                Icon icono = new ImageIcon(getClass().getResource("/imagenes/error.png"));
+                JOptionPane.showMessageDialog(null,"Error ", "Mensaje", JOptionPane.PLAIN_MESSAGE, icono);
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
+    } 
+
     public void actualizar(){        
         for (int i = 0; i >=dtm.getRowCount()-1 ; i++) {
             dtm.removeRow(i);
