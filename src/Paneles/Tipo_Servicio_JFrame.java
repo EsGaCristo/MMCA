@@ -24,6 +24,10 @@ public class Tipo_Servicio_JFrame extends javax.swing.JFrame {
         buscar();
         llenarTabla();
     }
+    
+    public void limpiar(){
+        txtCat.setText("");
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -44,6 +48,8 @@ public class Tipo_Servicio_JFrame extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         lblTitulo = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        txtID = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -52,12 +58,17 @@ public class Tipo_Servicio_JFrame extends javax.swing.JFrame {
         tblCat.setBackground(new java.awt.Color(251, 229, 218));
         tblCat.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null}
+                {null, null}
             },
             new String [] {
-                "Tipo Servicios"
+                "Tipo Servicios", "id"
             }
         ));
+        tblCat.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblCatMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblCat);
 
         btnAgregar.setBackground(new java.awt.Color(255, 204, 204));
@@ -100,6 +111,11 @@ public class Tipo_Servicio_JFrame extends javax.swing.JFrame {
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/clasificacion-de-datos.png"))); // NOI18N
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel2.setText("ID");
+
+        txtID.setEnabled(false);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -110,7 +126,10 @@ public class Tipo_Servicio_JFrame extends javax.swing.JFrame {
                         .addGap(39, 39, 39)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnEliminar1)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(btnEliminar1)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(btnAgregar)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -119,8 +138,12 @@ public class Tipo_Servicio_JFrame extends javax.swing.JFrame {
                                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGap(18, 18, 18)
-                                        .addComponent(txtCat, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addGap(18, 18, 18)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addGap(6, 6, 6)
+                                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(txtCat, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                        .addGap(24, 24, 24)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(205, 205, 205)
@@ -149,7 +172,12 @@ public class Tipo_Servicio_JFrame extends javax.swing.JFrame {
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtCat, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(txtCat, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 388, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(30, Short.MAX_VALUE))))
         );
@@ -179,6 +207,15 @@ public class Tipo_Servicio_JFrame extends javax.swing.JFrame {
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
        this.dispose();
     }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void tblCatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblCatMouseClicked
+        limpiar();
+        int col = tblCat.getSelectedRow();
+        txtCat.setText(tblCat.getModel().getValueAt(col, 0).toString());
+        txtID.setText(tblCat.getModel().getValueAt(col, 1).toString());
+        
+        
+    }//GEN-LAST:event_tblCatMouseClicked
     
     public void actualizar(){        
         for (int i = 0; i >=dtm.getRowCount()-1 ; i++) {
@@ -208,7 +245,7 @@ public class Tipo_Servicio_JFrame extends javax.swing.JFrame {
             resultado= statement.executeQuery(selectSql);
           
             while(resultado.next()){
-            Categorias c = new Categorias(resultado.getString("NOMBRE"));
+            Categorias c = new Categorias(resultado.getInt("ID_TIPO"),resultado.getString("NOMBRE"));
             categorias.add(c);
             }
            
@@ -226,6 +263,7 @@ public class Tipo_Servicio_JFrame extends javax.swing.JFrame {
             dtm.addRow(O);
             Categorias cat = (Categorias) categorias.get(i);  
            dtm.setValueAt(cat.getNombre(), i, 0);
+           dtm.setValueAt(cat.getId(), i, 1);
             }
      }
     /**
@@ -271,11 +309,13 @@ public class Tipo_Servicio_JFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnEliminar1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblTitulo;
     private javax.swing.JTable tblCat;
     private javax.swing.JTextField txtCat;
+    private javax.swing.JTextField txtID;
     // End of variables declaration//GEN-END:variables
 }
