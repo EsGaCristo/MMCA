@@ -9,12 +9,12 @@ package Paneles;
  *
  * @author Ivanr
  */
-public class PanelServicios extends javax.swing.JPanel {
+public class PanelProyectos extends javax.swing.JPanel {
 
     /**
      * Creates new form PanelServicios
      */
-    public PanelServicios() {
+    public PanelProyectos() {
         initComponents();
     }
 

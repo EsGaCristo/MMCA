@@ -15,16 +15,11 @@ import java.sql.Statement;
 import java.util.Properties;
 import javax.swing.JOptionPane;
 
-
-/**
- *
- * @author Ivanr
- */
 public class Ventana extends javax.swing.JFrame {
     public  Connection conexion;
     BaseDatos bd= new BaseDatos();
     JPanel jpnClientes = new Panelclientes(); 
-    JPanel jpnServicios = new PanelServicios(); 
+    JPanel jpnProyectos = new PanelProyectos(); 
     JPanel jpnCotizaciones = new PanelCotizaciones();
     JPanel jpnProductos = new PanelProductos();
     JPanel jpnPersonal = new PanelPersonal();
@@ -147,14 +142,6 @@ public class Ventana extends javax.swing.JFrame {
         btnServicios.setToolTipText("");
         btnServicios.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         btnServicios.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        btnServicios.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnServiciosbotonMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnServiciosbotonMouseExited(evt);
-            }
-        });
         btnServicios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnServiciosActionPerformed(evt);
@@ -190,14 +177,6 @@ public class Ventana extends javax.swing.JFrame {
         btnPersonal.setToolTipText("");
         btnPersonal.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         btnPersonal.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        btnPersonal.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnPersonalbotonMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnPersonalbotonMouseExited(evt);
-            }
-        });
         btnPersonal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPersonalActionPerformed(evt);
@@ -248,18 +227,6 @@ public class Ventana extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     
      //////////////////conectar/////////////////////
@@ -296,11 +263,12 @@ public class Ventana extends javax.swing.JFrame {
     
     
     private void btnClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClienteActionPerformed
-         jpnPersonal.setVisible(false); 
-         jpnServicios.setVisible(false);
+         jpnClientes.setVisible(true);
+         
+         jpnPersonal.setVisible(false);
+         jpnProyectos.setVisible(false);
          jpnCotizaciones.setVisible(false);
          jpnProductos.setVisible(false);
-         jpnClientes.setVisible(true);
          jpnPaneles.add(jpnClientes);
          jpnPaneles.validate();
         
@@ -311,40 +279,26 @@ public class Ventana extends javax.swing.JFrame {
          jpnCotizaciones.setVisible(true);
          jpnPersonal.setVisible(false);
          jpnClientes.setVisible(false);
-         jpnServicios.setVisible(false);
+         jpnProyectos.setVisible(false);
          jpnProductos.setVisible(false);
          jpnPaneles.add(jpnCotizaciones);
          jpnPaneles.validate();
     }//GEN-LAST:event_btnCotizacionesActionPerformed
 
     private void btnProyectosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProyectosActionPerformed
-         jpnServicios.setVisible(true);
+         jpnProyectos.setVisible(true);
          jpnPersonal.setVisible(false);
          jpnClientes.setVisible(false);
          jpnCotizaciones.setVisible(false);
          jpnProductos.setVisible(false);
-         jpnPaneles.add(jpnServicios);
+         jpnPaneles.add(jpnProyectos);
          jpnPaneles.validate();
     }//GEN-LAST:event_btnProyectosActionPerformed
 
-    private void btnServiciosbotonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnServiciosbotonMouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnServiciosbotonMouseEntered
-
-    private void btnServiciosbotonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnServiciosbotonMouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnServiciosbotonMouseExited
-
-    private void btnPersonalbotonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPersonalbotonMouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnPersonalbotonMouseEntered
-
-    private void btnPersonalbotonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPersonalbotonMouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnPersonalbotonMouseExited
-
     private void btnServiciosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnServiciosActionPerformed
          jpnProductos.setVisible(true);
+         
+         jpnProyectos.setVisible(false);
          jpnClientes.setVisible(false);
          jpnPersonal.setVisible(false);
          jpnCotizaciones.setVisible(false);
@@ -382,12 +336,13 @@ public class Ventana extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCerrarSesionActionPerformed
 
     private void btnPersonalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPersonalActionPerformed
-        jpnProductos.setVisible(false);
+         jpnPersonal.setVisible(true);
+         jpnProyectos.setVisible(false);
          jpnClientes.setVisible(false);
          jpnCotizaciones.setVisible(false);
-         jpnPersonal.setVisible(true);
+         jpnProductos.setVisible(false);
          jpnPaneles.add(jpnPersonal);
-         jpnPaneles.validate() ; 
+         jpnPaneles.validate();
     }//GEN-LAST:event_btnPersonalActionPerformed
 
 

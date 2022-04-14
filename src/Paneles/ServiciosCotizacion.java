@@ -129,7 +129,6 @@ public class ServiciosCotizacion extends javax.swing.JFrame {
         jspTable.setForeground(new java.awt.Color(251, 229, 218));
 
         tblServicios.setBackground(new java.awt.Color(251, 229, 218));
-        tblServicios.setForeground(new java.awt.Color(0, 0, 0));
         tblServicios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -149,7 +148,6 @@ public class ServiciosCotizacion extends javax.swing.JFrame {
         tblServicios.setToolTipText("");
         tblServicios.setGridColor(new java.awt.Color(251, 229, 218));
         tblServicios.setSelectionBackground(new java.awt.Color(241, 172, 133));
-        tblServicios.setSelectionForeground(new java.awt.Color(0, 0, 0));
         tblServicios.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblServiciosMouseClicked(evt);
