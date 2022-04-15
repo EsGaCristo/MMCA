@@ -22,7 +22,7 @@ public class login extends javax.swing.JFrame {
      BaseDatos bd= new BaseDatos();
 
     public login() {
-         bd.conectar();
+        bd.conectar();
         initComponents();
     }
 
@@ -188,7 +188,7 @@ public class login extends javax.swing.JFrame {
                 permiso=true; 
                 //System.exit(0);
                 new Ventana().setVisible(true);  
-                this.setVisible(false);
+                this.dispose();
                 
             }else{
                 UIManager.put("OptionPane.background", Color.decode("#FBE5DA"));

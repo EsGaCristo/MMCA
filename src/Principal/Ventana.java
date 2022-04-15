@@ -309,7 +309,9 @@ public class Ventana extends javax.swing.JFrame {
     }//GEN-LAST:event_btnServiciosActionPerformed
 
     private void btnCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarSesionActionPerformed
-        Statement statement=null;
+        new login().setVisible(true);
+        this.dispose();
+        /*Statement statement=null;
         PreparedStatement updateSql = null;
         Connection connection=null;
         ResultSet resultado=null;
@@ -332,7 +334,7 @@ public class Ventana extends javax.swing.JFrame {
                 ex.printStackTrace();
         }finally{
         bd.cerrar(statement, resultado);
-        }  
+        } */ 
     }//GEN-LAST:event_btnCerrarSesionActionPerformed
 
     private void btnPersonalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPersonalActionPerformed
