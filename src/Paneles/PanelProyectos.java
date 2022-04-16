@@ -5,7 +5,7 @@
  */
 package Paneles;
 
-import Clases.Jlabel;
+import Clases.Proyecto;
 import java.awt.FlowLayout;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -55,11 +55,9 @@ public class PanelProyectos extends javax.swing.JPanel {
         lblFase8 = new javax.swing.JLabel();
         lblFase9 = new javax.swing.JLabel();
         obj7 = new FondoPanel();
-        lblId3 = new javax.swing.JLabel();
-        lblDesc3 = new javax.swing.JLabel();
-        lblFase10 = new javax.swing.JLabel();
-        lblFase11 = new javax.swing.JLabel();
         lblFase12 = new javax.swing.JLabel();
+        obj8 = new FondoPanel();
+        lblFase13 = new javax.swing.JLabel();
 
         jLabel2.setText("jLabel2");
 
@@ -94,7 +92,7 @@ public class PanelProyectos extends javax.swing.JPanel {
             }
         });
 
-        lblId.setText("ID");
+        lblId.setText("ID Proyecto");
 
         lblDesc.setText("Descripcion");
 
@@ -109,25 +107,21 @@ public class PanelProyectos extends javax.swing.JPanel {
         obj4Layout.setHorizontalGroup(
             obj4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, obj4Layout.createSequentialGroup()
-                .addContainerGap(44, Short.MAX_VALUE)
-                .addGroup(obj4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(obj4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblFase3)
+                    .addComponent(lblFase2))
+                .addGap(52, 52, 52))
+            .addGroup(obj4Layout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addGroup(obj4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblFase1)
                     .addGroup(obj4Layout.createSequentialGroup()
                         .addGroup(obj4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(obj4Layout.createSequentialGroup()
-                                .addGap(25, 25, 25)
-                                .addComponent(lblId))
-                            .addGroup(obj4Layout.createSequentialGroup()
-                                .addGap(2, 2, 2)
-                                .addComponent(lblDesc)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, obj4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(lblFase1)
-                        .addGroup(obj4Layout.createSequentialGroup()
-                            .addGap(10, 10, 10)
-                            .addGroup(obj4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(lblFase2)
-                                .addComponent(lblFase3)))))
-                .addGap(38, 38, 38))
+                            .addComponent(lblDesc)
+                            .addComponent(lblId))
+                        .addGap(13, 13, 13)))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
         obj4Layout.setVerticalGroup(
             obj4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -136,9 +130,9 @@ public class PanelProyectos extends javax.swing.JPanel {
                 .addComponent(lblId)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblDesc)
-                .addGap(35, 35, 35)
+                .addGap(34, 34, 34)
                 .addComponent(lblFase1)
-                .addGap(32, 32, 32)
+                .addGap(33, 33, 33)
                 .addComponent(lblFase2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblFase3)
@@ -151,7 +145,7 @@ public class PanelProyectos extends javax.swing.JPanel {
             }
         });
 
-        lblId1.setText("ID");
+        lblId1.setText("ID Proyecto");
 
         lblDesc1.setText("Descripcion");
 
@@ -165,36 +159,35 @@ public class PanelProyectos extends javax.swing.JPanel {
         obj5.setLayout(obj5Layout);
         obj5Layout.setHorizontalGroup(
             obj5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(obj5Layout.createSequentialGroup()
-                .addGroup(obj5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(obj5Layout.createSequentialGroup()
-                        .addGap(72, 72, 72)
-                        .addComponent(lblId1))
-                    .addGroup(obj5Layout.createSequentialGroup()
-                        .addGap(49, 49, 49)
-                        .addComponent(lblDesc1)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, obj5Layout.createSequentialGroup()
                 .addGap(0, 39, Short.MAX_VALUE)
                 .addGroup(obj5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblFase4)
-                    .addGroup(obj5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(lblFase6)
-                        .addComponent(lblFase5)))
+                    .addGroup(obj5Layout.createSequentialGroup()
+                        .addGap(4, 4, 4)
+                        .addGroup(obj5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblFase5)
+                            .addComponent(lblFase6))))
                 .addGap(35, 35, 35))
+            .addGroup(obj5Layout.createSequentialGroup()
+                .addGap(49, 49, 49)
+                .addGroup(obj5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblId1)
+                    .addComponent(lblDesc1))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         obj5Layout.setVerticalGroup(
             obj5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(obj5Layout.createSequentialGroup()
-                .addGap(12, 12, 12)
+                .addGap(29, 29, 29)
                 .addComponent(lblId1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblDesc1)
-                .addGap(35, 35, 35)
+                .addGap(18, 18, 18)
                 .addComponent(lblFase4)
-                .addGap(32, 32, 32)
+                .addGap(26, 26, 26)
                 .addComponent(lblFase5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(lblFase6)
                 .addContainerGap(41, Short.MAX_VALUE))
         );
@@ -205,7 +198,7 @@ public class PanelProyectos extends javax.swing.JPanel {
             }
         });
 
-        lblId2.setText("ID");
+        lblId2.setText("ID Proyecto");
 
         lblDesc2.setText("Descripcion");
 
@@ -219,15 +212,6 @@ public class PanelProyectos extends javax.swing.JPanel {
         obj6.setLayout(obj6Layout);
         obj6Layout.setHorizontalGroup(
             obj6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(obj6Layout.createSequentialGroup()
-                .addGroup(obj6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(obj6Layout.createSequentialGroup()
-                        .addGap(72, 72, 72)
-                        .addComponent(lblId2))
-                    .addGroup(obj6Layout.createSequentialGroup()
-                        .addGap(49, 49, 49)
-                        .addComponent(lblDesc2)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, obj6Layout.createSequentialGroup()
                 .addGap(0, 39, Short.MAX_VALUE)
                 .addGroup(obj6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -238,11 +222,17 @@ public class PanelProyectos extends javax.swing.JPanel {
                             .addComponent(lblFase8)
                             .addComponent(lblFase9))))
                 .addGap(35, 35, 35))
+            .addGroup(obj6Layout.createSequentialGroup()
+                .addGap(49, 49, 49)
+                .addGroup(obj6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblId2)
+                    .addComponent(lblDesc2))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         obj6Layout.setVerticalGroup(
             obj6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(obj6Layout.createSequentialGroup()
-                .addGap(12, 12, 12)
+                .addGap(27, 27, 27)
                 .addComponent(lblId2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblDesc2)
@@ -252,7 +242,7 @@ public class PanelProyectos extends javax.swing.JPanel {
                 .addComponent(lblFase8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblFase9)
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         obj7.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -261,54 +251,48 @@ public class PanelProyectos extends javax.swing.JPanel {
             }
         });
 
-        lblId3.setText("ID");
-
-        lblDesc3.setText("Descripcion");
-
-        lblFase10.setText("Fase encontrada");
-
-        lblFase11.setText("Fecha Inicio");
-
-        lblFase12.setText("Fecha Final");
+        lblFase12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/agregar2.png"))); // NOI18N
 
         javax.swing.GroupLayout obj7Layout = new javax.swing.GroupLayout(obj7);
         obj7.setLayout(obj7Layout);
         obj7Layout.setHorizontalGroup(
             obj7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(obj7Layout.createSequentialGroup()
-                .addGroup(obj7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(obj7Layout.createSequentialGroup()
-                        .addGap(72, 72, 72)
-                        .addComponent(lblId3))
-                    .addGroup(obj7Layout.createSequentialGroup()
-                        .addGap(49, 49, 49)
-                        .addComponent(lblDesc3)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, obj7Layout.createSequentialGroup()
-                .addGap(0, 39, Short.MAX_VALUE)
-                .addGroup(obj7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblFase10)
-                    .addGroup(obj7Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addGroup(obj7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblFase11)
-                            .addComponent(lblFase12))))
-                .addGap(35, 35, 35))
+                .addGap(50, 50, 50)
+                .addComponent(lblFase12)
+                .addContainerGap(58, Short.MAX_VALUE))
         );
         obj7Layout.setVerticalGroup(
             obj7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(obj7Layout.createSequentialGroup()
-                .addGap(12, 12, 12)
-                .addComponent(lblId3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblDesc3)
-                .addGap(35, 35, 35)
-                .addComponent(lblFase10)
-                .addGap(32, 32, 32)
-                .addComponent(lblFase11)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, obj7Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblFase12)
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addGap(68, 68, 68))
+        );
+
+        obj8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                obj8MouseClicked(evt);
+            }
+        });
+
+        lblFase13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/busqueda.png"))); // NOI18N
+
+        javax.swing.GroupLayout obj8Layout = new javax.swing.GroupLayout(obj8);
+        obj8.setLayout(obj8Layout);
+        obj8Layout.setHorizontalGroup(
+            obj8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(obj8Layout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addComponent(lblFase13, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(38, Short.MAX_VALUE))
+        );
+        obj8Layout.setVerticalGroup(
+            obj8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, obj8Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblFase13, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(56, 56, 56))
         );
 
         javax.swing.GroupLayout pnlMarchaLayout = new javax.swing.GroupLayout(pnlMarcha);
@@ -320,17 +304,19 @@ public class PanelProyectos extends javax.swing.JPanel {
                 .addGroup(pnlMarchaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlMarchaLayout.createSequentialGroup()
                         .addComponent(jLabel1)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(pnlMarchaLayout.createSequentialGroup()
-                        .addGap(50, 50, 50)
+                        .addGap(6, 6, 6)
                         .addComponent(obj4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(66, 66, 66)
+                        .addGap(26, 26, 26)
                         .addComponent(obj6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(68, 68, 68)
+                        .addGap(18, 18, 18)
                         .addComponent(obj5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(obj7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(41, 41, 41))))
+                        .addComponent(obj8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(obj7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         pnlMarchaLayout.setVerticalGroup(
             pnlMarchaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -345,7 +331,8 @@ public class PanelProyectos extends javax.swing.JPanel {
                             .addComponent(obj4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(obj6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(obj7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(obj7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(obj8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -367,7 +354,7 @@ public class PanelProyectos extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void obj4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_obj4MouseClicked
-        // TODO add your handling code here:
+        javax.swing.JOptionPane.showMessageDialog(this,"hola");
     }//GEN-LAST:event_obj4MouseClicked
 
     private void obj5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_obj5MouseClicked
@@ -382,6 +369,10 @@ public class PanelProyectos extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_obj7MouseClicked
 
+    private void obj8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_obj8MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_obj8MouseClicked
+
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -390,11 +381,9 @@ public class PanelProyectos extends javax.swing.JPanel {
     private javax.swing.JLabel lblDesc;
     private javax.swing.JLabel lblDesc1;
     private javax.swing.JLabel lblDesc2;
-    private javax.swing.JLabel lblDesc3;
     private javax.swing.JLabel lblFase1;
-    private javax.swing.JLabel lblFase10;
-    private javax.swing.JLabel lblFase11;
     private javax.swing.JLabel lblFase12;
+    private javax.swing.JLabel lblFase13;
     private javax.swing.JLabel lblFase2;
     private javax.swing.JLabel lblFase3;
     private javax.swing.JLabel lblFase4;
@@ -406,11 +395,11 @@ public class PanelProyectos extends javax.swing.JPanel {
     private javax.swing.JLabel lblId;
     private javax.swing.JLabel lblId1;
     private javax.swing.JLabel lblId2;
-    private javax.swing.JLabel lblId3;
     private javax.swing.JPanel obj4;
     private javax.swing.JPanel obj5;
     private javax.swing.JPanel obj6;
     private javax.swing.JPanel obj7;
+    private javax.swing.JPanel obj8;
     private javax.swing.JPanel pnProximos;
     private javax.swing.JPanel pnlMarcha;
     // End of variables declaration//GEN-END:variables

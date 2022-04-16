@@ -4,19 +4,13 @@
  */
 package Clases;
 import java.util.Date;
-import javax.swing.Icon;
-import javax.swing.JLabel;
-import javax.swing.ImageIcon;
-public class Jlabel extends javax.swing.JLabel{
-    private String title,desc;
+
+public class Proyecto {
+    private int id;
+    private String estado;
     private Date start,end;
 
-    public Jlabel(Icon image) {
-        super(image);
-    }
-
-    public Jlabel() {
-    
+    public Proyecto() {
     }
 
     

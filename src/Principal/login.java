@@ -22,8 +22,10 @@ public class login extends javax.swing.JFrame {
      BaseDatos bd= new BaseDatos();
 
     public login() {
-        bd.conectar();
         initComponents();
+        bd.conectar();
+        this.setLocationRelativeTo(this);
+        
     }
 
     /**
