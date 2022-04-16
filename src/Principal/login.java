@@ -1,5 +1,5 @@
 
-package Paneles;
+package Principal;
 
 import Principal.BaseDatos;
 import Principal.Ventana;
@@ -40,8 +40,8 @@ public class login extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         txtUsuario = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        txtContraseña = new javax.swing.JTextField();
         btnLog = new javax.swing.JButton();
+        txtContraseña = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -77,18 +77,6 @@ public class login extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel3.setText("Contraseña");
 
-        txtContraseña.setText("12345");
-        txtContraseña.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseMoved(java.awt.event.MouseEvent evt) {
-                txtContraseñaMouseMoved(evt);
-            }
-        });
-        txtContraseña.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                txtContraseñaMousePressed(evt);
-            }
-        });
-
         btnLog.setBackground(new java.awt.Color(255, 204, 204));
         btnLog.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/iniciar-sesion.png"))); // NOI18N
         btnLog.setText("Iniciar Sesion");
@@ -98,6 +86,8 @@ public class login extends javax.swing.JFrame {
             }
         });
 
+        txtContraseña.setText("12345");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -106,15 +96,15 @@ public class login extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(36, 36, 36)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel3)
-                            .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2)))
+                            .addComponent(txtUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)
+                            .addComponent(jLabel2)
+                            .addComponent(txtContraseña)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(28, 28, 28)
                         .addComponent(btnLog)))
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -125,9 +115,9 @@ public class login extends javax.swing.JFrame {
                 .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 89, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
                 .addComponent(btnLog)
                 .addGap(53, 53, 53))
         );
@@ -151,23 +141,11 @@ public class login extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtUsuarioMouseMoved
 
-    private void txtContraseñaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtContraseñaMousePressed
-       if (txtContraseña.getText().equals("Inserte la contraseña") && !txtContraseña.getText().equals("")) {
-            txtContraseña.setText("");
-        }
-    }//GEN-LAST:event_txtContraseñaMousePressed
-
     private void txtUsuarioMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtUsuarioMousePressed
         if (txtUsuario.getText().equals("Inserte el Usuario") && !txtUsuario.getText().equals("")) {
             txtUsuario.setText("");
         }
     }//GEN-LAST:event_txtUsuarioMousePressed
-
-    private void txtContraseñaMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtContraseñaMouseMoved
-        if (txtContraseña.getText().equals("")) {
-            txtContraseña.setText("Inserte el contraseña");
-        }
-    }//GEN-LAST:event_txtContraseñaMouseMoved
     
     
     ////////////////////////buscar//////////////////////////////////
@@ -180,8 +158,12 @@ public class login extends javax.swing.JFrame {
             connection = bd.getConexion();
             statement = connection.createStatement();
             String user= txtUsuario.getText();
-            String pass= txtContraseña.getText();
-            String selectSql = "SELECT * from Personal where NOMBRE_USUARIO='"+user+"' AND CONTRASEÑA='"+pass+"'";
+            char[] pass = txtContraseña.getPassword();
+            String password="";
+            for (char pas : pass) {
+                password = password+pas;
+            }
+            String selectSql = "SELECT * from Personal where NOMBRE_USUARIO='"+user+"' AND CONTRASEÑA='"+password+"'";
             resultado= statement.executeQuery(selectSql);
   
             if(resultado.next()){
@@ -259,7 +241,7 @@ public class login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField txtContraseña;
+    private javax.swing.JPasswordField txtContraseña;
     private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 }
