@@ -33,7 +33,7 @@ public class ServiciosCotizacion extends javax.swing.JFrame {
 
     public ServiciosCotizacion() {
         initComponents();
-        this.setLocationRelativeTo(null);
+        this.setLocationRelativeTo(this);
         dtm=(DefaultTableModel) tblServicios.getModel();
        LLenarCombo();
     }

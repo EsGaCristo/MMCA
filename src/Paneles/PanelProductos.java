@@ -31,7 +31,7 @@ public class PanelProductos extends javax.swing.JPanel {
      ArrayList<Servicio> servicios = new ArrayList();
       DefaultTableModel dtm;
       tipoServicio servicio;
-    //paul
+
     public PanelProductos() {
         initComponents();
         dtm=(DefaultTableModel) tbl1.getModel();
