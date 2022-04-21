@@ -56,24 +56,26 @@ public class PanelPersonal extends javax.swing.JPanel {
 
         jLabel1.setBackground(new java.awt.Color(241, 172, 133));
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setForeground(new java.awt.Color(241, 172, 133));
         jLabel1.setText("USUARIO");
 
         jLabel2.setBackground(new java.awt.Color(241, 172, 133));
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setForeground(new java.awt.Color(241, 172, 133));
         jLabel2.setText("CONTRASEÑA");
 
         jLabel3.setBackground(new java.awt.Color(241, 172, 133));
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setForeground(new java.awt.Color(241, 172, 133));
         jLabel3.setText("PERMISOS");
 
         cmbPermisos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrador", "Cotizaciones", "Empleado" }));
 
-        btnAdd.setBackground(new java.awt.Color(255, 204, 204));
+        btnAdd.setBackground(new java.awt.Color(251, 229, 218));
+        btnAdd.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/iniciar-sesion.png"))); // NOI18N
         btnAdd.setText("Agregar Usuario");
+        btnAdd.setBorder(null);
         btnAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddActionPerformed(evt);
@@ -81,7 +83,7 @@ public class PanelPersonal extends javax.swing.JPanel {
         });
 
         jLabel4.setBackground(new java.awt.Color(255, 102, 51));
-        jLabel4.setFont(new java.awt.Font("Dubai", 2, 36)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Consolas", 2, 36)); // NOI18N
         jLabel4.setText("Usuarios");
         jLabel4.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
@@ -100,7 +102,7 @@ public class PanelPersonal extends javax.swing.JPanel {
         jScrollPane1.setViewportView(tblUsuarios);
 
         jLabel5.setBackground(new java.awt.Color(255, 102, 51));
-        jLabel5.setFont(new java.awt.Font("Dubai", 2, 36)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Consolas", 2, 36)); // NOI18N
         jLabel5.setText("Agregar usuario");
         jLabel5.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
@@ -121,10 +123,8 @@ public class PanelPersonal extends javax.swing.JPanel {
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(51, 51, 51)
-                        .addComponent(btnAdd)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 109, Short.MAX_VALUE)
+                    .addComponent(btnAdd))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 113, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(74, 74, 74))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -134,8 +134,8 @@ public class PanelPersonal extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(69, 69, 69)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(498, Short.MAX_VALUE)))
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(416, Short.MAX_VALUE)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -152,9 +152,9 @@ public class PanelPersonal extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmbPermisos, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(42, 42, 42)
+                .addGap(44, 44, 44)
                 .addComponent(btnAdd)
-                .addGap(144, 144, 144))
+                .addGap(142, 142, 142))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)

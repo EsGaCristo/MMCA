@@ -88,7 +88,7 @@ public class ServiciosCotizacion extends javax.swing.JFrame {
         jpnEncabezados.setLayout(new java.awt.GridLayout(2, 2));
 
         jLabel1.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("Buscar Servicio:");
         jpnEncabezados.add(jLabel1);
 
@@ -105,6 +105,8 @@ public class ServiciosCotizacion extends javax.swing.JFrame {
         jpnEncabezados.add(txtNombreServicio);
 
         btnBuscarServicio.setBackground(new java.awt.Color(241, 172, 133));
+        btnBuscarServicio.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnBuscarServicio.setForeground(new java.awt.Color(255, 255, 255));
         btnBuscarServicio.setText("Buscar");
         btnBuscarServicio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
