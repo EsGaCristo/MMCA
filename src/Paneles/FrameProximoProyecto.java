@@ -18,6 +18,7 @@ import java.util.ArrayList;
 public class FrameProximoProyecto extends javax.swing.JFrame {
         BaseDatos bd= new BaseDatos();
         ArrayList<Clientes> servicios = new ArrayList();
+        
 
     /**
      * Creates new form FrameProximoProyecto
@@ -26,27 +27,29 @@ public class FrameProximoProyecto extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(this);
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        LLenarCombo();
     }
     
-    /*public void LLenarCombo(){
+    public void LLenarCombo(){
         ResultSet resultado=null;
         Connection connection=null;
         Statement statement=null;
         try {
             connection = bd.getConexion();
             statement = connection.createStatement();
-            String nom= txtNombreServicio.getText();
-            String selectSql = "SELECT * from TIPOSSERVICIO";
+            //String nom= txtNombreServicio.getText();
+            String selectSql = "SELECT * from cliente";
             resultado= statement.executeQuery(selectSql);
            while(resultado.next()){
-               tipoServicio tiposer = new tipoServicio(resultado.getInt("ID_TIPO"),resultado.getString("NOMBRE") );
-               cbxTipoServicio.addItem(tiposer);
+               Clientes tiposer = new Clientes(resultado.getString("NOMBRE"),resultado.getInt("ID_CLIENTE"),
+               resultado.getString("APELLIDOS"),resultado.getString("CEL_CLIENTE"));
+               cmbClientes.addItem(tiposer);
            }
         } catch (Exception ex) {
             ex.printStackTrace();
            
         }
-    }*/
+    }
 
 
     /**
@@ -60,18 +63,16 @@ public class FrameProximoProyecto extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        cmbClientes = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(251, 229, 218));
+        jPanel1.setBackground(new java.awt.Color(241, 172, 133));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/busqueda.png"))); // NOI18N
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -89,11 +90,11 @@ public class FrameProximoProyecto extends javax.swing.JFrame {
                 .addGap(22, 22, 22)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, 236, Short.MAX_VALUE))
+                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(87, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -104,7 +105,7 @@ public class FrameProximoProyecto extends javax.swing.JFrame {
                         .addGap(27, 27, 27)
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cmbClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -165,7 +166,7 @@ public class FrameProximoProyecto extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<Clientes> cmbClientes;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;

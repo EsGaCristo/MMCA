@@ -25,8 +25,32 @@ public class Clientes {
         this.Descripcion = Descripcion;
     }
 
-    public Clientes(String string, String string0, String string1, String string2) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    @Override
+    public String toString() {
+        return   Nombre + " " + Apellidos + " - " + Telefono ;
+    }
+
+    public Clientes( String Nombre,int idCliente, String Apellidos, String Telefono) {
+        this.idCliente = idCliente;
+        this.Nombre = Nombre;
+        this.Apellidos = Apellidos;
+        this.Telefono = Telefono;
+    }
+    public Clientes( String Nombre, String Apellidos,String Correo, String Direccion) {
+        this.Nombre = Nombre;
+        this.Apellidos = Apellidos;
+        this.Direccion = Direccion;
+        this.correo = Correo;
+    }
+
+
+
+    public Clientes(String Nombre , int idCliente) {
+        this.idCliente = idCliente;
+        this.Nombre = Nombre;
+    }
+
+    public Clientes() {
     }
 
         
