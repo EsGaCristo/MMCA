@@ -130,7 +130,7 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Proyectos Proximos"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Default Cursor"/>
+              <Color id="Cursor Por defecto"/>
             </Property>
           </Properties>
         </Component>
@@ -256,7 +256,7 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Proyectos en marcha"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Default Cursor"/>
+              <Color id="Cursor Por defecto"/>
             </Property>
           </Properties>
         </Component>
@@ -272,9 +272,9 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
-                      <Component id="jScrollPane1" min="-2" pref="112" max="-2" attributes="0"/>
-                      <EmptySpace pref="40" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jScrollPane1" min="-2" pref="156" max="-2" attributes="0"/>
+                      <EmptySpace pref="24" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -326,7 +326,7 @@
                       </TableColumnModel>
                     </Property>
                     <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                      <Color id="Hand Cursor"/>
+                      <Color id="Cursor Por defecto"/>
                     </Property>
                     <Property name="gridColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="da" green="e5" red="fb" type="rgb"/>

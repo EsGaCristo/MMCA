@@ -73,6 +73,7 @@ public class PanelProyectos extends javax.swing.JPanel {
             bd.cerrar(statement, resultado);
         }
     }
+    
      public void llenarObjeto(DefaultTableModel dtm,Proyecto p){
          Object O[]=null;
          for (int i = 0; i <5; i++) {
@@ -241,7 +242,7 @@ public class PanelProyectos extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        tblObj1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        tblObj1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         tblObj1.setGridColor(new java.awt.Color(251, 229, 218));
         tblObj1.setSelectionBackground(new java.awt.Color(251, 229, 218));
         jScrollPane1.setViewportView(tblObj1);
@@ -254,9 +255,9 @@ public class PanelProyectos extends javax.swing.JPanel {
         obj1Layout.setHorizontalGroup(
             obj1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(obj1Layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(24, Short.MAX_VALUE))
         );
         obj1Layout.setVerticalGroup(
             obj1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
