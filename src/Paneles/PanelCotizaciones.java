@@ -1,6 +1,7 @@
 
 package Paneles;
 
+import Clases.Proyecto;
 import Clases.Servicio;
 import Clases.tipoServicio;
 import Principal.BaseDatos;
@@ -29,7 +30,7 @@ public class PanelCotizaciones extends javax.swing.JPanel {
     public PanelCotizaciones() {
         initComponents();
         dtm=(DefaultTableModel) tblCotizacion.getModel();
-
+        LLenarCombo();
     }
 
     /**
@@ -46,7 +47,7 @@ public class PanelCotizaciones extends javax.swing.JPanel {
         txtIdProy = new javax.swing.JTextField();
         btnBucarCot = new javax.swing.JButton();
         btnGuardarCotizacion = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        cbxpProyAct = new javax.swing.JComboBox<>();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         txtConcepto = new javax.swing.JTextField();
@@ -113,11 +114,18 @@ public class PanelCotizaciones extends javax.swing.JPanel {
         btnGuardarCotizacion.setText("Guardar Cotizacion");
         btnGuardarCotizacion.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jButton4.setBackground(new java.awt.Color(241, 172, 133));
-        jButton4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jButton4.setText("Verificar Proyecto");
-        jButton4.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        cbxpProyAct.setBackground(new java.awt.Color(241, 172, 133));
+        cbxpProyAct.setForeground(new java.awt.Color(241, 172, 133));
+        cbxpProyAct.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                cbxpProyActFocusLost(evt);
+            }
+        });
+        cbxpProyAct.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxpProyActActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -125,14 +133,16 @@ public class PanelCotizaciones extends javax.swing.JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtIdProy, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnGuardarCotizacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnBucarCot, javax.swing.GroupLayout.DEFAULT_SIZE, 287, Short.MAX_VALUE))
-                .addContainerGap(104, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(txtIdProy, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 38, Short.MAX_VALUE))
+                    .addComponent(cbxpProyAct, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnBucarCot, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnGuardarCotizacion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -141,11 +151,11 @@ public class PanelCotizaciones extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGuardarCotizacion, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtIdProy, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnBucarCot, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnBucarCot, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
+                    .addComponent(cbxpProyAct))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         jPanel2.setBackground(new java.awt.Color(251, 229, 218));
@@ -432,9 +442,18 @@ public class PanelCotizaciones extends javax.swing.JPanel {
         System.out.println("se ejecuto esto");
         //llenarTabla2();
     }//GEN-LAST:event_btnBucarCotActionPerformed
+
+    private void cbxpProyActActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxpProyActActionPerformed
+        System.out.println("accion");
+    }//GEN-LAST:event_cbxpProyActActionPerformed
+
+    private void cbxpProyActFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cbxpProyActFocusLost
+        Proyecto p = (Proyecto) cbxpProyAct.getSelectedItem();
+        txtIdProy.setText(String.valueOf(p.getId()));
+    }//GEN-LAST:event_cbxpProyActFocusLost
     private void buscarCot() {
         servicios.clear();
-        eliminarTb();
+        //eliminarTb();
          
         ResultSet resultado=null;
         Connection connection=null;
@@ -524,7 +543,26 @@ public class PanelCotizaciones extends javax.swing.JPanel {
          txtPU.setText(controlServicio.getPrecio().toString());
           }catch(NullPointerException npe){System.out.println("no hay datos aun" );}
     }
-          
+         
+     public void LLenarCombo(){
+        ResultSet resultado=null;
+        Connection connection=null;
+        Statement statement=null;
+        try {
+            connection = bd.getConexion();
+            statement = connection.createStatement();
+            String selectSql = "{call sp_obtn_proy_activ}";
+            resultado= statement.executeQuery(selectSql);
+           while(resultado.next()){
+               Proyecto proy = new Proyecto(resultado.getInt("ID_PROYECTO"),resultado.getString("CLIENTE"),resultado.getString("NOMBRE") );
+               cbxpProyAct.addItem(proy);
+           }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+           
+        }
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAgregar;
@@ -532,7 +570,7 @@ public class PanelCotizaciones extends javax.swing.JPanel {
     private javax.swing.JButton btnBucarCot;
     private javax.swing.JButton btnGuardarCotizacion;
     private javax.swing.JButton btnTerminar;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JComboBox<Proyecto> cbxpProyAct;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

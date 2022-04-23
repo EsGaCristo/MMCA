@@ -13,6 +13,7 @@ import javax.swing.UIManager;
 public class Proyecto {
     private int id,idCliente,estado;
     private Date start,end;
+    private String nombre,cliente;
     public  Connection conexion;
     BaseDatos bd= new BaseDatos();
     
@@ -33,9 +34,17 @@ public class Proyecto {
         this.start = start;
     }
 
+    public Proyecto(int id, String cliente,String nombre) {
+        this.id = id;
+        this.nombre = nombre;
+        this.cliente = cliente;
+    }
+    
+    
+
     @Override
     public String toString() {
-        return "Proyecto{" + "id=" + id + ", idCliente=" + idCliente + ", estado=" + estado + ", start=" + start + ", end=" + end + '}';
+        return id+" "+cliente+" "+nombre;
     }
     public void imp(){
         System.out.println(this.start);
