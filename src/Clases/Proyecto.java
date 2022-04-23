@@ -39,7 +39,23 @@ public class Proyecto {
         this.nombre = nombre;
         this.cliente = cliente;
     }
-    
+
+    public Proyecto(int id, String cliente, Date start, Date end,int estado) {
+        this.id = id;
+        this.estado = estado;
+        this.start = start;
+        this.end = end;
+        this.cliente = cliente;
+    }
+
+    public String getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(String cliente) {
+        this.cliente = cliente;
+    }
+
     
 
     @Override
