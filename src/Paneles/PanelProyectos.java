@@ -210,6 +210,7 @@ public class PanelProyectos extends javax.swing.JPanel {
         });
 
         tblObj1.setBackground(new java.awt.Color(251, 229, 218));
+        tblObj1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(251, 229, 218)));
         tblObj1.setFont(new java.awt.Font("Tw Cen MT", 1, 18)); // NOI18N
         tblObj1.setForeground(new java.awt.Color(0, 0, 0));
         tblObj1.setModel(new javax.swing.table.DefaultTableModel(
@@ -242,16 +243,16 @@ public class PanelProyectos extends javax.swing.JPanel {
         obj1Layout.setHorizontalGroup(
             obj1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(obj1Layout.createSequentialGroup()
-                .addGap(52, 52, 52)
+                .addGap(40, 40, 40)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(57, Short.MAX_VALUE))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
         obj1Layout.setVerticalGroup(
             obj1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(obj1Layout.createSequentialGroup()
-                .addGap(23, 23, 23)
+                .addGap(22, 22, 22)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
 
         obj2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -351,7 +352,7 @@ public class PanelProyectos extends javax.swing.JPanel {
                         .addComponent(obj1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(obj2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
                         .addComponent(obj3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(29, 29, 29)
                         .addComponent(jLabel5)
@@ -377,9 +378,9 @@ public class PanelProyectos extends javax.swing.JPanel {
                                 .addGap(79, 79, 79))))
                     .addGroup(pnlMarchaLayout.createSequentialGroup()
                         .addGroup(pnlMarchaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(obj1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(obj2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(obj3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(obj3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(obj1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap())))
         );
 

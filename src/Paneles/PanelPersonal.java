@@ -195,10 +195,11 @@ public class PanelPersonal extends javax.swing.JPanel {
     public void agregar(){
         int rango;
         if (cmbPermisos.getSelectedItem().equals("Administrador")) {
-        rango = 1;  
+            rango = 1;  
         }else if(cmbPermisos.getSelectedItem().equals("Cotizaciones")){
-        rango = 2;  
-        }else{rango = 3;}
+            rango = 2;  
+        }else{
+                rango = 3;}
         Personal user = new Personal(txtNombre.getText(),txtPass.getText(),rango);
         user.insertar();
         actualizar();
