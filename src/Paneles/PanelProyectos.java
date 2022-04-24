@@ -158,11 +158,6 @@ public class PanelProyectos extends javax.swing.JPanel {
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Visualizar Proyectos proximos");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout pnProximosLayout = new javax.swing.GroupLayout(pnProximos);
         pnProximos.setLayout(pnProximosLayout);
@@ -415,10 +410,6 @@ public class PanelProyectos extends javax.swing.JPanel {
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
        new FrameProximoProyecto().setVisible(true);
     }//GEN-LAST:event_jLabel6MouseClicked
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-         new ListaProximoProyecto().setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     
     
