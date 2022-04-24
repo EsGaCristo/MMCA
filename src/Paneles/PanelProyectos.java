@@ -292,10 +292,10 @@ public class PanelProyectos extends javax.swing.JPanel {
         obj2.setLayout(obj2Layout);
         obj2Layout.setHorizontalGroup(
             obj2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(obj2Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(31, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, obj2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)
+                .addContainerGap())
         );
         obj2Layout.setVerticalGroup(
             obj2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -330,10 +330,10 @@ public class PanelProyectos extends javax.swing.JPanel {
         obj3.setLayout(obj3Layout);
         obj3Layout.setHorizontalGroup(
             obj3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, obj3Layout.createSequentialGroup()
-                .addContainerGap(28, Short.MAX_VALUE)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(21, 21, 21))
+            .addGroup(obj3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
+                .addContainerGap())
         );
         obj3Layout.setVerticalGroup(
             obj3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
