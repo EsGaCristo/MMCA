@@ -7,7 +7,6 @@ package Paneles;
 
 import Clases.Proyecto;
 import Principal.BaseDatos;
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.sql.Connection;
@@ -15,9 +14,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 public class PanelProyectos extends javax.swing.JPanel {
@@ -73,6 +70,8 @@ public class PanelProyectos extends javax.swing.JPanel {
             bd.cerrar(statement, resultado);
         }
     }
+
+
     
      public void llenarObjeto(DefaultTableModel dtm,Proyecto p){
          Object O[]=null;
