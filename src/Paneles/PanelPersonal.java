@@ -5,11 +5,15 @@
 package Paneles;
 
 import Clases.Personal;
+import Clases.ProyectoExcepcion;
 import Principal.BaseDatos;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.showMessageDialog;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -28,6 +32,31 @@ public class PanelPersonal extends javax.swing.JPanel {
         dtm=(DefaultTableModel) tblUsuarios.getModel();
         buscar();
         llenarTabla();
+    }
+ private boolean validaCampo(JTextField t){
+        try{
+            estaVacio(t);
+        }catch(ProyectoExcepcion e){
+            showMessageDialog(this,e.getMessage()); t.requestFocus();
+            return true;
+        }
+        return false;
+    }
+    public boolean esEntero(String val){
+        float cant=0;
+        try{
+        cant=Float.parseFloat(val);
+        }catch(NumberFormatException err){
+            showMessageDialog(this,"Verifique tipo de dato");
+            
+        }
+       if(cant>0){return true;
+       }else{showMessageDialog(this,"El valor debe ser >0","Personal", JOptionPane.INFORMATION_MESSAGE); return false;}
+    }
+
+   private void estaVacio(JTextField t)throws ProyectoExcepcion{
+        String cad=t.getText().trim();
+        if(cad.equals(""))throw new ProyectoExcepcion("Campo vacio");
     }
 
     /**
@@ -181,7 +210,11 @@ public class PanelPersonal extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-        agregar();
+        int h=cmbPermisos.getSelectedIndex();
+        if(h<1){showMessageDialog(this,"SELECCIONA EL PERMISO"); return;}
+        if(validaCampo(txtNombre))return;
+        if(validaCampo(txtPass))return;   
+    agregar();
     }//GEN-LAST:event_btnAddActionPerformed
     public void actualizar(){        
         for (int i = 0; i >=dtm.getRowCount()-1 ; i++) {

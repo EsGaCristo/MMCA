@@ -2,6 +2,7 @@
 package Paneles;
 
 import Clases.Proyecto;
+import Clases.ProyectoExcepcion;
 import Clases.Servicio;
 import Clases.tipoServicio;
 import Principal.BaseDatos;
@@ -11,6 +12,9 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.showMessageDialog;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -32,6 +36,31 @@ public class PanelCotizaciones extends javax.swing.JPanel {
         dtm=(DefaultTableModel) tblCotizacion.getModel();
         LLenarCombo();
     }
+    private boolean validaCampo(JTextField t){
+        try{
+            estaVacio(t);
+        }catch(ProyectoExcepcion e){
+            showMessageDialog(this,e.getMessage()); t.requestFocus();
+            return true;
+        }
+        return false;
+    }
+    public boolean esEntero(String val){
+        float cant=0;
+        try{
+        cant=Float.parseFloat(val);
+        }catch(NumberFormatException err){
+            showMessageDialog(this,"Verifique tipo de dato");
+            
+        }
+       if(cant>0){return true;
+       }else{showMessageDialog(this,"El valor debe ser >0","Cotizaciones", JOptionPane.INFORMATION_MESSAGE); return false;}
+    }
+
+   private void estaVacio(JTextField t)throws ProyectoExcepcion{
+        String cad=t.getText().trim();
+        if(cad.equals(""))throw new ProyectoExcepcion("Campo vacio");
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -44,7 +73,7 @@ public class PanelCotizaciones extends javax.swing.JPanel {
 
         jLabel2 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        txtIdProy = new javax.swing.JTextField();
+        txtIdPro = new javax.swing.JTextField();
         btnBucarCot = new javax.swing.JButton();
         btnGuardarCotizacion = new javax.swing.JButton();
         cbxpProyAct = new javax.swing.JComboBox<>();
@@ -84,16 +113,16 @@ public class PanelCotizaciones extends javax.swing.JPanel {
             }
         });
 
-        txtIdProy.setText("INGRESE ID DEL PROYECTO");
-        txtIdProy.setToolTipText("");
-        txtIdProy.addMouseListener(new java.awt.event.MouseAdapter() {
+        txtIdPro.setText("INGRESE ID DEL PROYECTO");
+        txtIdPro.setToolTipText("");
+        txtIdPro.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                txtIdProyMousePressed(evt);
+                txtIdProMousePressed(evt);
             }
         });
-        txtIdProy.addActionListener(new java.awt.event.ActionListener() {
+        txtIdPro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtIdProyActionPerformed(evt);
+                txtIdProActionPerformed(evt);
             }
         });
 
@@ -116,6 +145,7 @@ public class PanelCotizaciones extends javax.swing.JPanel {
 
         cbxpProyAct.setBackground(new java.awt.Color(241, 172, 133));
         cbxpProyAct.setForeground(new java.awt.Color(241, 172, 133));
+        cbxpProyAct.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         cbxpProyAct.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 cbxpProyActFocusLost(evt);
@@ -135,7 +165,7 @@ public class PanelCotizaciones extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(txtIdProy, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtIdPro, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 38, Short.MAX_VALUE))
                     .addComponent(cbxpProyAct, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
@@ -150,7 +180,7 @@ public class PanelCotizaciones extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGuardarCotizacion, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtIdProy, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtIdPro, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnBucarCot, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
@@ -364,14 +394,14 @@ public class PanelCotizaciones extends javax.swing.JPanel {
         
     }//GEN-LAST:event_btnTerminarActionPerformed
 
-    private void txtIdProyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdProyActionPerformed
+    private void txtIdProActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdProActionPerformed
        
-    }//GEN-LAST:event_txtIdProyActionPerformed
+    }//GEN-LAST:event_txtIdProActionPerformed
 
-    private void txtIdProyMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtIdProyMousePressed
-       txtIdProy.setText("");
+    private void txtIdProMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtIdProMousePressed
+       txtIdPro.setText("");
        // TODO add your handling code here:
-    }//GEN-LAST:event_txtIdProyMousePressed
+    }//GEN-LAST:event_txtIdProMousePressed
 
     private void txtConceptoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtConceptoMousePressed
         txtConcepto.setText("");
@@ -387,6 +417,12 @@ public class PanelCotizaciones extends javax.swing.JPanel {
 
         
     private void btAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAgregarActionPerformed
+        if(validaCampo(txtConcepto))return;
+        if(validaCampo(txtCantidad))return;
+        if(esEntero(txtCantidad.getText())==false){ txtCantidad.requestFocus(); return;}
+        if(validaCampo(txtPU))return;
+        if(esEntero(txtPU.getText())==false){ txtPU.requestFocus(); return;}
+
         agregar();
         llenarTabla();
          System.out.println("agregar = ");
@@ -434,8 +470,11 @@ public class PanelCotizaciones extends javax.swing.JPanel {
     }//GEN-LAST:event_btnAplicarActionPerformed
 
     private void btnBucarCotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBucarCotActionPerformed
+
+        if(validaCampo(txtIdPro))return;
+        
         buscarCot();
-        System.out.println("se ejecuto esto");
+        //System.out.println("se ejecuto esto");
         //llenarTabla2();
     }//GEN-LAST:event_btnBucarCotActionPerformed
 
@@ -445,7 +484,7 @@ public class PanelCotizaciones extends javax.swing.JPanel {
 
     private void cbxpProyActFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cbxpProyActFocusLost
         Proyecto p = (Proyecto) cbxpProyAct.getSelectedItem();
-        txtIdProy.setText(String.valueOf(p.getId()));
+        txtIdPro.setText(String.valueOf(p.getId()));
     }//GEN-LAST:event_cbxpProyActFocusLost
     private void buscarCot() {
         servicios.clear();
@@ -458,7 +497,7 @@ public class PanelCotizaciones extends javax.swing.JPanel {
         try {
             connection = bd.getConexion();
             statement = connection.createStatement();
-             int IDCOT = Integer.parseInt(txtIdProy.getText());
+             int IDCOT = Integer.parseInt(txtIdPro.getText());
             String selectSql = "{call sp_obtn_coti ("+IDCOT+")}";
             resultado= statement.executeQuery(selectSql);
           
@@ -579,7 +618,7 @@ public class PanelCotizaciones extends javax.swing.JPanel {
     private javax.swing.JTable tblCotizacion;
     private javax.swing.JTextField txtCantidad;
     private javax.swing.JTextField txtConcepto;
-    private javax.swing.JTextField txtIdProy;
+    private javax.swing.JTextField txtIdPro;
     private javax.swing.JTextField txtPU;
     // End of variables declaration//GEN-END:variables
 }

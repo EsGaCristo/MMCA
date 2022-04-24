@@ -93,7 +93,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <Component id="txtIdProy" min="-2" pref="277" max="-2" attributes="0"/>
+                          <Component id="txtIdPro" min="-2" pref="277" max="-2" attributes="0"/>
                           <EmptySpace min="0" pref="38" max="32767" attributes="0"/>
                       </Group>
                       <Component id="cbxpProyAct" max="32767" attributes="0"/>
@@ -113,7 +113,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="btnGuardarCotizacion" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-                      <Component id="txtIdProy" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                      <Component id="txtIdPro" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -126,14 +126,14 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JTextField" name="txtIdProy">
+        <Component class="javax.swing.JTextField" name="txtIdPro">
           <Properties>
             <Property name="text" type="java.lang.String" value="INGRESE ID DEL PROYECTO"/>
             <Property name="toolTipText" type="java.lang.String" value=""/>
           </Properties>
           <Events>
-            <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtIdProyMousePressed"/>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtIdProyActionPerformed"/>
+            <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtIdProMousePressed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtIdProActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnBucarCot">
@@ -187,6 +187,9 @@
             </Property>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="0"/>
+            </Property>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Cursor Por defecto"/>
             </Property>
           </Properties>
           <Events>
