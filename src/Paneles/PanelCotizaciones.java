@@ -75,8 +75,8 @@ public class PanelCotizaciones extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         txtIdPro = new javax.swing.JTextField();
         btnBucarCot = new javax.swing.JButton();
-        btnGuardarCotizacion = new javax.swing.JButton();
         cbxpProyAct = new javax.swing.JComboBox<>();
+        jLabel3 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         txtConcepto = new javax.swing.JTextField();
         btnBuscar = new javax.swing.JButton();
@@ -113,7 +113,6 @@ public class PanelCotizaciones extends javax.swing.JPanel {
             }
         });
 
-        txtIdPro.setText("INGRESE ID DEL PROYECTO");
         txtIdPro.setToolTipText("");
         txtIdPro.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -137,17 +136,6 @@ public class PanelCotizaciones extends javax.swing.JPanel {
             }
         });
 
-        btnGuardarCotizacion.setBackground(new java.awt.Color(241, 172, 133));
-        btnGuardarCotizacion.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btnGuardarCotizacion.setForeground(new java.awt.Color(255, 255, 255));
-        btnGuardarCotizacion.setText("Guardar Cotizacion");
-        btnGuardarCotizacion.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        btnGuardarCotizacion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGuardarCotizacionActionPerformed(evt);
-            }
-        });
-
         cbxpProyAct.setBackground(new java.awt.Color(241, 172, 133));
         cbxpProyAct.setForeground(new java.awt.Color(241, 172, 133));
         cbxpProyAct.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -162,35 +150,37 @@ public class PanelCotizaciones extends javax.swing.JPanel {
             }
         });
 
+        jLabel3.setFont(new java.awt.Font("Trebuchet MS", 0, 18)); // NOI18N
+        jLabel3.setText("INGRESE ID DEL PROYECTO:");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cbxpProyAct, 0, 315, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(txtIdPro, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 38, Short.MAX_VALUE))
-                    .addComponent(cbxpProyAct, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jLabel3)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnBucarCot, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnGuardarCotizacion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtIdPro, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBucarCot, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(36, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnGuardarCotizacion, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtIdPro, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnBucarCot, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
-                    .addComponent(cbxpProyAct))
-                .addContainerGap(26, Short.MAX_VALUE))
+                    .addComponent(txtIdPro, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cbxpProyAct, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBucarCot, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         jPanel2.setBackground(new java.awt.Color(251, 229, 218));
@@ -552,10 +542,6 @@ public class PanelCotizaciones extends javax.swing.JPanel {
         txtIdPro.setText(String.valueOf(p.getId()));
     }//GEN-LAST:event_cbxpProyActFocusLost
 
-    private void btnGuardarCotizacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarCotizacionActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnGuardarCotizacionActionPerformed
-
     private void tblCotizacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblCotizacionMouseClicked
          if(evt.getClickCount()==2){
             String concepto= (String) dtm.getValueAt(tblCotizacion.getSelectedRow(), 0);
@@ -682,10 +668,10 @@ public class PanelCotizaciones extends javax.swing.JPanel {
     private javax.swing.JButton btnBucarCot;
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnEliminar;
-    private javax.swing.JButton btnGuardarCotizacion;
     private javax.swing.JComboBox<Proyecto> cbxpProyAct;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

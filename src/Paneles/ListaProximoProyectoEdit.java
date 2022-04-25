@@ -251,7 +251,6 @@ public void eliminarTb(){
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
       editar();
       buscar();
-      
     }//GEN-LAST:event_btnActualizarActionPerformed
     
     /**
