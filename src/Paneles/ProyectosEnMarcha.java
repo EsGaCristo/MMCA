@@ -16,10 +16,10 @@ public class ProyectosEnMarcha extends javax.swing.JFrame {
      * Creates new form ProyectosEnMarcha
      */
     public ProyectosEnMarcha(int idProyecto) {
+        initComponents();
         this.idProyecto=idProyecto;
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         this.setLocationRelativeTo(this);
-        initComponents();
         actualizar();
     }
 

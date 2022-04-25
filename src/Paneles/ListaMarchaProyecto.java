@@ -203,7 +203,7 @@ public void eliminarTb(){
     private void TablaPPMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablaPPMouseClicked
          if(evt.getClickCount()==2){
              int idProyecto=  (int) dtm.getValueAt(TablaPP.getSelectedRow(), 0);
-             System.out.println("idProyecto = " + idProyecto);
+             //System.out.println("idProyecto = " + idProyecto);
              new ProyectosEnMarcha(idProyecto).setVisible(true);
         }
     }//GEN-LAST:event_TablaPPMouseClicked
