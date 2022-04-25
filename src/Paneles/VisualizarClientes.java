@@ -11,6 +11,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -143,7 +144,7 @@ public class VisualizarClientes extends javax.swing.JFrame {
             resultado= statement.executeQuery(selectSql);
           
             while(resultado.next()){
-            Clientes c = new Clientes(resultado.getString("Nombre"),resultado.getString("Apellidos"),resultado.getString("Correo"),resultado.getString("Direccion"));
+            Clientes c = new Clientes(resultado.getString("NOMBRE"),resultado.getString("APELLIDOS"),resultado.getString("CORREO"),resultado.getString("DIRECCION"));
             clientes.add(c);
             }
            
