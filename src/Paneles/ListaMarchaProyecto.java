@@ -205,6 +205,7 @@ public void eliminarTb(){
              int idProyecto=  (int) dtm.getValueAt(TablaPP.getSelectedRow(), 0);
              //System.out.println("idProyecto = " + idProyecto);
              new ProyectosEnMarcha(idProyecto).setVisible(true);
+             dispose();
         }
     }//GEN-LAST:event_TablaPPMouseClicked
     

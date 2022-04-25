@@ -98,9 +98,9 @@
                           <Component id="jLabel1" min="-2" pref="190" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel3" min="-2" pref="211" max="-2" attributes="0"/>
-                              <Component id="jLabel4" alignment="0" min="-2" pref="211" max="-2" attributes="0"/>
-                              <Component id="jLabel5" min="-2" pref="211" max="-2" attributes="0"/>
+                              <Component id="lblNombreCliente" min="-2" pref="211" max="-2" attributes="0"/>
+                              <Component id="lblFechaEvento" alignment="0" min="-2" pref="211" max="-2" attributes="0"/>
+                              <Component id="lblCostoProy" min="-2" pref="211" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
@@ -117,17 +117,16 @@
                   <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
                       <Group type="102" attributes="0">
-                          <Component id="jLabel3" min="-2" pref="27" max="-2" attributes="0"/>
+                          <Component id="lblNombreCliente" min="-2" pref="27" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="jLabel4" min="-2" pref="27" max="-2" attributes="0"/>
+                          <Component id="lblFechaEvento" min="-2" pref="27" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
+                          <Component id="lblCostoProy" min="-2" pref="27" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Component id="jButton3" min="-2" pref="56" max="-2" attributes="0"/>
                       </Group>
                       <Component id="jButton8" min="-2" pref="56" max="-2" attributes="0"/>
-                      <Group type="103" alignment="1" groupAlignment="3" attributes="0">
-                          <Component id="jLabel1" alignment="3" min="-2" pref="165" max="-2" attributes="0"/>
-                          <Component id="jLabel5" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="jLabel1" alignment="1" min="-2" pref="165" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
@@ -405,10 +404,10 @@
             <Property name="text" type="java.lang.String" value="ID PROYECTO"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel3">
+        <Component class="javax.swing.JLabel" name="lblNombreCliente">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Times New Roman" size="12" style="3"/>
+              <Font name="Times New Roman" size="24" style="3"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="85" green="ac" red="f1" type="rgb"/>
@@ -416,10 +415,10 @@
             <Property name="text" type="java.lang.String" value="Fecha del Evento: DD/MM/AAAA"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel4">
+        <Component class="javax.swing.JLabel" name="lblFechaEvento">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Times New Roman" size="12" style="3"/>
+              <Font name="Times New Roman" size="24" style="3"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="85" green="ac" red="f1" type="rgb"/>
@@ -427,10 +426,10 @@
             <Property name="text" type="java.lang.String" value="Cliente: Nombre"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel5">
+        <Component class="javax.swing.JLabel" name="lblCostoProy">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Times New Roman" size="12" style="3"/>
+              <Font name="Times New Roman" size="24" style="3"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="85" green="ac" red="f1" type="rgb"/>

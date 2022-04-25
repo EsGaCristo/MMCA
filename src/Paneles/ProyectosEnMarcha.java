@@ -4,6 +4,14 @@
  */
 package Paneles;
 
+import Principal.BaseDatos;
+import java.math.BigDecimal;
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Locale;
 
 /**
@@ -12,6 +20,7 @@ import java.util.Locale;
  */
 public class ProyectosEnMarcha extends javax.swing.JFrame {
     private int idProyecto;
+    BaseDatos bd= new BaseDatos();
     /**
      * Creates new form ProyectosEnMarcha
      */
@@ -47,9 +56,9 @@ public class ProyectosEnMarcha extends javax.swing.JFrame {
         jButton11 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         lblIdProy = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        lblNombreCliente = new javax.swing.JLabel();
+        lblFechaEvento = new javax.swing.JLabel();
+        lblCostoProy = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -157,17 +166,17 @@ public class ProyectosEnMarcha extends javax.swing.JFrame {
         lblIdProy.setForeground(new java.awt.Color(241, 172, 133));
         lblIdProy.setText("ID PROYECTO");
 
-        jLabel3.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(241, 172, 133));
-        jLabel3.setText("Fecha del Evento: DD/MM/AAAA");
+        lblNombreCliente.setFont(new java.awt.Font("Times New Roman", 3, 24)); // NOI18N
+        lblNombreCliente.setForeground(new java.awt.Color(241, 172, 133));
+        lblNombreCliente.setText("Fecha del Evento: DD/MM/AAAA");
 
-        jLabel4.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(241, 172, 133));
-        jLabel4.setText("Cliente: Nombre");
+        lblFechaEvento.setFont(new java.awt.Font("Times New Roman", 3, 24)); // NOI18N
+        lblFechaEvento.setForeground(new java.awt.Color(241, 172, 133));
+        lblFechaEvento.setText("Cliente: Nombre");
 
-        jLabel5.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(241, 172, 133));
-        jLabel5.setText("Cotizacion: Actual Monto");
+        lblCostoProy.setFont(new java.awt.Font("Times New Roman", 3, 24)); // NOI18N
+        lblCostoProy.setForeground(new java.awt.Color(241, 172, 133));
+        lblCostoProy.setText("Cotizacion: Actual Monto");
 
         jPanel2.setBackground(new java.awt.Color(241, 172, 133));
 
@@ -268,9 +277,9 @@ public class ProyectosEnMarcha extends javax.swing.JFrame {
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lblNombreCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblFechaEvento, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblCostoProy, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -282,15 +291,15 @@ public class ProyectosEnMarcha extends javax.swing.JFrame {
                 .addGap(26, 26, 26)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblNombreCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblFechaEvento, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblCostoProy, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -331,6 +340,7 @@ public class ProyectosEnMarcha extends javax.swing.JFrame {
     
     private void actualizar(){
         lblIdProy.setText("ID PROYECTO "+idProyecto);
+        buscar();
     }
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -356,6 +366,38 @@ public class ProyectosEnMarcha extends javax.swing.JFrame {
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
         new det_proyectos(this.idProyecto).setVisible(true);
     }//GEN-LAST:event_jButton11ActionPerformed
+    
+    ////////////////////////buscar//////////////////////////////////
+     private void buscar() {
+        ResultSet resultado=null;
+        Connection connection=null;
+        Statement statement=null;
+       
+        try {
+            connection = bd.getConexion();
+            statement = connection.createStatement();
+            String selectSql = "{call sp_dat_proy_marcha ("+idProyecto+")}";
+            resultado= statement.executeQuery(selectSql);
+            if(resultado.next()){
+                 lblNombreCliente.setText(resultado.getString("NOMBRE"));
+                 BigDecimal monto=resultado.getBigDecimal("TOTAL");
+                 String MontoS=monto.toString();
+                 lblCostoProy.setText("$"+MontoS);
+                 DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+                 Date fecha =resultado.getDate("FECHA_FIN");
+                 String fechastr = dateFormat.format(fecha);
+                 lblFechaEvento.setText(fechastr);
+                 
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            
+        }finally{
+            bd.cerrar(statement, resultado);
+        }
+        
+        
+    }
 
    
 
@@ -374,14 +416,14 @@ public class ProyectosEnMarcha extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel lblCostoProy;
+    private javax.swing.JLabel lblFechaEvento;
     private javax.swing.JLabel lblIdProy;
+    private javax.swing.JLabel lblNombreCliente;
     // End of variables declaration//GEN-END:variables
 }
