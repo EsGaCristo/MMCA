@@ -1,34 +1,44 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package Paneles;
 
 
 import Clases.Proyecto;
+import Clases.tipoServicio;
 import Principal.BaseDatos;
+import java.awt.Color;
+import java.math.BigDecimal;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author zara
  */
-public class ListaProximoProyecto extends javax.swing.JFrame {
+
+
+public class ListaMarchaProyecto extends javax.swing.JFrame {
     public  Connection conexion;
      BaseDatos bd= new BaseDatos();
      ArrayList<Proyecto> proyectos = new ArrayList();
      DefaultTableModel dtm;
      //JPanel jpnProyecto = new PanelProyectos();
 
+
+    
+
     /**
      * Creates new form ListaProximoProyecto
      */
-    public ListaProximoProyecto() {
+    public ListaMarchaProyecto() {
         initComponents();
         this.setLocationRelativeTo(null);
         dtm=(DefaultTableModel) TablaPP.getModel();
@@ -36,6 +46,13 @@ public class ListaProximoProyecto extends javax.swing.JFrame {
         llenarTabla();
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
+    }
+public void eliminarTb(){
+        int a = TablaPP.getRowCount()-1;
+        for (int i = a; i >= 0; i--) {          
+        dtm.removeRow(dtm.getRowCount()-1);
+        }
+        //cargaTicket();
     }
 
     private void buscar() {         
@@ -46,7 +63,7 @@ public class ListaProximoProyecto extends javax.swing.JFrame {
             connection = bd.getConexion();
             statement = connection.createStatement();
             
-            String selectSql = "SELECT proyecto.id_proyecto,cliente.nombre,proyecto.fecha_inicio,proyecto.fecha_fin,proyecto.estado from PROYECTO inner join CLIENTE ON proyecto.ID_CLIENTE = cliente.ID_CLIENTE  where estado = 0";
+            String selectSql = "SELECT proyecto.id_proyecto,cliente.nombre,proyecto.fecha_inicio,proyecto.fecha_fin,proyecto.estado from PROYECTO inner join CLIENTE ON proyecto.ID_CLIENTE = cliente.ID_CLIENTE  where estado = 1";
             resultado= statement.executeQuery(selectSql);
           
             while(resultado.next()){
@@ -95,7 +112,7 @@ public class ListaProximoProyecto extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Dubai", 2, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("LISTA PRÓXIMOS PROYECTOS");
+        jLabel1.setText("LISTA PROYECTOS EN MARCHA");
 
         TablaPP.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -109,6 +126,13 @@ public class ListaProximoProyecto extends javax.swing.JFrame {
             }
         ));
         jScrollPane1.setViewportView(TablaPP);
+        if (TablaPP.getColumnModel().getColumnCount() > 0) {
+            TablaPP.getColumnModel().getColumn(0).setHeaderValue("ID Proyecto");
+            TablaPP.getColumnModel().getColumn(1).setHeaderValue("Cliente");
+            TablaPP.getColumnModel().getColumn(2).setHeaderValue("Fecha de inicio");
+            TablaPP.getColumnModel().getColumn(3).setHeaderValue("Fecha fin");
+            TablaPP.getColumnModel().getColumn(4).setHeaderValue("Estado");
+        }
 
         jButton1.setBackground(new java.awt.Color(241, 172, 133));
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -131,13 +155,12 @@ public class ListaProximoProyecto extends javax.swing.JFrame {
                         .addComponent(jLabel1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(58, 58, 58)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(68, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                    .addContainerGap(237, Short.MAX_VALUE)
-                    .addComponent(jButton1)
-                    .addContainerGap(237, Short.MAX_VALUE)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(jButton1)))))
+                .addContainerGap(71, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -146,12 +169,9 @@ public class ListaProximoProyecto extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(65, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                    .addContainerGap(349, Short.MAX_VALUE)
-                    .addComponent(jButton1)
-                    .addContainerGap(14, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton1)
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -191,20 +211,23 @@ public class ListaProximoProyecto extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ListaProximoProyecto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ListaMarchaProyecto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ListaProximoProyecto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ListaMarchaProyecto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ListaProximoProyecto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ListaMarchaProyecto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ListaProximoProyecto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ListaMarchaProyecto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ListaProximoProyecto().setVisible(true);
+                new ListaMarchaProyecto().setVisible(true);
             }
         });
     }

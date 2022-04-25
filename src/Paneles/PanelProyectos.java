@@ -115,7 +115,7 @@ public class PanelProyectos extends javax.swing.JPanel {
         obj3 = new FondoPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         tblObj3 = new javax.swing.JTable();
-        jLabel4 = new javax.swing.JLabel();
+        lblVer = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
 
         jLabel2.setText("jLabel2");
@@ -390,9 +390,19 @@ public class PanelProyectos extends javax.swing.JPanel {
                 .addContainerGap(37, Short.MAX_VALUE))
         );
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/agregar2.png"))); // NOI18N
+        lblVer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/agregar2.png"))); // NOI18N
+        lblVer.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblVerMouseClicked(evt);
+            }
+        });
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/busqueda.png"))); // NOI18N
+        jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel5MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlMarchaLayout = new javax.swing.GroupLayout(pnlMarcha);
         pnlMarcha.setLayout(pnlMarchaLayout);
@@ -414,7 +424,7 @@ public class PanelProyectos extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
                         .addComponent(jLabel5)
                         .addGap(69, 69, 69)
-                        .addComponent(jLabel4)
+                        .addComponent(lblVer)
                         .addGap(45, 45, 45))))
         );
         pnlMarchaLayout.setVerticalGroup(
@@ -428,7 +438,7 @@ public class PanelProyectos extends javax.swing.JPanel {
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(pnlMarchaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlMarchaLayout.createSequentialGroup()
-                                .addComponent(jLabel4)
+                                .addComponent(lblVer)
                                 .addGap(101, 101, 101))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlMarchaLayout.createSequentialGroup()
                                 .addComponent(jLabel5)
@@ -488,19 +498,28 @@ public class PanelProyectos extends javax.swing.JPanel {
         prox();
     }//GEN-LAST:event_tblObj3MouseClicked
 
+    private void lblVerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblVerMouseClicked
+    new ListaProximoProyectoEdit().setVisible(true);
+
+    }//GEN-LAST:event_lblVerMouseClicked
+
+    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
+    new ListaMarchaProyecto().setVisible(true);
+    }//GEN-LAST:event_jLabel5MouseClicked
+
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JLabel lblVer;
     private javax.swing.JPanel obj1;
     private javax.swing.JPanel obj10;
     private javax.swing.JPanel obj11;
