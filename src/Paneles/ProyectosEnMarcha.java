@@ -4,6 +4,8 @@
  */
 package Paneles;
 
+import java.util.Locale;
+
 /**
  *
  * @author denil
@@ -14,6 +16,8 @@ public class ProyectosEnMarcha extends javax.swing.JFrame {
      * Creates new form ProyectosEnMarcha
      */
     public ProyectosEnMarcha() {
+        this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        this.setLocationRelativeTo(this);
         initComponents();
     }
 
@@ -344,7 +348,7 @@ public class ProyectosEnMarcha extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
-        // TODO add your handling code here:
+        new det_proyectos().setVisible(true);
     }//GEN-LAST:event_jButton11ActionPerformed
 
     /**

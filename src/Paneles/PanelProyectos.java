@@ -86,7 +86,9 @@ public class PanelProyectos extends javax.swing.JPanel {
            
      }
     
-    
+    public void prox(){
+        new ProyectosEnMarcha().setVisible(true);
+    }
    
     
 
@@ -133,7 +135,7 @@ public class PanelProyectos extends javax.swing.JPanel {
         obj9.setLayout(obj9Layout);
         obj9Layout.setHorizontalGroup(
             obj9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 184, Short.MAX_VALUE)
+            .addGap(0, 190, Short.MAX_VALUE)
         );
         obj9Layout.setVerticalGroup(
             obj9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -170,7 +172,7 @@ public class PanelProyectos extends javax.swing.JPanel {
         obj10.setLayout(obj10Layout);
         obj10Layout.setHorizontalGroup(
             obj10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 184, Short.MAX_VALUE)
+            .addGap(0, 165, Short.MAX_VALUE)
         );
         obj10Layout.setVerticalGroup(
             obj10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -203,16 +205,16 @@ public class PanelProyectos extends javax.swing.JPanel {
                 .addGroup(pnProximosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnProximosLayout.createSequentialGroup()
                         .addComponent(jLabel3)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap(752, Short.MAX_VALUE))
                     .addGroup(pnProximosLayout.createSequentialGroup()
                         .addComponent(obj9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addGap(32, 32, 32)
                         .addComponent(obj10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(27, 27, 27)
+                        .addGap(28, 28, 28)
                         .addComponent(obj11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(64, 64, 64)
+                        .addGap(62, 62, 62)
                         .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
                         .addComponent(jLabel7)
                         .addGap(43, 43, 43))))
         );
@@ -232,7 +234,7 @@ public class PanelProyectos extends javax.swing.JPanel {
                             .addGroup(pnProximosLayout.createSequentialGroup()
                                 .addGap(67, 67, 67)
                                 .addComponent(jLabel6)))
-                        .addGap(0, 49, Short.MAX_VALUE))
+                        .addGap(0, 50, Short.MAX_VALUE))
                     .addGroup(pnProximosLayout.createSequentialGroup()
                         .addGap(82, 82, 82)
                         .addComponent(jLabel7)
@@ -276,7 +278,12 @@ public class PanelProyectos extends javax.swing.JPanel {
         });
         tblObj1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         tblObj1.setGridColor(new java.awt.Color(251, 229, 218));
-        tblObj1.setSelectionBackground(new java.awt.Color(251, 229, 218));
+        tblObj1.setSelectionBackground(new java.awt.Color(187, 187, 187));
+        tblObj1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblObj1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblObj1);
         if (tblObj1.getColumnModel().getColumnCount() > 0) {
             tblObj1.getColumnModel().getColumn(0).setHeaderValue("");
@@ -287,16 +294,16 @@ public class PanelProyectos extends javax.swing.JPanel {
         obj1Layout.setHorizontalGroup(
             obj1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(obj1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(23, 23, 23)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(24, Short.MAX_VALUE))
         );
         obj1Layout.setVerticalGroup(
             obj1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(obj1Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
+                .addGap(24, 24, 24)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
 
         obj2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -316,8 +323,12 @@ public class PanelProyectos extends javax.swing.JPanel {
             }
         ));
         tblObj2.setGridColor(new java.awt.Color(251, 229, 218));
-        tblObj2.setSelectionBackground(new java.awt.Color(251, 229, 218));
-        tblObj2.setSelectionForeground(new java.awt.Color(251, 229, 218));
+        tblObj2.setSelectionBackground(new java.awt.Color(187, 187, 187));
+        tblObj2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblObj2MouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tblObj2);
 
         javax.swing.GroupLayout obj2Layout = new javax.swing.GroupLayout(obj2);
@@ -325,16 +336,16 @@ public class PanelProyectos extends javax.swing.JPanel {
         obj2Layout.setHorizontalGroup(
             obj2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, obj2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)
-                .addContainerGap())
+                .addContainerGap(23, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22))
         );
         obj2Layout.setVerticalGroup(
             obj2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(obj2Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
+                .addGap(23, 23, 23)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
 
         obj3.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -354,25 +365,29 @@ public class PanelProyectos extends javax.swing.JPanel {
             }
         ));
         tblObj3.setGridColor(new java.awt.Color(251, 229, 218));
-        tblObj3.setSelectionBackground(new java.awt.Color(251, 229, 218));
-        tblObj3.setSelectionForeground(new java.awt.Color(251, 229, 218));
+        tblObj3.setSelectionBackground(new java.awt.Color(187, 187, 187));
+        tblObj3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblObj3MouseClicked(evt);
+            }
+        });
         jScrollPane3.setViewportView(tblObj3);
 
         javax.swing.GroupLayout obj3Layout = new javax.swing.GroupLayout(obj3);
         obj3.setLayout(obj3Layout);
         obj3Layout.setHorizontalGroup(
             obj3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(obj3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
-                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, obj3Layout.createSequentialGroup()
+                .addContainerGap(18, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21))
         );
         obj3Layout.setVerticalGroup(
             obj3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(obj3Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
+                .addGap(23, 23, 23)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/agregar2.png"))); // NOI18N
@@ -394,9 +409,9 @@ public class PanelProyectos extends javax.swing.JPanel {
                         .addComponent(obj1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(obj2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
                         .addComponent(obj3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(29, 29, 29)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
                         .addComponent(jLabel5)
                         .addGap(69, 69, 69)
                         .addComponent(jLabel4)
@@ -421,8 +436,8 @@ public class PanelProyectos extends javax.swing.JPanel {
                     .addGroup(pnlMarchaLayout.createSequentialGroup()
                         .addGroup(pnlMarchaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(obj2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(obj3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(obj1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(obj1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(obj3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap())))
         );
 
@@ -460,6 +475,18 @@ public class PanelProyectos extends javax.swing.JPanel {
     private void obj11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_obj11MouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_obj11MouseClicked
+
+    private void tblObj1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblObj1MouseClicked
+        prox();
+    }//GEN-LAST:event_tblObj1MouseClicked
+
+    private void tblObj2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblObj2MouseClicked
+        prox();
+    }//GEN-LAST:event_tblObj2MouseClicked
+
+    private void tblObj3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblObj3MouseClicked
+        prox();
+    }//GEN-LAST:event_tblObj3MouseClicked
 
     
     
