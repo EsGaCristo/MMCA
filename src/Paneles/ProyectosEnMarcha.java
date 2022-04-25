@@ -354,7 +354,7 @@ public class ProyectosEnMarcha extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
-        new det_proyectos().setVisible(true);
+        new det_proyectos(this.idProyecto).setVisible(true);
     }//GEN-LAST:event_jButton11ActionPerformed
 
    
