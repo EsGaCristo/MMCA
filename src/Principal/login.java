@@ -50,7 +50,7 @@ public class login extends javax.swing.JFrame {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/boda.jpg"))); // NOI18N
         jLabel1.setText("jLabel1");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 440, 420));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 570, -1));
 
         jPanel1.setBackground(new java.awt.Color(251, 229, 218));
 
@@ -80,6 +80,7 @@ public class login extends javax.swing.JFrame {
         jLabel3.setText("Contraseña");
 
         btnLog.setBackground(new java.awt.Color(255, 204, 204));
+        btnLog.setFont(new java.awt.Font("Dubai", 0, 18)); // NOI18N
         btnLog.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/iniciar-sesion.png"))); // NOI18N
         btnLog.setText("Iniciar Sesion");
         btnLog.addActionListener(new java.awt.event.ActionListener() {
@@ -104,9 +105,9 @@ public class login extends javax.swing.JFrame {
                             .addComponent(jLabel2)
                             .addComponent(txtContraseña)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
+                        .addGap(26, 26, 26)
                         .addComponent(btnLog)))
-                .addContainerGap(44, Short.MAX_VALUE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -119,12 +120,12 @@ public class login extends javax.swing.JFrame {
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
+                .addGap(63, 63, 63)
                 .addComponent(btnLog)
-                .addGap(53, 53, 53))
+                .addContainerGap(205, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 0, 240, 420));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 0, 240, 540));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
