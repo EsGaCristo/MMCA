@@ -5,6 +5,7 @@
  */
 package Paneles;
 
+import Clases.ProyectoExcepcion;
 import Clases.Servicio;
 import Clases.tipoServicio;
 import Principal.BaseDatos;
@@ -18,6 +19,8 @@ import java.util.ArrayList;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.showMessageDialog;
+import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
 
@@ -39,6 +42,26 @@ public class PanelProductos extends javax.swing.JPanel {
         buscar();
         llenarTabla();
     }
+ private boolean validaCampo(JTextField t){
+        try{
+            estaVacio(t);
+        }catch(ProyectoExcepcion e){
+            showMessageDialog(this,e.getMessage()); t.requestFocus();
+            return true;
+        }
+        return false;
+    }
+    
+    private void estaVacio(JTextField t)throws ProyectoExcepcion{
+        String cad=t.getText().trim();
+        if(cad.equals(""))throw new ProyectoExcepcion("Campo vacio");
+    }
+
+
+
+
+
+
   private void insertar() {
 
         int resultado;
@@ -558,6 +581,14 @@ private void editar(){
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+       /* int h=cmbAct.getSelectedIndex();
+        if(h<1){showMessageDialog(this,"SELECCIONA LA ACTIVIDAD"); return;}
+        if(validaCampo(txtDist))return;
+        if(esEntero(txtDist.getText())==false){ txtDist.requestFocus(); return;}
+        if(validaCampo(txtTiempo))return;
+        if(esEntero(txtTiempo.getText())==false){ txtTiempo.requestFocus(); return;}
+
+ */
         insertar();
         actualizar();
         limpiar();
