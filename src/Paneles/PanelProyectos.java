@@ -153,11 +153,21 @@ public class PanelProyectos extends javax.swing.JPanel {
         });
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/agregar2.png"))); // NOI18N
+        jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel7MouseClicked(evt);
+            }
+        });
 
         jButton1.setBackground(new java.awt.Color(241, 172, 133));
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Visualizar Proyectos proximos");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnProximosLayout = new javax.swing.GroupLayout(pnProximos);
         pnProximos.setLayout(pnProximosLayout);
@@ -408,8 +418,16 @@ public class PanelProyectos extends javax.swing.JPanel {
     }//GEN-LAST:event_obj3MouseClicked
 
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
-       new FrameProximoProyecto().setVisible(true);
+       new ListaProximoProyecto().setVisible(true);
     }//GEN-LAST:event_jLabel6MouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
+        new FrameProximoProyecto().setVisible(true);
+    }//GEN-LAST:event_jLabel7MouseClicked
 
     
     

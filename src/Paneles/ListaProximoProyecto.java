@@ -34,6 +34,7 @@ public class ListaProximoProyecto extends javax.swing.JFrame {
         dtm=(DefaultTableModel) TablaPP.getModel();
         buscar();
         llenarTabla();
+        this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
     }
 
