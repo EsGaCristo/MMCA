@@ -88,7 +88,7 @@ public class FrameProximoProyecto extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("INGRESE LA FECHAS");
+        jLabel4.setText("INGRESE LA FECHA");
 
         btnAgregarProx.setBackground(new java.awt.Color(251, 229, 218));
         btnAgregarProx.setText("Agregar");

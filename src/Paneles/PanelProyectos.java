@@ -100,7 +100,8 @@ public class PanelProyectos extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        obj10 = new FondoPanel();
+        obj11 = new FondoPanel();
         pnlMarcha = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         obj1 = new FondoPanel();
@@ -132,11 +133,11 @@ public class PanelProyectos extends javax.swing.JPanel {
         obj9.setLayout(obj9Layout);
         obj9Layout.setHorizontalGroup(
             obj9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 160, Short.MAX_VALUE)
+            .addGap(0, 184, Short.MAX_VALUE)
         );
         obj9Layout.setVerticalGroup(
             obj9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 200, Short.MAX_VALUE)
+            .addGap(0, 226, Short.MAX_VALUE)
         );
 
         jLabel3.setBackground(new java.awt.Color(255, 102, 51));
@@ -159,15 +160,39 @@ public class PanelProyectos extends javax.swing.JPanel {
             }
         });
 
-        jButton1.setBackground(new java.awt.Color(241, 172, 133));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Visualizar Proyectos proximos");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+        obj10.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                obj10MouseClicked(evt);
             }
         });
+
+        javax.swing.GroupLayout obj10Layout = new javax.swing.GroupLayout(obj10);
+        obj10.setLayout(obj10Layout);
+        obj10Layout.setHorizontalGroup(
+            obj10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 184, Short.MAX_VALUE)
+        );
+        obj10Layout.setVerticalGroup(
+            obj10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 226, Short.MAX_VALUE)
+        );
+
+        obj11.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                obj11MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout obj11Layout = new javax.swing.GroupLayout(obj11);
+        obj11.setLayout(obj11Layout);
+        obj11Layout.setHorizontalGroup(
+            obj11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 160, Short.MAX_VALUE)
+        );
+        obj11Layout.setVerticalGroup(
+            obj11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout pnProximosLayout = new javax.swing.GroupLayout(pnProximos);
         pnProximos.setLayout(pnProximosLayout);
@@ -180,35 +205,38 @@ public class PanelProyectos extends javax.swing.JPanel {
                         .addComponent(jLabel3)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(pnProximosLayout.createSequentialGroup()
-                        .addGap(6, 6, 6)
                         .addComponent(obj9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 485, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
+                        .addComponent(obj10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(27, 27, 27)
+                        .addComponent(obj11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(64, 64, 64)
                         .addComponent(jLabel6)
-                        .addGap(55, 55, 55)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
                         .addComponent(jLabel7)
-                        .addGap(46, 46, 46))
-                    .addGroup(pnProximosLayout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addGap(43, 43, 43))))
         );
         pnProximosLayout.setVerticalGroup(
             pnProximosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnProximosLayout.createSequentialGroup()
                 .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(obj9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 54, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnProximosLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(pnProximosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnProximosLayout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addGap(67, 67, 67))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnProximosLayout.createSequentialGroup()
+                    .addGroup(pnProximosLayout.createSequentialGroup()
+                        .addGroup(pnProximosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnProximosLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(pnProximosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(obj9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(obj10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(obj11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(pnProximosLayout.createSequentialGroup()
+                                .addGap(67, 67, 67)
+                                .addComponent(jLabel6)))
+                        .addGap(0, 49, Short.MAX_VALUE))
+                    .addGroup(pnProximosLayout.createSequentialGroup()
+                        .addGap(82, 82, 82)
                         .addComponent(jLabel7)
-                        .addGap(93, 93, 93))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         add(pnProximos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 254, 941, 310));
@@ -421,18 +449,21 @@ public class PanelProyectos extends javax.swing.JPanel {
        new ListaProximoProyecto().setVisible(true);
     }//GEN-LAST:event_jLabel6MouseClicked
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
         new FrameProximoProyecto().setVisible(true);
     }//GEN-LAST:event_jLabel7MouseClicked
 
+    private void obj10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_obj10MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_obj10MouseClicked
+
+    private void obj11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_obj11MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_obj11MouseClicked
+
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -444,6 +475,8 @@ public class PanelProyectos extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JPanel obj1;
+    private javax.swing.JPanel obj10;
+    private javax.swing.JPanel obj11;
     private javax.swing.JPanel obj2;
     private javax.swing.JPanel obj3;
     private javax.swing.JPanel obj9;

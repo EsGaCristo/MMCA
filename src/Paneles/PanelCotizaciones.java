@@ -142,6 +142,11 @@ public class PanelCotizaciones extends javax.swing.JPanel {
         btnGuardarCotizacion.setForeground(new java.awt.Color(255, 255, 255));
         btnGuardarCotizacion.setText("Guardar Cotizacion");
         btnGuardarCotizacion.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        btnGuardarCotizacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarCotizacionActionPerformed(evt);
+            }
+        });
 
         cbxpProyAct.setBackground(new java.awt.Color(241, 172, 133));
         cbxpProyAct.setForeground(new java.awt.Color(241, 172, 133));
@@ -486,6 +491,10 @@ public class PanelCotizaciones extends javax.swing.JPanel {
         Proyecto p = (Proyecto) cbxpProyAct.getSelectedItem();
         txtIdPro.setText(String.valueOf(p.getId()));
     }//GEN-LAST:event_cbxpProyActFocusLost
+
+    private void btnGuardarCotizacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarCotizacionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnGuardarCotizacionActionPerformed
     private void buscarCot() {
         servicios.clear();
         //eliminarTb();
