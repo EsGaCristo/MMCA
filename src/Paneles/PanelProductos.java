@@ -57,7 +57,17 @@ public class PanelProductos extends javax.swing.JPanel {
         if(cad.equals(""))throw new ProyectoExcepcion("Campo vacio");
     }
 
-
+public boolean esEntero(String val){
+        float cant=0;
+        try{
+        cant=Float.parseFloat(val);
+        }catch(NumberFormatException err){
+            showMessageDialog(this,"Verifique tipo de dato");
+            
+        }
+       if(cant>0){return true;
+       }else{showMessageDialog(this,"El valor debe ser >0","Servicios", JOptionPane.INFORMATION_MESSAGE); return false;}
+    }
 
 
 
@@ -581,14 +591,12 @@ private void editar(){
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-       /* int h=cmbAct.getSelectedIndex();
-        if(h<1){showMessageDialog(this,"SELECCIONA LA ACTIVIDAD"); return;}
-        if(validaCampo(txtDist))return;
-        if(esEntero(txtDist.getText())==false){ txtDist.requestFocus(); return;}
-        if(validaCampo(txtTiempo))return;
-        if(esEntero(txtTiempo.getText())==false){ txtTiempo.requestFocus(); return;}
-
- */
+              
+        if(validaCampo(txtNombre))return;
+        if(validaCampo(txtProveedor))return;
+        if(validaCampo(txtPU))return;
+        if(esEntero(txtPU.getText())==false){ txtPU.requestFocus(); return;}
+       
         insertar();
         actualizar();
         limpiar();
