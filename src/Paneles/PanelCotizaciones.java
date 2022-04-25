@@ -82,7 +82,7 @@ public class PanelCotizaciones extends javax.swing.JPanel {
         btnBuscar = new javax.swing.JButton();
         btAgregar = new javax.swing.JButton();
         txtPU = new javax.swing.JTextField();
-        btnTerminar = new javax.swing.JButton();
+        btnEliminar = new javax.swing.JButton();
         txtCantidad = new javax.swing.JTextField();
         lblMonto = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -236,14 +236,14 @@ public class PanelCotizaciones extends javax.swing.JPanel {
             }
         });
 
-        btnTerminar.setBackground(new java.awt.Color(241, 172, 133));
-        btnTerminar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btnTerminar.setForeground(new java.awt.Color(255, 255, 255));
-        btnTerminar.setText("Terminar");
-        btnTerminar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnTerminar.addActionListener(new java.awt.event.ActionListener() {
+        btnEliminar.setBackground(new java.awt.Color(241, 172, 133));
+        btnEliminar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnEliminar.setForeground(new java.awt.Color(255, 255, 255));
+        btnEliminar.setText("Eliminar");
+        btnEliminar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTerminarActionPerformed(evt);
+                btnEliminarActionPerformed(evt);
             }
         });
 
@@ -302,8 +302,21 @@ public class PanelCotizaciones extends javax.swing.JPanel {
             new String [] {
                 "Concepto", "Cantidad", "P.U", "Importe"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         tblCotizacion.setSelectionBackground(new java.awt.Color(241, 172, 133));
+        tblCotizacion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblCotizacionMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tblCotizacion);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -330,7 +343,7 @@ public class PanelCotizaciones extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnAplicar, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnTerminar, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 857, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(19, Short.MAX_VALUE))
         );
@@ -349,7 +362,7 @@ public class PanelCotizaciones extends javax.swing.JPanel {
                     .addComponent(btAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnBuscar)
                     .addComponent(btnAplicar)
-                    .addComponent(btnTerminar, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
                 .addGap(29, 29, 29))
@@ -394,11 +407,32 @@ public class PanelCotizaciones extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnTerminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTerminarActionPerformed
-        llenarTxt();
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        borrar();
         
-    }//GEN-LAST:event_btnTerminarActionPerformed
+    }//GEN-LAST:event_btnEliminarActionPerformed
+    
+     ////////////////////////borrar//////////////////////////////////
+    private void borrar() {
 
+
+         
+        ResultSet resultado=null;
+        Connection connection=null;
+        Statement statement=null;
+       
+        try {
+            connection = bd.getConexion();
+            statement = connection.createStatement();
+            int IDCOT = Integer.parseInt(txtIdPro.getText());
+            String con = txtConcepto.getText();
+            String selectSql = "{call sp_eliminar_ser_cot ("+IDCOT+","+"'"+con+"'"+")}";
+            resultado= statement.executeQuery(selectSql);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
+    }
     private void txtIdProActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdProActionPerformed
        
     }//GEN-LAST:event_txtIdProActionPerformed
@@ -429,6 +463,7 @@ public class PanelCotizaciones extends javax.swing.JPanel {
         if(esEntero(txtPU.getText())==false){ txtPU.requestFocus(); return;}
 
         agregar();
+        insertar();
         llenarTabla();
          System.out.println("agregar = ");
          txtCantidad.setText("");
@@ -437,6 +472,30 @@ public class PanelCotizaciones extends javax.swing.JPanel {
                  
     }//GEN-LAST:event_btAgregarActionPerformed
     
+    
+ ////////////////insertar//////////////////////////////////
+    //HOLA
+    private void insertar() {
+
+
+         
+        ResultSet resultado=null;
+        Connection connection=null;
+        Statement statement=null;
+       
+        try {
+            connection = bd.getConexion();
+            statement = connection.createStatement();
+            int IDCOT = Integer.parseInt(txtIdPro.getText());
+            int codSev= controlServicio.getCodServicio();
+            int cant = controlServicio.getCantidad();
+            String selectSql = "{call sp_cot_ser ("+IDCOT+","+codSev+","+cant+")}";
+            resultado= statement.executeQuery(selectSql);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
+    }
     private void agregar(){
         int numEntero = Integer.parseInt(txtCantidad.getText());
         int pos=servicios.size()-1;
@@ -495,6 +554,13 @@ public class PanelCotizaciones extends javax.swing.JPanel {
     private void btnGuardarCotizacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarCotizacionActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnGuardarCotizacionActionPerformed
+
+    private void tblCotizacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblCotizacionMouseClicked
+         if(evt.getClickCount()==2){
+            String concepto= (String) dtm.getValueAt(tblCotizacion.getSelectedRow(), 0);
+            txtConcepto.setText(concepto);
+        }
+    }//GEN-LAST:event_tblCotizacionMouseClicked
     private void buscarCot() {
         servicios.clear();
         //eliminarTb();
@@ -613,8 +679,8 @@ public class PanelCotizaciones extends javax.swing.JPanel {
     private javax.swing.JButton btnAplicar;
     private javax.swing.JButton btnBucarCot;
     private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnGuardarCotizacion;
-    private javax.swing.JButton btnTerminar;
     private javax.swing.JComboBox<Proyecto> cbxpProyAct;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
