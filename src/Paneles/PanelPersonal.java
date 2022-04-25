@@ -98,7 +98,7 @@ public class PanelPersonal extends javax.swing.JPanel {
         jLabel3.setForeground(new java.awt.Color(241, 172, 133));
         jLabel3.setText("PERMISOS");
 
-        cmbPermisos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrador", "Cotizaciones", "Empleado" }));
+        cmbPermisos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecciona", "Administrador", "Cotizaciones", "Empleado" }));
 
         btnAdd.setBackground(new java.awt.Color(251, 229, 218));
         btnAdd.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -210,11 +210,11 @@ public class PanelPersonal extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-        int h=cmbPermisos.getSelectedIndex();
-        if(h<1){showMessageDialog(this,"SELECCIONA EL PERMISO"); return;}
         if(validaCampo(txtNombre))return;
-        if(validaCampo(txtPass))return;   
-    agregar();
+        if(validaCampo(txtPass))return; 
+        int h=cmbPermisos.getSelectedIndex();
+        if(h<1){showMessageDialog(this,"SELECCIONA EL PERMISO"); return;}  
+        agregar();
     }//GEN-LAST:event_btnAddActionPerformed
     public void actualizar(){        
         for (int i = 0; i >=dtm.getRowCount()-1 ; i++) {
