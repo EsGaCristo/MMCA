@@ -124,15 +124,21 @@ public void eliminarTb(){
             new String [] {
                 "ID Proyecto", "Cliente", "Fecha de inicio", "Fecha fin", "Estado"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        TablaPP.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TablaPPMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(TablaPP);
-        if (TablaPP.getColumnModel().getColumnCount() > 0) {
-            TablaPP.getColumnModel().getColumn(0).setHeaderValue("ID Proyecto");
-            TablaPP.getColumnModel().getColumn(1).setHeaderValue("Cliente");
-            TablaPP.getColumnModel().getColumn(2).setHeaderValue("Fecha de inicio");
-            TablaPP.getColumnModel().getColumn(3).setHeaderValue("Fecha fin");
-            TablaPP.getColumnModel().getColumn(4).setHeaderValue("Estado");
-        }
 
         jButton1.setBackground(new java.awt.Color(241, 172, 133));
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -193,6 +199,14 @@ public void eliminarTb(){
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void TablaPPMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablaPPMouseClicked
+         if(evt.getClickCount()==2){
+             int idProyecto=  (int) dtm.getValueAt(TablaPP.getSelectedRow(), 0);
+             System.out.println("idProyecto = " + idProyecto);
+             new ProyectosEnMarcha(idProyecto).setVisible(true);
+        }
+    }//GEN-LAST:event_TablaPPMouseClicked
     
     /**
      * @param args the command line arguments

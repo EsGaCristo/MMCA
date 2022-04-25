@@ -86,8 +86,9 @@ public class PanelProyectos extends javax.swing.JPanel {
            
      }
     
-    public void prox(){
-        new ProyectosEnMarcha().setVisible(true);
+    public void prox(int idProyecto){
+        
+        new ProyectosEnMarcha(idProyecto).setVisible(true);
     }
    
     
@@ -487,15 +488,15 @@ public class PanelProyectos extends javax.swing.JPanel {
     }//GEN-LAST:event_obj11MouseClicked
 
     private void tblObj1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblObj1MouseClicked
-        prox();
+        prox(3);
     }//GEN-LAST:event_tblObj1MouseClicked
 
     private void tblObj2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblObj2MouseClicked
-        prox();
+        prox(3);
     }//GEN-LAST:event_tblObj2MouseClicked
 
     private void tblObj3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblObj3MouseClicked
-        prox();
+        prox(3);
     }//GEN-LAST:event_tblObj3MouseClicked
 
     private void lblVerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblVerMouseClicked
