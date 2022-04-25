@@ -409,7 +409,7 @@ public class PanelCotizaciones extends javax.swing.JPanel {
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         borrar();
-        
+        buscarCot();
     }//GEN-LAST:event_btnEliminarActionPerformed
     
      ////////////////////////borrar//////////////////////////////////
@@ -465,6 +465,7 @@ public class PanelCotizaciones extends javax.swing.JPanel {
         agregar();
         insertar();
         llenarTabla();
+        buscarCot();
          System.out.println("agregar = ");
          txtCantidad.setText("");
          txtConcepto.setText("");
@@ -563,7 +564,7 @@ public class PanelCotizaciones extends javax.swing.JPanel {
     }//GEN-LAST:event_tblCotizacionMouseClicked
     private void buscarCot() {
         servicios.clear();
-        //eliminarTb();
+        eliminarTb();
          
         ResultSet resultado=null;
         Connection connection=null;
@@ -673,6 +674,7 @@ public class PanelCotizaciones extends javax.swing.JPanel {
         }
     }
 
+     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAgregar;
