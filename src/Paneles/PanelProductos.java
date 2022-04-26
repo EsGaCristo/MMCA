@@ -603,6 +603,9 @@ private void editar(){
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+    if(validaCampo(txtNombre)){
+      showMessageDialog(null,"Agrega un nombre");
+        return;}
     buscar2();
     //Validar();
     }//GEN-LAST:event_btnBuscarActionPerformed
