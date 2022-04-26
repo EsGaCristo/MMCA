@@ -1,9 +1,10 @@
 
-package Paneles;
+package Frames;
 
 
 import Clases.Proyecto;
 import Clases.tipoServicio;
+import Paneles.ProyectosEnMarcha;
 import Principal.BaseDatos;
 import java.awt.Color;
 import java.math.BigDecimal;
@@ -25,7 +26,7 @@ import javax.swing.table.DefaultTableModel;
  */
 
 
-public class ListaProximoProyectoEdit extends javax.swing.JFrame {
+public class ListaMarchaProyecto extends javax.swing.JFrame {
     public  Connection conexion;
      BaseDatos bd= new BaseDatos();
      ArrayList<Proyecto> proyectos = new ArrayList();
@@ -34,44 +35,11 @@ public class ListaProximoProyectoEdit extends javax.swing.JFrame {
 
 
     
-private void editar(){
-
-        int resultado;
-        
-         /*tipoServicio nose=(tipoServicio)cmbTipo.getSelectedItem();
-         int tipo=nose.getId_tipoServicio();
-*/
-
-        try {
-            PreparedStatement enunciado;
-            enunciado = bd.getConexion().prepareStatement("UPDATE PROYECTO set Estado=1 where ID_PROYECTO=?");
-            
-            enunciado.setString(1, txtId.getText());
-            
-            resultado = enunciado.executeUpdate();
-            if (resultado > 0) {
-                UIManager.put("OptionPane.background", Color.decode("#FBE5DA"));
-                UIManager.getLookAndFeelDefaults().put("Panel.background", Color.decode("#FBE5DA"));
-                UIManager.put("Button.background", Color.decode("#FBE5DA"));
-                Icon icono = new ImageIcon(getClass().getResource("/imagenes/actualizado.png"));
-                JOptionPane.showMessageDialog(null,"Cliente Actualizado Correctamente ", "Mensaje", JOptionPane.PLAIN_MESSAGE, icono);
-            } else {
-                UIManager.put("OptionPane.background", Color.decode("#FBE5DA"));
-                UIManager.getLookAndFeelDefaults().put("Panel.background", Color.decode("#FBE5DA"));
-                UIManager.put("Button.background", Color.decode("#FBE5DA"));
-                Icon icono = new ImageIcon(getClass().getResource("/imagenes/error.png"));
-                JOptionPane.showMessageDialog(null,"Error ", "Mensaje", JOptionPane.PLAIN_MESSAGE, icono);
-            }
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-
-    }
 
     /**
      * Creates new form ListaProximoProyecto
      */
-    public ListaProximoProyectoEdit() {
+    public ListaMarchaProyecto() {
         initComponents();
         this.setLocationRelativeTo(null);
         dtm=(DefaultTableModel) TablaPP.getModel();
@@ -96,7 +64,7 @@ public void eliminarTb(){
             connection = bd.getConexion();
             statement = connection.createStatement();
             
-            String selectSql = "SELECT proyecto.id_proyecto,cliente.nombre,proyecto.fecha_inicio,proyecto.fecha_fin,proyecto.estado from PROYECTO inner join CLIENTE ON proyecto.ID_CLIENTE = cliente.ID_CLIENTE  where estado = 0";
+            String selectSql = "SELECT proyecto.id_proyecto,cliente.nombre,proyecto.fecha_inicio,proyecto.fecha_fin,proyecto.estado from PROYECTO inner join CLIENTE ON proyecto.ID_CLIENTE = cliente.ID_CLIENTE  where estado = 1";
             resultado= statement.executeQuery(selectSql);
           
             while(resultado.next()){
@@ -138,8 +106,6 @@ public void eliminarTb(){
         jScrollPane1 = new javax.swing.JScrollPane();
         TablaPP = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
-        btnActualizar = new javax.swing.JButton();
-        txtId = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -147,7 +113,7 @@ public void eliminarTb(){
 
         jLabel1.setFont(new java.awt.Font("Dubai", 2, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("LISTA PRÓXIMOS PROYECTOS");
+        jLabel1.setText("LISTA PROYECTOS EN MARCHA");
 
         TablaPP.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -159,15 +125,21 @@ public void eliminarTb(){
             new String [] {
                 "ID Proyecto", "Cliente", "Fecha de inicio", "Fecha fin", "Estado"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        TablaPP.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TablaPPMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(TablaPP);
-        if (TablaPP.getColumnModel().getColumnCount() > 0) {
-            TablaPP.getColumnModel().getColumn(0).setHeaderValue("ID Proyecto");
-            TablaPP.getColumnModel().getColumn(1).setHeaderValue("Cliente");
-            TablaPP.getColumnModel().getColumn(2).setHeaderValue("Fecha de inicio");
-            TablaPP.getColumnModel().getColumn(3).setHeaderValue("Fecha fin");
-            TablaPP.getColumnModel().getColumn(4).setHeaderValue("Estado");
-        }
 
         jButton1.setBackground(new java.awt.Color(241, 172, 133));
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -178,18 +150,6 @@ public void eliminarTb(){
                 jButton1ActionPerformed(evt);
             }
         });
-
-        btnActualizar.setBackground(new java.awt.Color(241, 172, 133));
-        btnActualizar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btnActualizar.setForeground(new java.awt.Color(255, 255, 255));
-        btnActualizar.setText("Actualizar");
-        btnActualizar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnActualizarActionPerformed(evt);
-            }
-        });
-
-        txtId.setFont(new java.awt.Font("Tahoma", 2, 14)); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -202,15 +162,11 @@ public void eliminarTb(){
                         .addComponent(jLabel1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(58, 58, 58)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(10, 10, 10)
-                                .addComponent(jButton1)
-                                .addGap(54, 54, 54)
-                                .addComponent(btnActualizar)
-                                .addGap(36, 36, 36)
-                                .addComponent(txtId)))))
+                                .addComponent(jButton1)))))
                 .addContainerGap(71, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -221,11 +177,8 @@ public void eliminarTb(){
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(btnActualizar)
-                    .addComponent(txtId, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE))
-                .addGap(19, 19, 19))
+                .addComponent(jButton1)
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -248,10 +201,14 @@ public void eliminarTb(){
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
-      editar();
-      buscar();
-    }//GEN-LAST:event_btnActualizarActionPerformed
+    private void TablaPPMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablaPPMouseClicked
+         if(evt.getClickCount()==2){
+             int idProyecto=  (int) dtm.getValueAt(TablaPP.getSelectedRow(), 0);
+             //System.out.println("idProyecto = " + idProyecto);
+             new ProyectosEnMarcha(idProyecto).setVisible(true);
+             dispose();
+        }
+    }//GEN-LAST:event_TablaPPMouseClicked
     
     /**
      * @param args the command line arguments
@@ -270,32 +227,32 @@ public void eliminarTb(){
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ListaProximoProyectoEdit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ListaMarchaProyecto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ListaProximoProyectoEdit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ListaMarchaProyecto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ListaProximoProyectoEdit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ListaMarchaProyecto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ListaProximoProyectoEdit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ListaMarchaProyecto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ListaProximoProyectoEdit().setVisible(true);
+                new ListaMarchaProyecto().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable TablaPP;
-    private javax.swing.JButton btnActualizar;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField txtId;
     // End of variables declaration//GEN-END:variables
 }

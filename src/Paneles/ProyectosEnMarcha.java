@@ -51,7 +51,7 @@ public class ProyectosEnMarcha extends javax.swing.JFrame {
         jButton8 = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
         jButton10 = new javax.swing.JButton();
-        jButton11 = new javax.swing.JButton();
+        btnGestionar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         lblIdProy = new javax.swing.JLabel();
         lblNombreCliente = new javax.swing.JLabel();
@@ -120,15 +120,15 @@ public class ProyectosEnMarcha extends javax.swing.JFrame {
         jButton10.setBackground(new java.awt.Color(241, 172, 133));
         jButton10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 172, 133), 30));
 
-        jButton11.setBackground(new java.awt.Color(241, 172, 133));
-        jButton11.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton11.setForeground(new java.awt.Color(241, 172, 133));
-        jButton11.setText("Gestionar");
-        jButton11.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(241, 172, 133), 4, true));
-        jButton11.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton11.addActionListener(new java.awt.event.ActionListener() {
+        btnGestionar.setBackground(new java.awt.Color(241, 172, 133));
+        btnGestionar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnGestionar.setForeground(new java.awt.Color(241, 172, 133));
+        btnGestionar.setText("Gestionar");
+        btnGestionar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(241, 172, 133), 4, true));
+        btnGestionar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnGestionar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton11ActionPerformed(evt);
+                btnGestionarActionPerformed(evt);
             }
         });
 
@@ -222,7 +222,7 @@ public class ProyectosEnMarcha extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(32, 32, 32)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnGestionar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -273,7 +273,7 @@ public class ProyectosEnMarcha extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton11, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnGestionar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -325,9 +325,9 @@ public class ProyectosEnMarcha extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton6ActionPerformed
 
-    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
+    private void btnGestionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionarActionPerformed
         new det_proyectos(this.idProyecto).setVisible(true);
-    }//GEN-LAST:event_jButton11ActionPerformed
+    }//GEN-LAST:event_btnGestionarActionPerformed
     
     ////////////////////////buscar//////////////////////////////////
      private void buscar() {
@@ -364,9 +364,9 @@ public class ProyectosEnMarcha extends javax.swing.JFrame {
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnGestionar;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton6;
