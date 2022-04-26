@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.showInputDialog;
 import static javax.swing.JOptionPane.showMessageDialog;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
@@ -98,7 +99,7 @@ public boolean esEntero(String val){
                 UIManager.getLookAndFeelDefaults().put("Panel.background", Color.decode("#FBE5DA"));
                 UIManager.put("Button.background", Color.decode("#FBE5DA"));
                 Icon icono = new ImageIcon(getClass().getResource("/imagenes/insertado.png"));
-                JOptionPane.showMessageDialog(null,"Cliente Insertado Correctamente ", "Mensaje", JOptionPane.PLAIN_MESSAGE, icono);
+                JOptionPane.showMessageDialog(null,"Servicio Insertado Correctamente ", "Mensaje", JOptionPane.PLAIN_MESSAGE, icono);
             } else {
                 UIManager.put("OptionPane.background", Color.decode("#FBE5DA"));
                 UIManager.getLookAndFeelDefaults().put("Panel.background", Color.decode("#FBE5DA"));
@@ -245,14 +246,14 @@ private void buscar2() {
                 UIManager.getLookAndFeelDefaults().put("Panel.background", Color.decode("#FBE5DA"));
                 UIManager.put("Button.background", Color.decode("#FBE5DA"));
                 Icon icono = new ImageIcon(getClass().getResource("/imagenes/busqueda.png"));
-                JOptionPane.showMessageDialog(null,"Cliente Encontrado Correctamente ", "Mensaje", JOptionPane.PLAIN_MESSAGE, icono);  
+                JOptionPane.showMessageDialog(null,"Servicio Encontrado Correctamente ", "Mensaje", JOptionPane.PLAIN_MESSAGE, icono);  
 
             }else{
                 UIManager.put("OptionPane.background", Color.decode("#FBE5DA"));
                 UIManager.getLookAndFeelDefaults().put("Panel.background", Color.decode("#FBE5DA"));
                 UIManager.put("Button.background", Color.decode("#FBE5DA"));
                 Icon icono = new ImageIcon(getClass().getResource("/imagenes/cliente no encontrado.png"));
-                JOptionPane.showMessageDialog(null,"Cliente No Encontrado, intentelo nuevamente", "Mensaje", JOptionPane.PLAIN_MESSAGE, icono);
+                JOptionPane.showMessageDialog(null,"Servicio No Encontrado, intentelo nuevamente", "Mensaje", JOptionPane.PLAIN_MESSAGE, icono);
                  
             }
         } catch (Exception ex) {
@@ -322,7 +323,7 @@ private void editar(){
                 UIManager.getLookAndFeelDefaults().put("Panel.background", Color.decode("#FBE5DA"));
                 UIManager.put("Button.background", Color.decode("#FBE5DA"));
                 Icon icono = new ImageIcon(getClass().getResource("/imagenes/actualizado.png"));
-                JOptionPane.showMessageDialog(null,"Cliente Actualizado Correctamente ", "Mensaje", JOptionPane.PLAIN_MESSAGE, icono);
+                JOptionPane.showMessageDialog(null,"Servicio Actualizado Correctamente ", "Mensaje", JOptionPane.PLAIN_MESSAGE, icono);
             } else {
                 UIManager.put("OptionPane.background", Color.decode("#FBE5DA"));
                 UIManager.getLookAndFeelDefaults().put("Panel.background", Color.decode("#FBE5DA"));
@@ -593,7 +594,8 @@ private void editar(){
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-              
+        int h=cmbTipo.getSelectedIndex();
+        if(h<1){showMessageDialog(this,"SELECCIONA EL TIPO DE SERVICIO"); return;}      
         if(validaCampo(txtNombre))return;
         if(validaCampo(txtProveedor))return;
         if(validaCampo(txtPU))return;
@@ -613,6 +615,13 @@ private void editar(){
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        int h=cmbTipo.getSelectedIndex();
+        if(h<1){showMessageDialog(this,"SELECCIONA EL TIPO DE SERVICIO"); return;}
+        if(validaCampo(txtNombre))return;
+        if(validaCampo(txtProveedor))return;
+        if(validaCampo(txtPU))return;
+        if(esEntero(txtPU.getText())==false){ txtPU.requestFocus(); return;}
+
    editar();     
    actualizar();
    limpiar();
@@ -620,9 +629,21 @@ private void editar(){
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        /*int n=0;
+
+        do{
+         n=Integer.parseInt(showInputDialog(null,"Estas seguro que deseas eliminar\n 1)SI\n2)NO"));
+            System.out.println("el valor de n es"+n);
+        }while(n!=1);
+ */
+       //if(n==1){
         borrar();
         limpiar();
         actualizar();
+        //}else{
+        
+        //}
+        
         //actualizar();
     }//GEN-LAST:event_btnEliminarActionPerformed
 
