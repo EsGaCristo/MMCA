@@ -236,6 +236,7 @@ public class Tipo_Servicio_JFrame extends javax.swing.JFrame {
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
     if(validaCampo(txtCat))return;  
     agregar();
+    
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnEliminar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminar1ActionPerformed

@@ -594,10 +594,11 @@ private void editar(){
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-        int h=cmbTipo.getSelectedIndex();
-        if(h<1){showMessageDialog(this,"SELECCIONA EL TIPO DE SERVICIO"); return;}      
         if(validaCampo(txtNombre))return;
+        int h=cmbTipo.getSelectedIndex();
         if(validaCampo(txtProveedor))return;
+        if(h<1){showMessageDialog(this,"SELECCIONA EL TIPO DE SERVICIO"); return;}      
+        
         if(validaCampo(txtPU))return;
         if(esEntero(txtPU.getText())==false){ txtPU.requestFocus(); return;}
        
