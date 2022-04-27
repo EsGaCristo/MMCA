@@ -3,6 +3,7 @@ package Paneles;
 
 import java.awt.Color;
 import Clases.Clientes.*;
+import Clases.ProyectoExcepcion;
 import Principal.BaseDatos;
 import java.awt.Image;
 ////////sql////////////////////
@@ -17,6 +18,8 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.showMessageDialog;
+import javax.swing.JTextField;
 import javax.swing.UIManager;
 /**
  *
@@ -32,7 +35,44 @@ public class Panelclientes extends javax.swing.JPanel {
         initComponents();
         
     }
+ private boolean validaCampo(JTextField t){
+        try{
+            estaVacio(t);
+        }catch(ProyectoExcepcion e){
+            showMessageDialog(this,e.getMessage()); t.requestFocus();
+            return true;
+        }
+        return false;
+    }
+    
+    private void estaVacio(JTextField t)throws ProyectoExcepcion{
+        String cad=t.getText().trim();
+        if(cad.equals(""))throw new ProyectoExcepcion("Campo vacio");
+    }
+    private void limpiarcampo(){
+                txtNombre.setText("");
+                txtApellidos.setText("");
+                txtDireccion.setText("");
+                txtCorreo.setText("");
+                txtTelefono.setText("");
+                txtDescripcion.setText("");
+        }
+    public void validaCampos(){
+    
 
+    }
+
+public boolean esEntero(String val){
+        float cant=0;
+        try{
+        cant=Float.parseFloat(val);
+        }catch(NumberFormatException err){
+            showMessageDialog(this,"Verifique tipo de dato");
+            
+        }
+       if(cant>0){return true;
+       }else{showMessageDialog(this,"El valor debe ser >0","Servicios", JOptionPane.INFORMATION_MESSAGE); return false;}
+    }
    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -449,7 +489,8 @@ public class Panelclientes extends javax.swing.JPanel {
             connection = bd.getConexion();
             statement = connection.createStatement();
             String nom= txtNombre.getText();
-            String selectSql = "SELECT * from CLIENTE where NOMBRE='"+nom+"'";
+            String apell=txtApellidos.getText();
+            String selectSql = "SELECT * from CLIENTE where NOMBRE='"+nom+"'"+"AND APELLIDOS='"+apell+"'";
             resultado= statement.executeQuery(selectSql);
             
             if(resultado.next()){
@@ -490,8 +531,9 @@ public class Panelclientes extends javax.swing.JPanel {
 
         try {
             PreparedStatement enunciado;
-            enunciado = bd.getConexion().prepareStatement("delete from CLIENTE where NOMBRE=?");
+            enunciado = bd.getConexion().prepareStatement("delete from CLIENTE where NOMBRE=? and apellidos=?");
             enunciado.setString(1, txtNombre.getText());
+            enunciado.setString(2, txtApellidos.getText());
             
             resultado = enunciado.executeUpdate();
             if (resultado > 0) {
@@ -522,7 +564,7 @@ public class Panelclientes extends javax.swing.JPanel {
         try {
             PreparedStatement enunciado;
             enunciado = bd.getConexion().prepareStatement("update CLIENTE set NOMBRE=?, APELLIDOS=?, DIRECCION=?, "
-                    + "CORREO=?, CEL_CLIENTE=?, DESCRIPCION=? where NOMBRE=?");
+                    + "CORREO=?, CEL_CLIENTE=?, DESCRIPCION=? where NOMBRE=? and apellidos=?");
             
             enunciado.setString(1, txtNombre.getText());
             enunciado.setString(2, txtApellidos.getText());
@@ -531,6 +573,7 @@ public class Panelclientes extends javax.swing.JPanel {
             enunciado.setString(5, txtTelefono.getText());
             enunciado.setString(6, txtDescripcion.getText());
             enunciado.setString(7, txtNombre.getText());
+            enunciado.setString(8, txtApellidos.getText());
   
             
             resultado = enunciado.executeUpdate();
@@ -569,7 +612,15 @@ public class Panelclientes extends javax.swing.JPanel {
     }//GEN-LAST:event_botonMouseEntered
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-       insertar();
+    if(validaCampo(txtNombre))return;
+    if(validaCampo(txtApellidos))return;
+    if(validaCampo(txtDireccion))return;
+    if(validaCampo(txtCorreo))return;
+    if(validaCampo(txtTelefono))return;
+    if(validaCampo(txtDescripcion))return;
+    insertar();
+    limpiarcampo();
+
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
@@ -583,15 +634,27 @@ public class Panelclientes extends javax.swing.JPanel {
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        buscar();
+     if(validaCampo(txtNombre))return;
+     if(validaCampo(txtApellidos))return;  
+     buscar();
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        if(validaCampo(txtNombre))return;
+        if(validaCampo(txtApellidos))return;
         borrar();
+        limpiarcampo();
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
+    if(validaCampo(txtNombre))return;
+    if(validaCampo(txtApellidos))return;
+    if(validaCampo(txtDireccion))return;
+    if(validaCampo(txtCorreo))return;
+    if(validaCampo(txtTelefono))return;
+    if(validaCampo(txtDescripcion))return;
         actualizar();
+        limpiarcampo();
     }//GEN-LAST:event_btnActualizarActionPerformed
 
     private void btnVisualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisualizarActionPerformed
