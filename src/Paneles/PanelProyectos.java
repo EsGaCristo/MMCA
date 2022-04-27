@@ -5,6 +5,10 @@
  */
 package Paneles;
 
+import Frames.ListaProximoProyectoEdit;
+import Frames.ListaProximoProyecto;
+import Frames.ListaMarchaProyecto;
+import Frames.FrameProximoProyecto;
 import Clases.Proyecto;
 import Principal.BaseDatos;
 import java.awt.Graphics;

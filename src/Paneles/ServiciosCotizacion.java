@@ -34,6 +34,7 @@ public class ServiciosCotizacion extends javax.swing.JFrame {
     public ServiciosCotizacion() {
         initComponents();
         this.setLocationRelativeTo(this);
+        this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         dtm=(DefaultTableModel) tblServicios.getModel();
        LLenarCombo();
     }

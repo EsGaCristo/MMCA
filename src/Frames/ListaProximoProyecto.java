@@ -1,44 +1,34 @@
-
-package Paneles;
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ */
+package Frames;
 
 
 import Clases.Proyecto;
-import Clases.tipoServicio;
 import Principal.BaseDatos;
-import java.awt.Color;
-import java.math.BigDecimal;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author zara
  */
-
-
-public class ListaMarchaProyecto extends javax.swing.JFrame {
+public class ListaProximoProyecto extends javax.swing.JFrame {
     public  Connection conexion;
      BaseDatos bd= new BaseDatos();
      ArrayList<Proyecto> proyectos = new ArrayList();
      DefaultTableModel dtm;
      //JPanel jpnProyecto = new PanelProyectos();
 
-
-    
-
     /**
      * Creates new form ListaProximoProyecto
      */
-    public ListaMarchaProyecto() {
+    public ListaProximoProyecto() {
         initComponents();
         this.setLocationRelativeTo(null);
         dtm=(DefaultTableModel) TablaPP.getModel();
@@ -46,13 +36,6 @@ public class ListaMarchaProyecto extends javax.swing.JFrame {
         llenarTabla();
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
-    }
-public void eliminarTb(){
-        int a = TablaPP.getRowCount()-1;
-        for (int i = a; i >= 0; i--) {          
-        dtm.removeRow(dtm.getRowCount()-1);
-        }
-        //cargaTicket();
     }
 
     private void buscar() {         
@@ -63,7 +46,7 @@ public void eliminarTb(){
             connection = bd.getConexion();
             statement = connection.createStatement();
             
-            String selectSql = "SELECT proyecto.id_proyecto,cliente.nombre,proyecto.fecha_inicio,proyecto.fecha_fin,proyecto.estado from PROYECTO inner join CLIENTE ON proyecto.ID_CLIENTE = cliente.ID_CLIENTE  where estado = 1";
+            String selectSql = "SELECT proyecto.id_proyecto,cliente.nombre,proyecto.fecha_inicio,proyecto.fecha_fin,proyecto.estado from PROYECTO inner join CLIENTE ON proyecto.ID_CLIENTE = cliente.ID_CLIENTE  where estado = 0";
             resultado= statement.executeQuery(selectSql);
           
             while(resultado.next()){
@@ -112,7 +95,7 @@ public void eliminarTb(){
 
         jLabel1.setFont(new java.awt.Font("Dubai", 2, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("LISTA PROYECTOS EN MARCHA");
+        jLabel1.setText("LISTA PRÓXIMOS PROYECTOS");
 
         TablaPP.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -124,20 +107,7 @@ public void eliminarTb(){
             new String [] {
                 "ID Proyecto", "Cliente", "Fecha de inicio", "Fecha fin", "Estado"
             }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        TablaPP.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                TablaPPMouseClicked(evt);
-            }
-        });
+        ));
         jScrollPane1.setViewportView(TablaPP);
 
         jButton1.setBackground(new java.awt.Color(241, 172, 133));
@@ -161,12 +131,13 @@ public void eliminarTb(){
                         .addComponent(jLabel1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(58, 58, 58)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(jButton1)))))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(71, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                    .addContainerGap(237, Short.MAX_VALUE)
+                    .addComponent(jButton1)
+                    .addContainerGap(237, Short.MAX_VALUE)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -175,9 +146,12 @@ public void eliminarTb(){
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(65, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                    .addContainerGap(349, Short.MAX_VALUE)
+                    .addComponent(jButton1)
+                    .addContainerGap(14, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -199,15 +173,6 @@ public void eliminarTb(){
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void TablaPPMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablaPPMouseClicked
-         if(evt.getClickCount()==2){
-             int idProyecto=  (int) dtm.getValueAt(TablaPP.getSelectedRow(), 0);
-             //System.out.println("idProyecto = " + idProyecto);
-             new ProyectosEnMarcha(idProyecto).setVisible(true);
-             dispose();
-        }
-    }//GEN-LAST:event_TablaPPMouseClicked
     
     /**
      * @param args the command line arguments
@@ -226,23 +191,20 @@ public void eliminarTb(){
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ListaMarchaProyecto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ListaProximoProyecto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ListaMarchaProyecto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ListaProximoProyecto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ListaMarchaProyecto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ListaProximoProyecto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ListaMarchaProyecto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ListaProximoProyecto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ListaMarchaProyecto().setVisible(true);
+                new ListaProximoProyecto().setVisible(true);
             }
         });
     }
