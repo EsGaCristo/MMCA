@@ -14,19 +14,22 @@ public class Servicio {
     private String Concepto;
     private BigDecimal precio;
     private int tipoServicio;
+    private String nomtipoServicio;
     private String Provedor;
     private  int cantidad;
 
-    public Servicio(int CodServicio, String Concepto, BigDecimal precio,int tipoServicio, String Provedor) {
-        this.CodServicio = CodServicio;
+      
+
+public Servicio(int CodServicio,String Concepto,BigDecimal precio,int tipoServicio,String Provedor){
+this.CodServicio = CodServicio;
         this.Concepto = Concepto;
         this.precio = precio;
-        this.tipoServicio=tipoServicio;
+        this.tipoServicio = tipoServicio;
         this.Provedor = Provedor;
-        this.cantidad=0;
-    }
+        
+}
 
-    public Servicio(int CodServicio, String Concepto, BigDecimal precio, int tipoServicio, String Provedor, int cantidad) {
+    public Servicio(int CodServicio, String Concepto, BigDecimal precio, String nomTipoServico,String Provedor) {
         this.CodServicio = CodServicio;
         this.Concepto = Concepto;
         this.precio = precio;
@@ -35,7 +38,15 @@ public class Servicio {
         this.cantidad = cantidad;
     }
 
-    
+ public Servicio(int CodServicio, String Concepto, BigDecimal precio, int tipoServicio,String Provedor,int cantidad) {
+        this.CodServicio = CodServicio;
+        this.Concepto = Concepto;
+        this.precio = precio;
+        this.tipoServicio = tipoServicio;
+        this.Provedor = Provedor;
+        this.cantidad = cantidad;
+    }
+
     public int getCantidad() {
         return cantidad;
     }
@@ -75,6 +86,14 @@ public class Servicio {
 
     public void setProvedor(String Provedor) {
         this.Provedor = Provedor;
+    }
+
+    public String getNomtipoServicio() {
+        return nomtipoServicio;
+    }
+
+    public void setNomtipoServicio(String nomtipoServicio) {
+        this.nomtipoServicio = nomtipoServicio;
     }
 
     @Override
