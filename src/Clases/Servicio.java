@@ -29,13 +29,13 @@ this.CodServicio = CodServicio;
         
 }
 
-    public Servicio(int CodServicio, String Concepto, BigDecimal precio, String nomTipoServico,String Provedor) {
+    public Servicio(int CodServicio, String Concepto, BigDecimal precio, String Provedor,String nomTipoServicio) {
         this.CodServicio = CodServicio;
         this.Concepto = Concepto;
         this.precio = precio;
-        this.tipoServicio = tipoServicio;
+        this.nomtipoServicio = nomTipoServicio;
         this.Provedor = Provedor;
-        this.cantidad = cantidad;
+        
     }
 
  public Servicio(int CodServicio, String Concepto, BigDecimal precio, int tipoServicio,String Provedor,int cantidad) {
@@ -89,7 +89,7 @@ this.CodServicio = CodServicio;
     }
 
     public String getNomtipoServicio() {
-        return nomtipoServicio;
+         return nomtipoServicio;
     }
 
     public void setNomtipoServicio(String nomtipoServicio) {

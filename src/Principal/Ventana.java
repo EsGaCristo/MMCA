@@ -219,6 +219,7 @@ public class Ventana extends javax.swing.JFrame {
         jpnCentral.add(jpnTitulo, java.awt.BorderLayout.NORTH);
 
         jpnPaneles.setBackground(new java.awt.Color(251, 229, 218));
+        jpnPaneles.setToolTipText("");
         jpnPaneles.setLayout(new java.awt.BorderLayout());
         jpnCentral.add(jpnPaneles, java.awt.BorderLayout.CENTER);
 
