@@ -400,7 +400,7 @@ public boolean esEntero(String val){
         btnVisualizar.setBackground(new java.awt.Color(251, 229, 218));
         btnVisualizar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnVisualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Visualizar.png"))); // NOI18N
-        btnVisualizar.setText("Visualizar");
+        btnVisualizar.setText("Visualizar Clientes");
         btnVisualizar.setBorder(null);
         btnVisualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnVisualizar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -422,7 +422,7 @@ public boolean esEntero(String val){
         jPanel11Layout.setHorizontalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createSequentialGroup()
-                .addContainerGap(101, Short.MAX_VALUE)
+                .addContainerGap(56, Short.MAX_VALUE)
                 .addComponent(btnVisualizar)
                 .addGap(83, 83, 83))
         );

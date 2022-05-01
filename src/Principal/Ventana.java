@@ -244,7 +244,7 @@ public class Ventana extends javax.swing.JFrame {
             conexion = (Connection) DriverManager.getConnection(URL);
             //System.out.println("conexion exitosa BD MMCA");
         } catch (SQLException ex) {
-            System.out.println(ex.toString());
+            //System.out.println(ex.toString());
             //System.exit(0);
         }
     }
