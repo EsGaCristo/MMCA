@@ -58,13 +58,7 @@ public class PanelProyectos extends javax.swing.JPanel {
     }
     
     public void vista(){
-        
-        eliminarTb(tblObj1,dtm1);
-        eliminarTb(tblObj2,dtm2);
-        eliminarTb(tblObj3,dtm3);
-        eliminarTb(tblObj4,dtm4);
-        eliminarTb(tblObj5,dtm5);
-        eliminarTb(tblObj6,dtm6);
+ 
         
         buscar();
         buscar2();
