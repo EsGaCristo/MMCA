@@ -1,13 +1,12 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package Paneles;
 
-/**
- *
- * @author p_a_u
- */
+import Clases.ProyectoExcepcion;
+import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.showMessageDialog;
+import javax.swing.JTextField;
+
+
 public class Tipo_Servicio extends javax.swing.JFrame {
 
     /**
@@ -16,7 +15,32 @@ public class Tipo_Servicio extends javax.swing.JFrame {
     public Tipo_Servicio() {
         initComponents();
     }
+private boolean validaCampo(JTextField t){
+        try{
+            estaVacio(t);
+        }catch(ProyectoExcepcion e){
+            showMessageDialog(this,e.getMessage()); t.requestFocus();
+            return true;
+        }
+        return false;
+    }
+    
+    private void estaVacio(JTextField t)throws ProyectoExcepcion{
+        String cad=t.getText().trim();
+        if(cad.equals(""))throw new ProyectoExcepcion("Campo vacio");
+    }
 
+public boolean esEntero(String val){
+        float cant=0;
+        try{
+        cant=Float.parseFloat(val);
+        }catch(NumberFormatException err){
+            showMessageDialog(this,"Verifique tipo de dato");
+            
+        }
+       if(cant>0){return true;
+       }else{showMessageDialog(this,"El valor debe ser >0","Servicios", JOptionPane.INFORMATION_MESSAGE); return false;}
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -30,8 +54,8 @@ public class Tipo_Servicio extends javax.swing.JFrame {
         lblTitulo = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        txtId = new javax.swing.JTextField();
+        txtNom = new javax.swing.JTextField();
         btnAgregar = new javax.swing.JLabel();
         btnEliminar = new javax.swing.JLabel();
         btnBuscar = new javax.swing.JLabel();
@@ -55,12 +79,12 @@ public class Tipo_Servicio extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel2.setText("NOMBRE:");
 
-        jTextField1.setFont(new java.awt.Font("Dubai", 0, 18)); // NOI18N
+        txtId.setFont(new java.awt.Font("Dubai", 0, 18)); // NOI18N
 
-        jTextField2.setFont(new java.awt.Font("Dubai", 0, 18)); // NOI18N
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        txtNom.setFont(new java.awt.Font("Dubai", 0, 18)); // NOI18N
+        txtNom.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                txtNomActionPerformed(evt);
             }
         });
 
@@ -117,11 +141,11 @@ public class Tipo_Servicio extends javax.swing.JFrame {
                                 .addGap(44, 44, 44))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE)
-                                    .addComponent(jTextField2))
+                                    .addComponent(txtId, javax.swing.GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE)
+                                    .addComponent(txtNom))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(btnAgregar)
+                                    .addComponent(btnAgregar, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(btnBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(28, 28, 28))))))
@@ -136,19 +160,18 @@ public class Tipo_Servicio extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnAgregar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                        .addComponent(btnAgregar))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(36, 36, 36)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(44, 44, 44)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtNom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(80, 80, 80)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -173,9 +196,9 @@ public class Tipo_Servicio extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void txtNomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_txtNomActionPerformed
 
     /**
      * @param args the command line arguments
@@ -222,8 +245,8 @@ public class Tipo_Servicio extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JLabel lblTitulo;
+    private javax.swing.JTextField txtId;
+    private javax.swing.JTextField txtNom;
     // End of variables declaration//GEN-END:variables
 }

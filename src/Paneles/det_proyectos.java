@@ -4,6 +4,7 @@
  */
 package Paneles;
 
+import Clases.DetProyecto;
 import Clases.TipoEvento;
 import Principal.BaseDatos;
 import java.sql.Connection;
@@ -28,7 +29,7 @@ public class det_proyectos extends javax.swing.JFrame {
         id();
         LLenarCombo();
     }
-    public void id(){ jTextField9.setText(""+this.idProyecto);}
+    public void id(){ txtID.setText(""+this.idProyecto);}
     public void LLenarCombo(){
         ResultSet resultado=null;
         Connection connection=null;
@@ -70,9 +71,9 @@ public class det_proyectos extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         txtDireccion = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
-        jTextField9 = new javax.swing.JTextField();
+        txtID = new javax.swing.JTextField();
         cmbTiposEventos = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
+        btnInsertar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -105,11 +106,6 @@ public class det_proyectos extends javax.swing.JFrame {
 
         txtLugar.setFont(new java.awt.Font("Dubai", 2, 24)); // NOI18N
         txtLugar.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        txtLugar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtLugarActionPerformed(evt);
-            }
-        });
 
         jLabel5.setFont(new java.awt.Font("Dubai", 0, 24)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -117,11 +113,6 @@ public class det_proyectos extends javax.swing.JFrame {
 
         txtPresupuesto.setFont(new java.awt.Font("Dubai", 2, 24)); // NOI18N
         txtPresupuesto.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        txtPresupuesto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPresupuestoActionPerformed(evt);
-            }
-        });
 
         jLabel6.setFont(new java.awt.Font("Dubai", 0, 24)); // NOI18N
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -129,11 +120,6 @@ public class det_proyectos extends javax.swing.JFrame {
 
         txtNoInvitados.setFont(new java.awt.Font("Dubai", 2, 24)); // NOI18N
         txtNoInvitados.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        txtNoInvitados.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNoInvitadosActionPerformed(evt);
-            }
-        });
 
         jLabel7.setFont(new java.awt.Font("Dubai", 0, 24)); // NOI18N
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -145,11 +131,6 @@ public class det_proyectos extends javax.swing.JFrame {
 
         txtCiudad.setFont(new java.awt.Font("Dubai", 2, 24)); // NOI18N
         txtCiudad.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        txtCiudad.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCiudadActionPerformed(evt);
-            }
-        });
 
         jLabel9.setFont(new java.awt.Font("Dubai", 0, 24)); // NOI18N
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -169,24 +150,14 @@ public class det_proyectos extends javax.swing.JFrame {
 
         txtDireccion.setFont(new java.awt.Font("Dubai", 2, 24)); // NOI18N
         txtDireccion.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        txtDireccion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtDireccionActionPerformed(evt);
-            }
-        });
 
         jLabel11.setFont(new java.awt.Font("Dubai", 0, 24)); // NOI18N
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel11.setText("ID Proyecto:");
 
-        jTextField9.setEditable(false);
-        jTextField9.setFont(new java.awt.Font("Dubai", 2, 24)); // NOI18N
-        jTextField9.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        jTextField9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField9ActionPerformed(evt);
-            }
-        });
+        txtID.setEditable(false);
+        txtID.setFont(new java.awt.Font("Dubai", 2, 24)); // NOI18N
+        txtID.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -203,7 +174,7 @@ public class det_proyectos extends javax.swing.JFrame {
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -251,7 +222,7 @@ public class det_proyectos extends javax.swing.JFrame {
                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(cmbTiposEventos, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE)))
                 .addGap(46, 46, 46)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -286,11 +257,16 @@ public class det_proyectos extends javax.swing.JFrame {
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 960, 530));
 
-        jButton1.setBackground(new java.awt.Color(241, 172, 133));
-        jButton1.setFont(new java.awt.Font("Dubai", 2, 24)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Aceptar");
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 40, 420, -1));
+        btnInsertar.setBackground(new java.awt.Color(241, 172, 133));
+        btnInsertar.setFont(new java.awt.Font("Dubai", 2, 24)); // NOI18N
+        btnInsertar.setForeground(new java.awt.Color(255, 255, 255));
+        btnInsertar.setText("Ingresar");
+        btnInsertar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInsertarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnInsertar, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 40, 420, -1));
 
         jLabel2.setBackground(new java.awt.Color(241, 172, 133));
         jLabel2.setFont(new java.awt.Font("Dubai", 2, 24)); // NOI18N
@@ -314,38 +290,34 @@ public class det_proyectos extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtLugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLugarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtLugarActionPerformed
-
-    private void txtPresupuestoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPresupuestoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtPresupuestoActionPerformed
-
-    private void txtNoInvitadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNoInvitadosActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNoInvitadosActionPerformed
-
-    private void txtCiudadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCiudadActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCiudadActionPerformed
-
     private void txtHoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtHoraActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtHoraActionPerformed
 
-    private void txtDireccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDireccionActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtDireccionActionPerformed
-
-    private void jTextField9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField9ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField9ActionPerformed
-
+    private void btnInsertarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertarActionPerformed
+        /*boolean a=false;
+        do {
+            try {
+                
+                a =false;
+            } catch (Exception e) {
+                a = true;
+                javax.swing.JOptionPane.showMessageDialog(this,"vuela a insertar");
+            }
+        } while (a);*/
+        agregar();
+        this.dispose();
+    }//GEN-LAST:event_btnInsertarActionPerformed
+    public void agregar(){
+    DetProyecto p = new DetProyecto(Integer.parseInt(txtID.getText()),Integer.parseInt(txtNoInvitados.getText())
+            ,Integer.parseInt(txtPresupuesto.getText()),txtNombre.getText(),txtCiudad.getText(),
+            txtLugar.getText(),txtDireccion.getText(),txtHora.getText(),cmbTiposEventos.getSelectedItem().toString());
+    p.insertar();
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnInsertar;
     private javax.swing.JComboBox<Clases.TipoEvento> cmbTiposEventos;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -359,10 +331,10 @@ public class det_proyectos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField jTextField9;
     private javax.swing.JTextField txtCiudad;
     private javax.swing.JTextField txtDireccion;
     private javax.swing.JTextField txtHora;
+    private javax.swing.JTextField txtID;
     private javax.swing.JTextField txtLugar;
     private javax.swing.JTextField txtNoInvitados;
     private javax.swing.JTextField txtNombre;

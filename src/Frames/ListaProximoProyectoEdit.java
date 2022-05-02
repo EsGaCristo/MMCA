@@ -1,5 +1,5 @@
 
-package Paneles;
+package Frames;
 
 
 import Clases.Proyecto;
@@ -11,6 +11,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -25,7 +26,7 @@ import javax.swing.table.DefaultTableModel;
  */
 
 
-public class ListaMarchaProyecto extends javax.swing.JFrame {
+public class ListaProximoProyectoEdit extends javax.swing.JFrame {
     public  Connection conexion;
      BaseDatos bd= new BaseDatos();
      ArrayList<Proyecto> proyectos = new ArrayList();
@@ -34,13 +35,48 @@ public class ListaMarchaProyecto extends javax.swing.JFrame {
 
 
     
+private void editar(){
+        SimpleDateFormat dFormat // Usado para dar formato a la fecha del DateChooser
+                = new SimpleDateFormat("yyyy-MM-dd"); 
+        int resultado;
+        
+         /*tipoServicio nose=(tipoServicio)cmbTipo.getSelectedItem();
+         int tipo=nose.getId_tipoServicio();
+*/
+
+        try {
+            PreparedStatement enunciado;
+            enunciado = bd.getConexion().prepareStatement("UPDATE PROYECTO set Estado=1, FECHA_FIN =? where ID_PROYECTO=?");
+            
+            enunciado.setString(1, dFormat.format(DateFin.getDate()));
+            enunciado.setString(2, txtId.getText());
+            
+            resultado = enunciado.executeUpdate();
+            if (resultado > 0) {
+                UIManager.put("OptionPane.background", Color.decode("#FBE5DA"));
+                UIManager.getLookAndFeelDefaults().put("Panel.background", Color.decode("#FBE5DA"));
+                UIManager.put("Button.background", Color.decode("#FBE5DA"));
+                Icon icono = new ImageIcon(getClass().getResource("/imagenes/actualizado.png"));
+                JOptionPane.showMessageDialog(null,"Proyecto Actualizado Correctamente ", "Mensaje", JOptionPane.PLAIN_MESSAGE, icono);
+            } else {
+                UIManager.put("OptionPane.background", Color.decode("#FBE5DA"));
+                UIManager.getLookAndFeelDefaults().put("Panel.background", Color.decode("#FBE5DA"));
+                UIManager.put("Button.background", Color.decode("#FBE5DA"));
+                Icon icono = new ImageIcon(getClass().getResource("/imagenes/error.png"));
+                JOptionPane.showMessageDialog(null,"Error ", "Mensaje", JOptionPane.PLAIN_MESSAGE, icono);
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
+    }
 
     /**
      * Creates new form ListaProximoProyecto
      */
-    public ListaMarchaProyecto() {
+    public ListaProximoProyectoEdit() {
         initComponents();
-        this.setLocationRelativeTo(null);
+        this.setLocationRelativeTo(this);
         dtm=(DefaultTableModel) TablaPP.getModel();
         buscar();
         llenarTabla();
@@ -63,7 +99,7 @@ public void eliminarTb(){
             connection = bd.getConexion();
             statement = connection.createStatement();
             
-            String selectSql = "SELECT proyecto.id_proyecto,cliente.nombre,proyecto.fecha_inicio,proyecto.fecha_fin,proyecto.estado from PROYECTO inner join CLIENTE ON proyecto.ID_CLIENTE = cliente.ID_CLIENTE  where estado = 1";
+            String selectSql = "SELECT proyecto.id_proyecto,cliente.nombre,proyecto.fecha_inicio,proyecto.fecha_fin,proyecto.estado from PROYECTO inner join CLIENTE ON proyecto.ID_CLIENTE = cliente.ID_CLIENTE  where estado = 0";
             resultado= statement.executeQuery(selectSql);
           
             while(resultado.next()){
@@ -105,6 +141,9 @@ public void eliminarTb(){
         jScrollPane1 = new javax.swing.JScrollPane();
         TablaPP = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
+        btnActualizar = new javax.swing.JButton();
+        txtId = new javax.swing.JTextField();
+        DateFin = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -112,7 +151,7 @@ public void eliminarTb(){
 
         jLabel1.setFont(new java.awt.Font("Dubai", 2, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("LISTA PROYECTOS EN MARCHA");
+        jLabel1.setText("LISTA PRÓXIMOS PROYECTOS");
 
         TablaPP.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -124,21 +163,20 @@ public void eliminarTb(){
             new String [] {
                 "ID Proyecto", "Cliente", "Fecha de inicio", "Fecha fin", "Estado"
             }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
+        ));
         TablaPP.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 TablaPPMouseClicked(evt);
             }
         });
         jScrollPane1.setViewportView(TablaPP);
+        if (TablaPP.getColumnModel().getColumnCount() > 0) {
+            TablaPP.getColumnModel().getColumn(0).setHeaderValue("ID Proyecto");
+            TablaPP.getColumnModel().getColumn(1).setHeaderValue("Cliente");
+            TablaPP.getColumnModel().getColumn(2).setHeaderValue("Fecha de inicio");
+            TablaPP.getColumnModel().getColumn(3).setHeaderValue("Fecha fin");
+            TablaPP.getColumnModel().getColumn(4).setHeaderValue("Estado");
+        }
 
         jButton1.setBackground(new java.awt.Color(241, 172, 133));
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -149,6 +187,19 @@ public void eliminarTb(){
                 jButton1ActionPerformed(evt);
             }
         });
+
+        btnActualizar.setBackground(new java.awt.Color(241, 172, 133));
+        btnActualizar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnActualizar.setForeground(new java.awt.Color(255, 255, 255));
+        btnActualizar.setText("Actualizar");
+        btnActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActualizarActionPerformed(evt);
+            }
+        });
+
+        txtId.setEditable(false);
+        txtId.setFont(new java.awt.Font("Tahoma", 2, 14)); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -161,32 +212,41 @@ public void eliminarTb(){
                         .addComponent(jLabel1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(58, 58, 58)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(jButton1)))))
+                                .addComponent(jButton1)
+                                .addGap(52, 52, 52)
+                                .addComponent(btnActualizar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(DateFin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jScrollPane1))))
                 .addContainerGap(71, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(DateFin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(108, 108, 108))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnActualizar)
+                        .addComponent(jButton1)
+                        .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(45, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -200,13 +260,29 @@ public void eliminarTb(){
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void TablaPPMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablaPPMouseClicked
-         if(evt.getClickCount()==2){
-             int idProyecto=  (int) dtm.getValueAt(TablaPP.getSelectedRow(), 0);
-             //System.out.println("idProyecto = " + idProyecto);
-             new ProyectosEnMarcha(idProyecto).setVisible(true);
-             dispose();
+    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
+      actualizar();
+      if(DateFin.getDate()!=null) {
+      editar();
+      buscar();
+      }
+      this.dispose();
+    }//GEN-LAST:event_btnActualizarActionPerformed
+
+    public void actualizar(){        
+        for (int i = 0; i >=dtm.getRowCount()-1 ; i++) {
+            dtm.removeRow(i);
         }
+    //dtm.setRowCount(0);
+    //proyectos.clear();
+    // buscar();
+    //llenarTabla();
+    }
+    private void TablaPPMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablaPPMouseClicked
+        
+            String ID = ""+ dtm.getValueAt(TablaPP.getSelectedRow(),0);
+            txtId.setText(ID);
+       
     }//GEN-LAST:event_TablaPPMouseClicked
     
     /**
@@ -226,32 +302,33 @@ public void eliminarTb(){
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ListaMarchaProyecto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ListaProximoProyectoEdit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ListaMarchaProyecto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ListaProximoProyectoEdit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ListaMarchaProyecto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ListaProximoProyectoEdit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ListaMarchaProyecto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ListaProximoProyectoEdit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ListaMarchaProyecto().setVisible(true);
+                new ListaProximoProyectoEdit().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private com.toedter.calendar.JDateChooser DateFin;
     private javax.swing.JTable TablaPP;
+    private javax.swing.JButton btnActualizar;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField txtId;
     // End of variables declaration//GEN-END:variables
 }
