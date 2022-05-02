@@ -30,6 +30,7 @@ public class PanelCotizaciones extends javax.swing.JPanel {
     BaseDatos bd= new BaseDatos();
     BigDecimal Ctotal;
     BigDecimal Csubtotal;
+    BigDecimal CPresupuesto;
     /**
      * Creates new form PanelCotizaciones
      */
@@ -416,7 +417,36 @@ public class PanelCotizaciones extends javax.swing.JPanel {
         borrar();
         buscarCot();
     }//GEN-LAST:event_btnEliminarActionPerformed
-    
+    private void Presupuesto() {
+        ResultSet resultado=null;
+        Connection connection=null;
+        Statement statement=null;
+       
+        try {
+            connection = bd.getConexion();
+            statement = connection.createStatement();
+             int IDCOT = Integer.parseInt(txtIdPro.getText());
+            String selectSql = "{call sp_obtn_presupuesto ("+IDCOT+")}";
+            
+            resultado= statement.executeQuery(selectSql);
+                if(resultado.next()){
+                System.out.println("seejecuta");
+                CPresupuesto=resultado.getBigDecimal("PRESUPUESTO");
+                
+            if(CPresupuesto.compareTo(Ctotal)<0){
+                JOptionPane.showMessageDialog(null,"La cotizacion excede el presupuesto, \n el presupuesto es de: " + CPresupuesto);
+            }     
+            }
+            
+                
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            
+        }finally{
+            bd.cerrar(statement, resultado);
+            
+        }
+    }
      ////////////////////////borrar//////////////////////////////////
     private void borrar() {
 
@@ -476,7 +506,7 @@ public class PanelCotizaciones extends javax.swing.JPanel {
          txtConcepto.setText("");
          txtPU.setText("");
          actualizarMontos();
-                 
+         Presupuesto();        
     }//GEN-LAST:event_btAgregarActionPerformed
     
     
@@ -499,7 +529,7 @@ public class PanelCotizaciones extends javax.swing.JPanel {
             String selectSql = "{call sp_cot_ser ("+IDCOT+","+codSev+","+cant+")}";
             resultado= statement.executeQuery(selectSql);
         } catch (Exception ex) {
-            ex.printStackTrace();
+           
         }
 
     }
@@ -576,13 +606,14 @@ public class PanelCotizaciones extends javax.swing.JPanel {
     }//GEN-LAST:event_btnAplicarActionPerformed
 
     private void btnBucarCotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBucarCotActionPerformed
-
+        
         if(validaCampo(txtIdPro))return;
         
         buscarCot();
         //System.out.println("se ejecuto esto");
         //llenarTabla2();
         actualizarMontos();
+        Presupuesto();
     }//GEN-LAST:event_btnBucarCotActionPerformed
 
     private void cbxpProyActActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxpProyActActionPerformed
