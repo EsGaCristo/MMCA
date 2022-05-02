@@ -4,7 +4,12 @@
  */
 package Paneles;
 
+import Frames.PagosF;
+import Frames.framePagos;
 import Principal.BaseDatos;
+import java.awt.Desktop;
+import java.io.File;
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.Date;
@@ -30,6 +35,7 @@ public class ProyectosEnMarcha extends javax.swing.JFrame {
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         this.setLocationRelativeTo(this);
         actualizar();
+        buscarRESTANTE();
     }
 
     /**
@@ -45,8 +51,8 @@ public class ProyectosEnMarcha extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        btnGenerarContrato = new javax.swing.JButton();
+        btnPagos = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
@@ -62,6 +68,7 @@ public class ProyectosEnMarcha extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
+        lblRestante = new javax.swing.JLabel();
 
         jLabel8.setText("jLabel8");
 
@@ -71,7 +78,7 @@ public class ProyectosEnMarcha extends javax.swing.JFrame {
 
         jButton1.setBackground(new java.awt.Color(241, 172, 133));
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(241, 172, 133));
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("   Final Proyecto");
         jButton1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(241, 172, 133), 4, true));
         jButton1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -84,27 +91,27 @@ public class ProyectosEnMarcha extends javax.swing.JFrame {
         jButton2.setBackground(new java.awt.Color(241, 172, 133));
         jButton2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(241, 172, 133), 30));
 
-        jButton3.setBackground(new java.awt.Color(241, 172, 133));
-        jButton3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(241, 172, 133));
-        jButton3.setText("   Generacion de Contrato");
-        jButton3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(241, 172, 133), 4, true));
-        jButton3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnGenerarContrato.setBackground(new java.awt.Color(241, 172, 133));
+        btnGenerarContrato.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnGenerarContrato.setForeground(new java.awt.Color(255, 255, 255));
+        btnGenerarContrato.setText("   Generacion de Contrato");
+        btnGenerarContrato.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(241, 172, 133), 4, true));
+        btnGenerarContrato.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnGenerarContrato.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnGenerarContratoActionPerformed(evt);
             }
         });
 
-        jButton6.setBackground(new java.awt.Color(241, 172, 133));
-        jButton6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton6.setForeground(new java.awt.Color(241, 172, 133));
-        jButton6.setText("   Pagos");
-        jButton6.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(241, 172, 133), 4, true));
-        jButton6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        btnPagos.setBackground(new java.awt.Color(241, 172, 133));
+        btnPagos.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnPagos.setForeground(new java.awt.Color(255, 255, 255));
+        btnPagos.setText("   Pagos");
+        btnPagos.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(241, 172, 133), 4, true));
+        btnPagos.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnPagos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                btnPagosActionPerformed(evt);
             }
         });
 
@@ -122,7 +129,7 @@ public class ProyectosEnMarcha extends javax.swing.JFrame {
 
         btnGestionar.setBackground(new java.awt.Color(241, 172, 133));
         btnGestionar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnGestionar.setForeground(new java.awt.Color(241, 172, 133));
+        btnGestionar.setForeground(new java.awt.Color(255, 255, 255));
         btnGestionar.setText("Gestionar");
         btnGestionar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(241, 172, 133), 4, true));
         btnGestionar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -209,6 +216,10 @@ public class ProyectosEnMarcha extends javax.swing.JFrame {
                     .addContainerGap(126, Short.MAX_VALUE)))
         );
 
+        lblRestante.setFont(new java.awt.Font("Times New Roman", 3, 24)); // NOI18N
+        lblRestante.setForeground(new java.awt.Color(241, 172, 133));
+        lblRestante.setText("Cotizacion: Actual Monto");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -224,10 +235,10 @@ public class ProyectosEnMarcha extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btnGestionar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnPagos, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -239,18 +250,22 @@ public class ProyectosEnMarcha extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
+                                .addComponent(btnGenerarContrato, javax.swing.GroupLayout.PREFERRED_SIZE, 374, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblNombreCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(lblFechaEvento, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(lblCostoProy, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 349, Short.MAX_VALUE)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(lblNombreCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(lblFechaEvento, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(lblCostoProy, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 349, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblRestante, javax.swing.GroupLayout.DEFAULT_SIZE, 281, Short.MAX_VALUE)))))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -264,10 +279,12 @@ public class ProyectosEnMarcha extends javax.swing.JFrame {
                         .addComponent(lblNombreCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(12, 12, 12)
                         .addComponent(lblFechaEvento, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lblCostoProy, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblCostoProy, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblRestante, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnGenerarContrato, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -287,13 +304,13 @@ public class ProyectosEnMarcha extends javax.swing.JFrame {
                                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnPagos, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(71, 71, 71)))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(74, 74, 74)))
-                .addContainerGap(63, Short.MAX_VALUE))
+                .addContainerGap(61, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -319,13 +336,18 @@ public class ProyectosEnMarcha extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    private void btnGenerarContratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarContratoActionPerformed
+        try {
+        File path = new File ("src//contrato//CONTRATO1 ACTUALIZACIONAGO2020.pdf");
+        Desktop.getDesktop().open(path);
+        }catch (IOException ex) {
+             ex.printStackTrace();
+        }
+    }//GEN-LAST:event_btnGenerarContratoActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton6ActionPerformed
+    private void btnPagosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPagosActionPerformed
+        new PagosF(idProyecto).setVisible(true);
+    }//GEN-LAST:event_btnPagosActionPerformed
 
     private void btnGestionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionarActionPerformed
         new det_proyectos(this.idProyecto).setVisible(true);
@@ -362,16 +384,42 @@ public class ProyectosEnMarcha extends javax.swing.JFrame {
         
         
     }
+     
+     
+     ///////////////////////buscar//////////////////////////////////
+     private void buscarRESTANTE() {
+        ResultSet resultado=null;
+        Connection connection=null;
+        Statement statement=null;
+       
+        try {
+            connection = bd.getConexion();
+            statement = connection.createStatement();
+            String selectSql = "select min(RESTANTE) as [RESTANTE] FROM PAGOS where ID_COTIZACION='"+idProyecto+"'";
+            resultado= statement.executeQuery(selectSql);
+            if(resultado.next()){
+                 
+                 lblRestante.setText("Monto Restante: "+resultado.getString("RESTANTE"));
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            
+        }finally{
+            bd.cerrar(statement, resultado);
+        }
+        
+        
+    }
 
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnGenerarContrato;
     private javax.swing.JButton btnGestionar;
+    private javax.swing.JButton btnPagos;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
@@ -387,5 +435,6 @@ public class ProyectosEnMarcha extends javax.swing.JFrame {
     private javax.swing.JLabel lblFechaEvento;
     private javax.swing.JLabel lblIdProy;
     private javax.swing.JLabel lblNombreCliente;
+    private javax.swing.JLabel lblRestante;
     // End of variables declaration//GEN-END:variables
 }
