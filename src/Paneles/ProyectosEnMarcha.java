@@ -138,7 +138,7 @@ public class ProyectosEnMarcha extends javax.swing.JFrame {
 
         lblIdProy.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblIdProy.setForeground(new java.awt.Color(241, 172, 133));
-        lblIdProy.setText("ID PROYECTO");
+        lblIdProy.setText("ID EVENTO");
 
         lblNombreCliente.setFont(new java.awt.Font("Times New Roman", 3, 24)); // NOI18N
         lblNombreCliente.setForeground(new java.awt.Color(241, 172, 133));
