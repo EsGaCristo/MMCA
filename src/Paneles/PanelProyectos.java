@@ -645,7 +645,7 @@ public class PanelProyectos extends javax.swing.JPanel {
     }//GEN-LAST:event_obj11MouseClicked
 
     private void tblObj1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblObj1MouseClicked
-        prox(3);
+        //tblObj3.get
     }//GEN-LAST:event_tblObj1MouseClicked
 
     private void tblObj2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblObj2MouseClicked
