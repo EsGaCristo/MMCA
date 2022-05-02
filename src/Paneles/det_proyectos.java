@@ -8,6 +8,7 @@ import Clases.DetProyecto;
 import Clases.TipoEvento;
 import Principal.BaseDatos;
 import java.awt.Color;
+import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -365,7 +366,7 @@ String texto=txtNombre.getText();
     }//GEN-LAST:event_txtHoraActionPerformed
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
-    insertar();
+    actualizar();
     }//GEN-LAST:event_btnActualizarActionPerformed
 
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
@@ -379,27 +380,32 @@ String texto=txtNombre.getText();
     p.insertar();
     }
 
-public void insertar() {
+public void actualizar() {
     
 
         int resultado;
+        String str = txtPresupuesto.getText();
+        BigDecimal num = new BigDecimal(str);
         try {
             PreparedStatement enunciado;
             enunciado = bd.getConexion().prepareStatement("UPDATE DET_PROYECTOS SET NOMBRE=?"
-                    + ",CUIDAD=?,PRESUPUESTO=?,NUMERO_INVITADOS=?,ID_TIPOEVENTO=?,LUGAR=?,HORA_EVENTO=?,DIRECCION_SALON=?"
+                    + ",CUIDAD=?,PRESUPUESTO=?,NUMERO_INVITADOS=?,ID_TIPOEVENTO=?,LUGAR=?,HORA_EVENTO=?,DIRECCION_SALON=? "
                     + "WHERE ID_PROYECTO=?");
             
             
             
             enunciado.setString(1,txtNombre.getText());
             enunciado.setString(2, txtCiudad.getText());
-            //enunciado.setBigInt(3, Integer.parseInt(txtPresupuesto.getText()));
+            enunciado.setBigDecimal(3, num);
             enunciado.setInt(4, Integer.parseInt(txtNoInvitados.getText()));
-            enunciado.setString(5,cmbTiposEventos.getSelectedItem().toString());
+            String h= cmbTiposEventos.getSelectedItem().toString();
+            System.out.println(h);
+            enunciado.setString(5,h);
             enunciado.setString(6, txtLugar.getText());
             enunciado.setString(7, txtHora.getText());
             enunciado.setString(8,txtDireccion.getText());
-            enunciado.setInt(9, Integer.parseInt(txtID.getText()));
+           enunciado.setInt(9, Integer.parseInt(txtID.getText()));
+            System.out.println(Integer.parseInt(txtID.getText())+"");
             resultado = enunciado.executeUpdate();
             
             if (resultado > 0) {
@@ -407,7 +413,7 @@ public void insertar() {
                 UIManager.getLookAndFeelDefaults().put("Panel.background", Color.decode("#FBE5DA"));
                 UIManager.put("Button.background", Color.decode("#FBE5DA"));
                 Icon icono = new ImageIcon(getClass().getResource("/imagenes/insertado.png"));
-                JOptionPane.showMessageDialog(null,"Detalle_proy Actualizado Correctamente ", "Mensaje", JOptionPane.PLAIN_MESSAGE, icono);
+                JOptionPane.showMessageDialog(null,"Detalle_Evento Actualizado Correctamente ", "Mensaje", JOptionPane.PLAIN_MESSAGE, icono);
             } else {
                 UIManager.put("OptionPane.background", Color.decode("#FBE5DA"));
                 UIManager.getLookAndFeelDefaults().put("Panel.background", Color.decode("#FBE5DA"));
