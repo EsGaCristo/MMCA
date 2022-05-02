@@ -334,7 +334,7 @@ public class ProyectosEnMarcha extends javax.swing.JFrame {
     }//GEN-LAST:event_btnGenerarContratoActionPerformed
 
     private void btnPagosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPagosActionPerformed
-        new PagosF(13).setVisible(true);
+        new PagosF(idProyecto).setVisible(true);
     }//GEN-LAST:event_btnPagosActionPerformed
 
     private void btnGestionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionarActionPerformed
