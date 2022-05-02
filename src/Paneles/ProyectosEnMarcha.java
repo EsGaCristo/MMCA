@@ -78,7 +78,7 @@ public class ProyectosEnMarcha extends javax.swing.JFrame {
 
         jButton1.setBackground(new java.awt.Color(241, 172, 133));
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(241, 172, 133));
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("   Final Proyecto");
         jButton1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(241, 172, 133), 4, true));
         jButton1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -93,7 +93,7 @@ public class ProyectosEnMarcha extends javax.swing.JFrame {
 
         btnGenerarContrato.setBackground(new java.awt.Color(241, 172, 133));
         btnGenerarContrato.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnGenerarContrato.setForeground(new java.awt.Color(241, 172, 133));
+        btnGenerarContrato.setForeground(new java.awt.Color(255, 255, 255));
         btnGenerarContrato.setText("   Generacion de Contrato");
         btnGenerarContrato.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(241, 172, 133), 4, true));
         btnGenerarContrato.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -105,7 +105,7 @@ public class ProyectosEnMarcha extends javax.swing.JFrame {
 
         btnPagos.setBackground(new java.awt.Color(241, 172, 133));
         btnPagos.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnPagos.setForeground(new java.awt.Color(241, 172, 133));
+        btnPagos.setForeground(new java.awt.Color(255, 255, 255));
         btnPagos.setText("   Pagos");
         btnPagos.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(241, 172, 133), 4, true));
         btnPagos.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -129,7 +129,7 @@ public class ProyectosEnMarcha extends javax.swing.JFrame {
 
         btnGestionar.setBackground(new java.awt.Color(241, 172, 133));
         btnGestionar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnGestionar.setForeground(new java.awt.Color(241, 172, 133));
+        btnGestionar.setForeground(new java.awt.Color(255, 255, 255));
         btnGestionar.setText("Gestionar");
         btnGestionar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(241, 172, 133), 4, true));
         btnGestionar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -235,8 +235,8 @@ public class ProyectosEnMarcha extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btnGestionar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(btnPagos, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -250,8 +250,8 @@ public class ProyectosEnMarcha extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(btnGenerarContrato, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
+                                .addComponent(btnGenerarContrato, javax.swing.GroupLayout.PREFERRED_SIZE, 374, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -338,7 +338,7 @@ public class ProyectosEnMarcha extends javax.swing.JFrame {
 
     private void btnGenerarContratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarContratoActionPerformed
         try {
-        File path = new File ("C:/Users/Ivanr/Desktop/6 Semestre/ING SOFTWARE/CONTRATO1 ACTUALIZACIONAGO2020.pdf");
+        File path = new File ("src//contrato//CONTRATO1 ACTUALIZACIONAGO2020.pdf");
         Desktop.getDesktop().open(path);
         }catch (IOException ex) {
              ex.printStackTrace();
