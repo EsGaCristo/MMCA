@@ -24,9 +24,10 @@ import javax.swing.table.DefaultTableModel;
 public class PanelProyectos extends javax.swing.JPanel {
 
     FondoPanel fondo  = new FondoPanel();
-    public ArrayList <Proyecto> proyectos = new ArrayList();
+    public ArrayList <Proyecto> proyectosM = new ArrayList();
+    public ArrayList <Proyecto> proyectosP = new ArrayList();
     BaseDatos bd= new BaseDatos();
-    DefaultTableModel dtm1,dtm2,dtm3;
+    DefaultTableModel dtm1,dtm2,dtm3,dtm4,dtm5,dtm6;
     int auxA = 0;
 
     public PanelProyectos() {        
@@ -34,22 +35,69 @@ public class PanelProyectos extends javax.swing.JPanel {
         dtm1=(DefaultTableModel) tblObj1.getModel();
         dtm2=(DefaultTableModel) tblObj2.getModel();
         dtm3=(DefaultTableModel) tblObj3.getModel();
-        buscar();
+        dtm4=(DefaultTableModel) tblObj4.getModel();
+        dtm5=(DefaultTableModel) tblObj5.getModel();
+        dtm6=(DefaultTableModel) tblObj6.getModel();
         
-        //imprime los primeros 3 proyectos
-        llenarObjeto(dtm1,proyectos.get(0));
-        llenarObjeto(dtm2,proyectos.get(1));
-        llenarObjeto(dtm3,proyectos.get(2));
+        vista();
         
-        // recolorear lo de las tablas
-        tblObj1.setFillsViewportHeight(true);
-        tblObj2.setFillsViewportHeight(true);
-        tblObj3.setFillsViewportHeight(true);
        
+       
+
+        
+        
         
         
     }
+    public void eliminarTb(javax.swing.JTable tblServicios, DefaultTableModel dtm){
+        int a = tblServicios.getRowCount()-1;
+        for (int i = a; i >= 0; i--) {          
+        dtm.removeRow(dtm.getRowCount()-1);
+        }
+        //cargaTicket();
+    }
     
+    public void vista(){
+        
+        eliminarTb(tblObj1,dtm1);
+        eliminarTb(tblObj2,dtm2);
+        eliminarTb(tblObj3,dtm3);
+        eliminarTb(tblObj4,dtm4);
+        eliminarTb(tblObj5,dtm5);
+        eliminarTb(tblObj6,dtm6);
+        
+        buscar();
+        buscar2();
+        
+        if(proyectosM.size()==1){
+            llenarObjeto(dtm1,proyectosM.get(0));
+        }
+        if(proyectosM.size()==2){
+            llenarObjeto(dtm2,proyectosM.get(1));
+            llenarObjeto(dtm1,proyectosM.get(0));
+        }
+        if(proyectosM.size()>=3){
+            llenarObjeto(dtm3,proyectosM.get(2));
+            llenarObjeto(dtm2,proyectosM.get(1));
+            llenarObjeto(dtm1,proyectosM.get(0));
+        }
+        
+        
+        if(proyectosP.size()==1){
+            llenarObjeto(dtm4,proyectosP.get(0));
+        }
+        if(proyectosP.size()==2){
+            llenarObjeto(dtm5,proyectosP.get(1));
+            llenarObjeto(dtm4,proyectosP.get(0));
+        }
+        if(proyectosP.size()>=3){
+            llenarObjeto(dtm6,proyectosP.get(2));
+            llenarObjeto(dtm5,proyectosP.get(1));
+            llenarObjeto(dtm4,proyectosP.get(0));
+        }
+    
+    
+    }
     private void buscar() {         
         ResultSet resultado=null;
         Connection connection=null;
@@ -58,13 +106,38 @@ public class PanelProyectos extends javax.swing.JPanel {
             connection = bd.getConexion();
             statement = connection.createStatement();
             
-            String selectSql = "SELECT * from PROYECTO order by FECHA_FIN";
+            String selectSql = "SELECT * from PROYECTO where ESTADO = 1 order by FECHA_INICIO";
             resultado= statement.executeQuery(selectSql);
           
             while(resultado.next()){
             Proyecto p = new Proyecto(resultado.getInt("ID_PROYECTO"),resultado.getInt("ID_CLIENTE"),
                     resultado.getInt("ESTADO"),resultado.getDate("FECHA_INICIO"),resultado.getDate("FECHA_FIN"));
-            proyectos.add(p);
+            proyectosM.add(p);
+            }
+           
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            
+        }finally{
+            bd.cerrar(statement, resultado);
+        }
+    }
+    
+    private void buscar2() {         
+        ResultSet resultado=null;
+        Connection connection=null;
+        Statement statement=null;
+        try {
+            connection = bd.getConexion();
+            statement = connection.createStatement();
+            
+            String selectSql = "SELECT * from PROYECTO where ESTADO = 0 order by FECHA_INICIO";
+            resultado= statement.executeQuery(selectSql);
+          
+            while(resultado.next()){
+            Proyecto p = new Proyecto(resultado.getInt("ID_PROYECTO"),resultado.getInt("ID_CLIENTE"),
+                    resultado.getInt("ESTADO"),resultado.getDate("FECHA_INICIO"),resultado.getDate("FECHA_FIN"));
+            proyectosP.add(p);
             }
            
         } catch (Exception ex) {
@@ -104,11 +177,17 @@ public class PanelProyectos extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         pnProximos = new javax.swing.JPanel();
         obj9 = new FondoPanel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        tblObj4 = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         obj10 = new FondoPanel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        tblObj5 = new javax.swing.JTable();
         obj11 = new FondoPanel();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        tblObj6 = new javax.swing.JTable();
         pnlMarcha = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         obj1 = new FondoPanel();
@@ -136,15 +215,40 @@ public class PanelProyectos extends javax.swing.JPanel {
             }
         });
 
+        tblObj4.setBackground(new java.awt.Color(251, 229, 218));
+        tblObj4.setFont(new java.awt.Font("Tw Cen MT", 1, 18)); // NOI18N
+        tblObj4.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                ""
+            }
+        ));
+        tblObj4.setGridColor(new java.awt.Color(251, 229, 218));
+        tblObj4.setSelectionBackground(new java.awt.Color(187, 187, 187));
+        tblObj4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblObj4MouseClicked(evt);
+            }
+        });
+        jScrollPane4.setViewportView(tblObj4);
+
         javax.swing.GroupLayout obj9Layout = new javax.swing.GroupLayout(obj9);
         obj9.setLayout(obj9Layout);
         obj9Layout.setHorizontalGroup(
             obj9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 190, Short.MAX_VALUE)
+            .addGroup(obj9Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(18, Short.MAX_VALUE))
         );
         obj9Layout.setVerticalGroup(
             obj9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 226, Short.MAX_VALUE)
+            .addGroup(obj9Layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jLabel3.setBackground(new java.awt.Color(255, 102, 51));
@@ -173,15 +277,40 @@ public class PanelProyectos extends javax.swing.JPanel {
             }
         });
 
+        tblObj5.setBackground(new java.awt.Color(251, 229, 218));
+        tblObj5.setFont(new java.awt.Font("Tw Cen MT", 1, 18)); // NOI18N
+        tblObj5.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                ""
+            }
+        ));
+        tblObj5.setGridColor(new java.awt.Color(251, 229, 218));
+        tblObj5.setSelectionBackground(new java.awt.Color(187, 187, 187));
+        tblObj5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblObj5MouseClicked(evt);
+            }
+        });
+        jScrollPane5.setViewportView(tblObj5);
+
         javax.swing.GroupLayout obj10Layout = new javax.swing.GroupLayout(obj10);
         obj10.setLayout(obj10Layout);
         obj10Layout.setHorizontalGroup(
             obj10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 165, Short.MAX_VALUE)
+            .addGroup(obj10Layout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(20, Short.MAX_VALUE))
         );
         obj10Layout.setVerticalGroup(
             obj10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 226, Short.MAX_VALUE)
+            .addGroup(obj10Layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         obj11.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -190,15 +319,40 @@ public class PanelProyectos extends javax.swing.JPanel {
             }
         });
 
+        tblObj6.setBackground(new java.awt.Color(251, 229, 218));
+        tblObj6.setFont(new java.awt.Font("Tw Cen MT", 1, 18)); // NOI18N
+        tblObj6.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                ""
+            }
+        ));
+        tblObj6.setGridColor(new java.awt.Color(251, 229, 218));
+        tblObj6.setSelectionBackground(new java.awt.Color(187, 187, 187));
+        tblObj6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblObj6MouseClicked(evt);
+            }
+        });
+        jScrollPane6.setViewportView(tblObj6);
+
         javax.swing.GroupLayout obj11Layout = new javax.swing.GroupLayout(obj11);
         obj11.setLayout(obj11Layout);
         obj11Layout.setHorizontalGroup(
             obj11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 160, Short.MAX_VALUE)
+            .addGroup(obj11Layout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(24, Short.MAX_VALUE))
         );
         obj11Layout.setVerticalGroup(
             obj11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(obj11Layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout pnProximosLayout = new javax.swing.GroupLayout(pnProximos);
@@ -213,13 +367,13 @@ public class PanelProyectos extends javax.swing.JPanel {
                         .addContainerGap(769, Short.MAX_VALUE))
                     .addGroup(pnProximosLayout.createSequentialGroup()
                         .addComponent(obj9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(32, 32, 32)
+                        .addGap(18, 18, 18)
                         .addComponent(obj10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(28, 28, 28)
+                        .addGap(18, 18, 18)
                         .addComponent(obj11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(62, 62, 62)
+                        .addGap(30, 30, 30)
                         .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
                         .addComponent(jLabel7)
                         .addGap(43, 43, 43))))
         );
@@ -340,10 +494,10 @@ public class PanelProyectos extends javax.swing.JPanel {
         obj2.setLayout(obj2Layout);
         obj2Layout.setHorizontalGroup(
             obj2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, obj2Layout.createSequentialGroup()
-                .addContainerGap(23, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(22, 22, 22))
+            .addGroup(obj2Layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(18, Short.MAX_VALUE))
         );
         obj2Layout.setVerticalGroup(
             obj2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -382,17 +536,17 @@ public class PanelProyectos extends javax.swing.JPanel {
         obj3.setLayout(obj3Layout);
         obj3Layout.setHorizontalGroup(
             obj3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, obj3Layout.createSequentialGroup()
-                .addContainerGap(18, Short.MAX_VALUE)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(21, 21, 21))
+            .addGroup(obj3Layout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(19, Short.MAX_VALUE))
         );
         obj3Layout.setVerticalGroup(
             obj3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(obj3Layout.createSequentialGroup()
-                .addGap(23, 23, 23)
+                .addGap(21, 21, 21)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
 
         lblVer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/agregar2.png"))); // NOI18N
@@ -417,20 +571,18 @@ public class PanelProyectos extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(pnlMarchaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlMarchaLayout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(pnlMarchaLayout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addComponent(obj1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(obj2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(obj3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
-                        .addComponent(jLabel5)
-                        .addGap(69, 69, 69)
-                        .addComponent(lblVer)
-                        .addGap(45, 45, 45))))
+                        .addComponent(obj3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addComponent(jLabel5)
+                .addGap(69, 69, 69)
+                .addComponent(lblVer)
+                .addGap(45, 45, 45))
         );
         pnlMarchaLayout.setVerticalGroup(
             pnlMarchaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -438,22 +590,23 @@ public class PanelProyectos extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlMarchaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(pnlMarchaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(obj2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(obj1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlMarchaLayout.createSequentialGroup()
+                        .addComponent(obj3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(3, 3, 3)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlMarchaLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(pnlMarchaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlMarchaLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(pnlMarchaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlMarchaLayout.createSequentialGroup()
-                                .addComponent(lblVer)
-                                .addGap(101, 101, 101))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlMarchaLayout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addGap(79, 79, 79))))
-                    .addGroup(pnlMarchaLayout.createSequentialGroup()
-                        .addGroup(pnlMarchaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(obj2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(obj1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(obj3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap())))
+                        .addComponent(lblVer)
+                        .addGap(101, 101, 101))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlMarchaLayout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addGap(79, 79, 79))))
         );
 
         add(pnlMarcha, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 940, 260));
@@ -512,6 +665,18 @@ public class PanelProyectos extends javax.swing.JPanel {
     new ListaMarchaProyecto().setVisible(true);
     }//GEN-LAST:event_jLabel5MouseClicked
 
+    private void tblObj4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblObj4MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tblObj4MouseClicked
+
+    private void tblObj5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblObj5MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tblObj5MouseClicked
+
+    private void tblObj6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblObj6MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tblObj6MouseClicked
+
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -524,6 +689,9 @@ public class PanelProyectos extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JLabel lblVer;
     private javax.swing.JPanel obj1;
     private javax.swing.JPanel obj10;
@@ -536,6 +704,9 @@ public class PanelProyectos extends javax.swing.JPanel {
     private javax.swing.JTable tblObj1;
     private javax.swing.JTable tblObj2;
     private javax.swing.JTable tblObj3;
+    private javax.swing.JTable tblObj4;
+    private javax.swing.JTable tblObj5;
+    private javax.swing.JTable tblObj6;
     // End of variables declaration//GEN-END:variables
 
     class FondoPanel extends JPanel
