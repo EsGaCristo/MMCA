@@ -240,10 +240,15 @@ public class Tipo_Servicio_JFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnEliminar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminar1ActionPerformed
-       if(validaCampo(txtCat))return;
+    int confirmado = JOptionPane.showConfirmDialog(null, "¿Está seguro de eliminar?");
+    if (JOptionPane.OK_OPTION == confirmado){
+        if(validaCampo(txtCat))return;
         borrar();
         limpiar();
         actualizar();
+    }else
+       System.out.println("No se ha eliminado");
+      
     }//GEN-LAST:event_btnEliminar1ActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed

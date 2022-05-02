@@ -277,10 +277,16 @@ public class PanelPersonal extends javax.swing.JPanel {
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        if(validaCampo(txtNombre))return; 
+       int confirmado = JOptionPane.showConfirmDialog(null, "¿Está seguro de eliminar?");
+    if (JOptionPane.OK_OPTION == confirmado){
+       if(validaCampo(txtNombre))return; 
           
         eliminar();
         actualizar();
+    }else
+       System.out.println("No se ha eliminado");
+
+        
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed

@@ -414,8 +414,13 @@ public class PanelCotizaciones extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        borrar();
-        buscarCot();
+    int confirmado = JOptionPane.showConfirmDialog(null, "¿Está seguro de eliminar?");
+    if (JOptionPane.OK_OPTION == confirmado){
+       borrar();
+       buscarCot();
+    }else
+       System.out.println("No se ha eliminado");
+        
     }//GEN-LAST:event_btnEliminarActionPerformed
     private void Presupuesto() {
         ResultSet resultado=null;

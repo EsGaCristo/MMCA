@@ -654,6 +654,15 @@ private void editar(){
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+    int confirmado = JOptionPane.showConfirmDialog(null, "¿Está seguro de eliminar?");
+    if (JOptionPane.OK_OPTION == confirmado){
+       if(validaCampo(txtNombre))return; 
+         borrar();
+        limpiar();
+        actualizar();
+    }else
+       System.out.println("No se ha eliminado");
+
         /*int n=0;
 
         do{
@@ -662,9 +671,7 @@ private void editar(){
         }while(n!=1);
  */
        //if(n==1){
-        borrar();
-        limpiar();
-        actualizar();
+        
         //}else{
         
         //}

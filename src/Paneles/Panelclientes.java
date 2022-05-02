@@ -640,10 +640,16 @@ public boolean esEntero(String val){
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        if(validaCampo(txtNombre))return;
-        if(validaCampo(txtApellidos))return;
-        borrar();
-        limpiarcampo();
+    int confirmado = JOptionPane.showConfirmDialog(null, "¿Está seguro de eliminar?");
+    if (JOptionPane.OK_OPTION == confirmado){
+       if(validaCampo(txtNombre))return; 
+           if(validaCampo(txtNombre))return;
+           if(validaCampo(txtApellidos))return;
+           borrar();
+           limpiarcampo();
+    }else
+       System.out.println("No se ha eliminado");
+        
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
