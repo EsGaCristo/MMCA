@@ -115,8 +115,8 @@ public class det_proyectos extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         txtID = new javax.swing.JTextField();
         cmbTiposEventos = new javax.swing.JComboBox<>();
-        btnInsertar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        btnInsertar1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -299,22 +299,22 @@ public class det_proyectos extends javax.swing.JFrame {
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 960, 530));
 
-        btnInsertar.setBackground(new java.awt.Color(241, 172, 133));
-        btnInsertar.setFont(new java.awt.Font("Dubai", 2, 24)); // NOI18N
-        btnInsertar.setForeground(new java.awt.Color(255, 255, 255));
-        btnInsertar.setText("Ingresar");
-        btnInsertar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnInsertarActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnInsertar, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 40, 420, -1));
-
         jLabel2.setBackground(new java.awt.Color(241, 172, 133));
         jLabel2.setFont(new java.awt.Font("Dubai", 2, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(241, 172, 133));
         jLabel2.setText("MARINA MEZA COMPANION APP");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 280, -1, -1));
+
+        btnInsertar1.setBackground(new java.awt.Color(241, 172, 133));
+        btnInsertar1.setFont(new java.awt.Font("Dubai", 2, 24)); // NOI18N
+        btnInsertar1.setForeground(new java.awt.Color(255, 255, 255));
+        btnInsertar1.setText("Ingresar");
+        btnInsertar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInsertar1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnInsertar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 30, 240, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -337,20 +337,9 @@ public class det_proyectos extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtHoraActionPerformed
 
-    private void btnInsertarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertarActionPerformed
-        /*boolean a=false;
-        do {
-            try {
-                
-                a =false;
-            } catch (Exception e) {
-                a = true;
-                javax.swing.JOptionPane.showMessageDialog(this,"vuela a insertar");
-            }
-        } while (a);*/
-        agregar();
-        this.dispose();
-    }//GEN-LAST:event_btnInsertarActionPerformed
+    private void btnInsertar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertar1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnInsertar1ActionPerformed
     public void agregar(){
     DetProyecto p = new DetProyecto(Integer.parseInt(txtID.getText()),Integer.parseInt(txtNoInvitados.getText())
             ,Integer.parseInt(txtPresupuesto.getText()),txtNombre.getText(),txtCiudad.getText(),
@@ -359,7 +348,7 @@ public class det_proyectos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnInsertar;
+    private javax.swing.JButton btnInsertar1;
     private javax.swing.JComboBox<Clases.TipoEvento> cmbTiposEventos;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
