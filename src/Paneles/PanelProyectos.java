@@ -29,6 +29,7 @@ public class PanelProyectos extends javax.swing.JPanel {
     BaseDatos bd= new BaseDatos();
     DefaultTableModel dtm1,dtm2,dtm3,dtm4,dtm5,dtm6;
     int auxA = 0;
+    String aux;
 
     public PanelProyectos() {        
         initComponents();
@@ -38,6 +39,15 @@ public class PanelProyectos extends javax.swing.JPanel {
         dtm4=(DefaultTableModel) tblObj4.getModel();
         dtm5=(DefaultTableModel) tblObj5.getModel();
         dtm6=(DefaultTableModel) tblObj6.getModel();
+        
+        tblObj1.setFillsViewportHeight(true);
+        tblObj2.setFillsViewportHeight(true);
+        tblObj3.setFillsViewportHeight(true);
+        tblObj4.setFillsViewportHeight(true);
+        tblObj5.setFillsViewportHeight(true);
+        tblObj6.setFillsViewportHeight(true);
+       
+        
         
         vista();
         
@@ -221,11 +231,6 @@ public class PanelProyectos extends javax.swing.JPanel {
         ));
         tblObj4.setGridColor(new java.awt.Color(251, 229, 218));
         tblObj4.setSelectionBackground(new java.awt.Color(187, 187, 187));
-        tblObj4.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblObj4MouseClicked(evt);
-            }
-        });
         jScrollPane4.setViewportView(tblObj4);
 
         javax.swing.GroupLayout obj9Layout = new javax.swing.GroupLayout(obj9);
@@ -283,11 +288,6 @@ public class PanelProyectos extends javax.swing.JPanel {
         ));
         tblObj5.setGridColor(new java.awt.Color(251, 229, 218));
         tblObj5.setSelectionBackground(new java.awt.Color(187, 187, 187));
-        tblObj5.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblObj5MouseClicked(evt);
-            }
-        });
         jScrollPane5.setViewportView(tblObj5);
 
         javax.swing.GroupLayout obj10Layout = new javax.swing.GroupLayout(obj10);
@@ -325,11 +325,6 @@ public class PanelProyectos extends javax.swing.JPanel {
         ));
         tblObj6.setGridColor(new java.awt.Color(251, 229, 218));
         tblObj6.setSelectionBackground(new java.awt.Color(187, 187, 187));
-        tblObj6.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblObj6MouseClicked(evt);
-            }
-        });
         jScrollPane6.setViewportView(tblObj6);
 
         javax.swing.GroupLayout obj11Layout = new javax.swing.GroupLayout(obj11);
@@ -639,15 +634,21 @@ public class PanelProyectos extends javax.swing.JPanel {
     }//GEN-LAST:event_obj11MouseClicked
 
     private void tblObj1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblObj1MouseClicked
-        //tblObj3.get
+       aux = ""+ tblObj1.getValueAt(0,0);
+       aux = aux.substring(11);
+        prox(Integer.parseInt(aux));
     }//GEN-LAST:event_tblObj1MouseClicked
 
     private void tblObj2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblObj2MouseClicked
-        prox(3);
+        aux = ""+ tblObj2.getValueAt(0,0);
+       aux = aux.substring(11);
+        prox(Integer.parseInt(aux));
     }//GEN-LAST:event_tblObj2MouseClicked
 
     private void tblObj3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblObj3MouseClicked
-        prox(3);
+        aux = ""+ tblObj3.getValueAt(0,0);
+       aux = aux.substring(11);
+        prox(Integer.parseInt(aux));
     }//GEN-LAST:event_tblObj3MouseClicked
 
     private void lblVerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblVerMouseClicked
@@ -658,18 +659,6 @@ public class PanelProyectos extends javax.swing.JPanel {
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
     new ListaMarchaProyecto().setVisible(true);
     }//GEN-LAST:event_jLabel5MouseClicked
-
-    private void tblObj4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblObj4MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tblObj4MouseClicked
-
-    private void tblObj5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblObj5MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tblObj5MouseClicked
-
-    private void tblObj6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblObj6MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tblObj6MouseClicked
 
     
     
