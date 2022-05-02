@@ -9,6 +9,7 @@ import Clases.TipoEvento;
 import Principal.BaseDatos;
 import java.awt.Color;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -35,6 +36,21 @@ public class det_proyectos extends javax.swing.JFrame {
         llenar();
         
         LLenarCombo();
+
+String texto=txtNombre.getText();
+        texto=texto.replaceAll(" ", "");
+        if(texto.length()==0){
+           System.out.println("no ai texto");
+           btnIngresar.setEnabled(true);
+            btnActualizar.setEnabled(false);
+        }
+        else
+        {
+            System.out.println("si lo ai ");
+            btnActualizar.setEnabled(true);
+           btnIngresar.setEnabled(false);
+        }
+       
     }
     
     public void llenar() {
@@ -116,7 +132,8 @@ public class det_proyectos extends javax.swing.JFrame {
         txtID = new javax.swing.JTextField();
         cmbTiposEventos = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
-        btnInsertar1 = new javax.swing.JButton();
+        btnActualizar = new javax.swing.JButton();
+        btnIngresar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -222,13 +239,8 @@ public class det_proyectos extends javax.swing.JFrame {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtLugar, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 110, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtPresupuesto)
-                        .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 109, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -244,14 +256,18 @@ public class det_proyectos extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txtNoInvitados, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-            .addGroup(jPanel2Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGap(12, 12, 12)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel3)
                     .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(41, 41, 41)
                 .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5)
+                    .addComponent(txtPresupuesto, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -286,15 +302,14 @@ public class det_proyectos extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtLugar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 69, Short.MAX_VALUE)
-                    .addComponent(txtPresupuesto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(125, 125, 125))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtDireccion, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtPresupuesto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(146, 146, 146))
         );
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 960, 530));
@@ -305,16 +320,28 @@ public class det_proyectos extends javax.swing.JFrame {
         jLabel2.setText("MARINA MEZA COMPANION APP");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 280, -1, -1));
 
-        btnInsertar1.setBackground(new java.awt.Color(241, 172, 133));
-        btnInsertar1.setFont(new java.awt.Font("Dubai", 2, 24)); // NOI18N
-        btnInsertar1.setForeground(new java.awt.Color(255, 255, 255));
-        btnInsertar1.setText("Ingresar");
-        btnInsertar1.addActionListener(new java.awt.event.ActionListener() {
+        btnActualizar.setBackground(new java.awt.Color(241, 172, 133));
+        btnActualizar.setFont(new java.awt.Font("Dubai", 2, 24)); // NOI18N
+        btnActualizar.setForeground(new java.awt.Color(255, 255, 255));
+        btnActualizar.setText("Actualizar");
+        btnActualizar.setEnabled(false);
+        btnActualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnInsertar1ActionPerformed(evt);
+                btnActualizarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnInsertar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 30, 240, -1));
+        jPanel1.add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 30, 240, -1));
+
+        btnIngresar.setBackground(new java.awt.Color(241, 172, 133));
+        btnIngresar.setFont(new java.awt.Font("Dubai", 2, 24)); // NOI18N
+        btnIngresar.setForeground(new java.awt.Color(255, 255, 255));
+        btnIngresar.setText("Ingresar");
+        btnIngresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIngresarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnIngresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 30, 240, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -337,9 +364,14 @@ public class det_proyectos extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtHoraActionPerformed
 
-    private void btnInsertar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertar1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnInsertar1ActionPerformed
+    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
+    insertar();
+    }//GEN-LAST:event_btnActualizarActionPerformed
+
+    private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
+        agregar();
+        this.dispose();
+    }//GEN-LAST:event_btnIngresarActionPerformed
     public void agregar(){
     DetProyecto p = new DetProyecto(Integer.parseInt(txtID.getText()),Integer.parseInt(txtNoInvitados.getText())
             ,Integer.parseInt(txtPresupuesto.getText()),txtNombre.getText(),txtCiudad.getText(),
@@ -347,8 +379,52 @@ public class det_proyectos extends javax.swing.JFrame {
     p.insertar();
     }
 
+public void insertar() {
+    
+
+        int resultado;
+        try {
+            PreparedStatement enunciado;
+            enunciado = bd.getConexion().prepareStatement("UPDATE DET_PROYECTOS SET NOMBRE=?"
+                    + ",CUIDAD=?,PRESUPUESTO=?,NUMERO_INVITADOS=?,ID_TIPOEVENTO=?,LUGAR=?,HORA_EVENTO=?,DIRECCION_SALON=?"
+                    + "WHERE ID_PROYECTO=?");
+            
+            
+            
+            enunciado.setString(1,txtNombre.getText());
+            enunciado.setString(2, txtCiudad.getText());
+            //enunciado.setBigInt(3, Integer.parseInt(txtPresupuesto.getText()));
+            enunciado.setInt(4, Integer.parseInt(txtNoInvitados.getText()));
+            enunciado.setString(5,cmbTiposEventos.getSelectedItem().toString());
+            enunciado.setString(6, txtLugar.getText());
+            enunciado.setString(7, txtHora.getText());
+            enunciado.setString(8,txtDireccion.getText());
+            enunciado.setInt(9, Integer.parseInt(txtID.getText()));
+            resultado = enunciado.executeUpdate();
+            
+            if (resultado > 0) {
+                UIManager.put("OptionPane.background", Color.decode("#FBE5DA"));
+                UIManager.getLookAndFeelDefaults().put("Panel.background", Color.decode("#FBE5DA"));
+                UIManager.put("Button.background", Color.decode("#FBE5DA"));
+                Icon icono = new ImageIcon(getClass().getResource("/imagenes/insertado.png"));
+                JOptionPane.showMessageDialog(null,"Detalle_proy Actualizado Correctamente ", "Mensaje", JOptionPane.PLAIN_MESSAGE, icono);
+            } else {
+                UIManager.put("OptionPane.background", Color.decode("#FBE5DA"));
+                UIManager.getLookAndFeelDefaults().put("Panel.background", Color.decode("#FBE5DA"));
+                UIManager.put("Button.background", Color.decode("#FBE5DA"));
+                Icon icono = new ImageIcon(getClass().getResource("/imagenes/error.png"));
+                JOptionPane.showMessageDialog(null,"Error ", "Mensaje", JOptionPane.PLAIN_MESSAGE, icono);
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
+    }
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnInsertar1;
+    private javax.swing.JButton btnActualizar;
+    private javax.swing.JButton btnIngresar;
     private javax.swing.JComboBox<Clases.TipoEvento> cmbTiposEventos;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
