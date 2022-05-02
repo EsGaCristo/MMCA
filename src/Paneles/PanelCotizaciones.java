@@ -28,6 +28,8 @@ public class PanelCotizaciones extends javax.swing.JPanel {
     DefaultTableModel dtm;
     public static Servicio controlServicio;
     BaseDatos bd= new BaseDatos();
+    BigDecimal Ctotal;
+    BigDecimal Csubtotal;
     /**
      * Creates new form PanelCotizaciones
      */
@@ -84,13 +86,15 @@ public class PanelCotizaciones extends javax.swing.JPanel {
         txtPU = new javax.swing.JTextField();
         btnEliminar = new javax.swing.JButton();
         txtCantidad = new javax.swing.JTextField();
-        lblMonto = new javax.swing.JLabel();
+        lblTotal = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         btnAplicar = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblCotizacion = new javax.swing.JTable();
         jSpinner1 = new javax.swing.JSpinner();
         jLabel1 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        lblSubtotal = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(251, 229, 218));
         addFocusListener(new java.awt.event.FocusAdapter() {
@@ -249,13 +253,13 @@ public class PanelCotizaciones extends javax.swing.JPanel {
             }
         });
 
-        lblMonto.setBackground(new java.awt.Color(0, 0, 0));
-        lblMonto.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
-        lblMonto.setText("00.00");
+        lblTotal.setBackground(new java.awt.Color(0, 0, 0));
+        lblTotal.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        lblTotal.setText("00.00");
 
         jLabel4.setBackground(new java.awt.Color(0, 0, 0));
         jLabel4.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
-        jLabel4.setText("MONTO:");
+        jLabel4.setText("Total:");
 
         btnAplicar.setBackground(new java.awt.Color(241, 172, 133));
         btnAplicar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -325,7 +329,7 @@ public class PanelCotizaciones extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblMonto, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(lblTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(btAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -335,7 +339,7 @@ public class PanelCotizaciones extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 857, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -346,7 +350,7 @@ public class PanelCotizaciones extends javax.swing.JPanel {
                     .addComponent(txtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtPU, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblMonto, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -361,24 +365,35 @@ public class PanelCotizaciones extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel1.setText("Ingresar los Siguientes datos");
 
+        jLabel5.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel5.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        jLabel5.setText("Subtotal:");
+
+        lblSubtotal.setBackground(new java.awt.Color(0, 0, 0));
+        lblSubtotal.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        lblSubtotal.setText("00.00");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(52, 52, 52)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(52, 52, 52)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(75, 75, 75)
-                                .addComponent(jLabel2))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(64, 64, 64)
-                        .addComponent(jLabel1)))
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(75, 75, 75)
+                        .addComponent(jLabel2)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(64, 64, 64)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblSubtotal, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -388,7 +403,10 @@ public class PanelCotizaciones extends javax.swing.JPanel {
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblSubtotal, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -457,6 +475,7 @@ public class PanelCotizaciones extends javax.swing.JPanel {
          txtCantidad.setText("");
          txtConcepto.setText("");
          txtPU.setText("");
+         actualizarMontos();
                  
     }//GEN-LAST:event_btAgregarActionPerformed
     
@@ -489,6 +508,41 @@ public class PanelCotizaciones extends javax.swing.JPanel {
         int pos=servicios.size()-1;
         servicios.get(pos).setCantidad(numEntero);
     }
+    
+    /////////////////////////////////////////////////////////////
+    private void actualizarMontos() {
+
+        ResultSet resultado=null;
+        Connection connection=null;
+        Statement statement=null;
+       
+        try {
+            connection = bd.getConexion();
+            statement = connection.createStatement();
+             int IDCOT = Integer.parseInt(txtIdPro.getText());
+            String selectSql = "{call sp_obtn_montos ("+IDCOT+")}";
+            resultado= statement.executeQuery(selectSql);
+          
+            while(resultado.next()){
+                System.out.println("seejecuta");
+            Csubtotal=resultado.getBigDecimal("SUBTOTAL");
+            Ctotal=resultado.getBigDecimal("TOTAL");
+            lblSubtotal.setText(Csubtotal.toString());
+            lblTotal.setText(Ctotal.toString());
+
+            
+            }
+           
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            
+        }finally{
+            bd.cerrar(statement, resultado);
+            
+        }
+    }
+    
+    
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         new ServiciosCotizacion().setVisible(true);
         System.out.println(controlServicio);
@@ -528,6 +582,7 @@ public class PanelCotizaciones extends javax.swing.JPanel {
         buscarCot();
         //System.out.println("se ejecuto esto");
         //llenarTabla2();
+        actualizarMontos();
     }//GEN-LAST:event_btnBucarCotActionPerformed
 
     private void cbxpProyActActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxpProyActActionPerformed
@@ -606,7 +661,7 @@ public class PanelCotizaciones extends javax.swing.JPanel {
              System.out.println(servicios.get(i));
             }
          
-         lblMonto.setText(sum.toString());
+         lblTotal.setText(sum.toString());
      }
      
      public void llenarTabla2(){
@@ -627,7 +682,7 @@ public class PanelCotizaciones extends javax.swing.JPanel {
              System.out.println(servicios.get(i));
             }
          
-         lblMonto.setText(sum.toString());
+         //lblSubtotal.setText(sum.toString());
      }
     
 
@@ -670,11 +725,13 @@ public class PanelCotizaciones extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSpinner jSpinner1;
-    private javax.swing.JLabel lblMonto;
+    private javax.swing.JLabel lblSubtotal;
+    private javax.swing.JLabel lblTotal;
     private javax.swing.JTable tblCotizacion;
     private javax.swing.JTextField txtCantidad;
     private javax.swing.JTextField txtConcepto;
