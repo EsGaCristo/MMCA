@@ -140,6 +140,11 @@ public class PanelPersonal extends javax.swing.JPanel {
                 "Nombre", "Rango"
             }
         ));
+        tblUsuarios.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblUsuariosMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblUsuarios);
 
         jLabel5.setBackground(new java.awt.Color(255, 102, 51));
@@ -177,6 +182,11 @@ public class PanelPersonal extends javax.swing.JPanel {
         jButton1.setBackground(new java.awt.Color(251, 229, 218));
         jButton1.setFont(new java.awt.Font("Dubai", 1, 18)); // NOI18N
         jButton1.setText("Limpiar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -251,8 +261,7 @@ public class PanelPersonal extends javax.swing.JPanel {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                            .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(44, 44, 44))
         );
 
@@ -274,6 +283,7 @@ public class PanelPersonal extends javax.swing.JPanel {
         int h=cmbPermisos.getSelectedIndex();
         if(h<1){showMessageDialog(this,"SELECCIONA EL PERMISO"); return;}  
         agregar();
+        limpiar();
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
@@ -283,6 +293,7 @@ public class PanelPersonal extends javax.swing.JPanel {
           
         eliminar();
         actualizar();
+        limpiar();
     }else
        System.out.println("No se ha eliminado");
 
@@ -295,12 +306,25 @@ public class PanelPersonal extends javax.swing.JPanel {
         int h=cmbPermisos.getSelectedIndex();
         if(h<1){showMessageDialog(this,"SELECCIONA EL PERMISO"); return;} 
         editar();
+        limpiar();
     }//GEN-LAST:event_btnActualizarActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
      if(validaCampo(txtNombre))return;
      buscar2();
     }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void tblUsuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblUsuariosMouseClicked
+        limpiar();
+        int col = tblUsuarios.getSelectedRow();
+        txtNombre.setText(tblUsuarios.getModel().getValueAt(col, 0).toString());
+        //txtPass.setText(tblUsuarios.getModel().getValueAt(col, 1).toString());
+        cmbPermisos.setSelectedItem(tblUsuarios.getModel().getValueAt(col, 1));        // TODO add your handling code here:
+    }//GEN-LAST:event_tblUsuariosMouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        limpiar();
+    }//GEN-LAST:event_jButton1ActionPerformed
     public void actualizar(){        
         for (int i = 0; i >=dtm.getRowCount()-1 ; i++) {
             dtm.removeRow(i);
@@ -310,6 +334,12 @@ public class PanelPersonal extends javax.swing.JPanel {
     buscar();
     llenarTabla();
     }
+
+ public void limpiar(){
+  txtNombre.setText("");
+  txtPass.setText("");
+  
+  }
     public void agregar(){
         int rango;
         if (cmbPermisos.getSelectedItem().equals("Administrador")) {
@@ -395,13 +425,13 @@ private void buscar2() {
         try {
             connection = bd.getConexion();
             statement = connection.createStatement();
-            String concepto= txtNombre.getText();
-            String selectSql = "SELECT * FROM personal WHERE nombre_usuario=?";
+            String nom= txtNombre.getText();
+            String selectSql = "SELECT * FROM PERSONAL WHERE NOMBRE_USUARIO='"+nom+"'";
             resultado= statement.executeQuery(selectSql);
             
             if(resultado.next()){
-                txtNombre.setText(resultado.getString("CONCEPTO"));
-                txtPass.setText(resultado.getString("PROVEEDOR"));
+                txtNombre.setText(resultado.getString("NOMBRE_USUARIO"));
+                txtPass.setText(resultado.getString("CONTRASEÑA"));
                // cmbPermisos.setSelectedIndex(obtenerPosicion(resultado.getInt("TIPO_SERVICIO")));
                 
 
@@ -413,14 +443,14 @@ private void buscar2() {
                 UIManager.getLookAndFeelDefaults().put("Panel.background", Color.decode("#FBE5DA"));
                 UIManager.put("Button.background", Color.decode("#FBE5DA"));
                 Icon icono = new ImageIcon(getClass().getResource("/imagenes/busqueda.png"));
-                JOptionPane.showMessageDialog(null,"Servicio Encontrado Correctamente ", "Mensaje", JOptionPane.PLAIN_MESSAGE, icono);  
+                JOptionPane.showMessageDialog(null,"Usuario Encontrado Correctamente ", "Mensaje", JOptionPane.PLAIN_MESSAGE, icono);  
 
             }else{
                 UIManager.put("OptionPane.background", Color.decode("#FBE5DA"));
                 UIManager.getLookAndFeelDefaults().put("Panel.background", Color.decode("#FBE5DA"));
                 UIManager.put("Button.background", Color.decode("#FBE5DA"));
                 Icon icono = new ImageIcon(getClass().getResource("/imagenes/cliente no encontrado.png"));
-                JOptionPane.showMessageDialog(null,"Servicio No Encontrado, intentelo nuevamente", "Mensaje", JOptionPane.PLAIN_MESSAGE, icono);
+                JOptionPane.showMessageDialog(null,"Usuario No Encontrado, intentelo nuevamente", "Mensaje", JOptionPane.PLAIN_MESSAGE, icono);
                  
             }
         } catch (Exception ex) {
@@ -440,7 +470,7 @@ private void buscar2() {
 
         try {
             PreparedStatement enunciado;
-            enunciado = bd.getConexion().prepareStatement("update personal set nombre_usuario=?, contraseña=?, Rango=?, "
+            enunciado = bd.getConexion().prepareStatement("update personal set nombre_usuario=?, contraseña=?, Rango=? "
                     +" where nombre_usuario=?");
             
             enunciado.setString(1, txtNombre.getText());
