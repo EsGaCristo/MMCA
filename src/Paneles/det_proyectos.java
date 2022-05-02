@@ -63,7 +63,7 @@ String texto=txtNombre.getText();
             connection = bd.getConexion();
             statement = connection.createStatement();
             String id= txtID.getText();
-            String selectSql = "SELECT * from DET_PROYECTOS where ID_DET='"+id+"'";
+            String selectSql = "SELECT * from DET_PROYECTOS where ID_PROYECTO='"+id+"'";
             resultado= statement.executeQuery(selectSql);
             
             if(resultado.next()){

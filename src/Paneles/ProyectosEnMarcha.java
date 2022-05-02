@@ -49,7 +49,7 @@ public class ProyectosEnMarcha extends javax.swing.JFrame {
 
         jLabel8 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        FINALIZARPROYECTO = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         btnGenerarContrato = new javax.swing.JButton();
         btnPagos = new javax.swing.JButton();
@@ -76,15 +76,15 @@ public class ProyectosEnMarcha extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(251, 229, 218));
 
-        jButton1.setBackground(new java.awt.Color(241, 172, 133));
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("   Final Proyecto");
-        jButton1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(241, 172, 133), 4, true));
-        jButton1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        FINALIZARPROYECTO.setBackground(new java.awt.Color(241, 172, 133));
+        FINALIZARPROYECTO.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        FINALIZARPROYECTO.setForeground(new java.awt.Color(255, 255, 255));
+        FINALIZARPROYECTO.setText("   Final Proyecto");
+        FINALIZARPROYECTO.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(241, 172, 133), 4, true));
+        FINALIZARPROYECTO.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        FINALIZARPROYECTO.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                FINALIZARPROYECTOActionPerformed(evt);
             }
         });
 
@@ -246,7 +246,7 @@ public class ProyectosEnMarcha extends javax.swing.JFrame {
                                         .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(jButton9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(FINALIZARPROYECTO, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -308,7 +308,7 @@ public class ProyectosEnMarcha extends javax.swing.JFrame {
                                 .addGap(71, 71, 71)))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(FINALIZARPROYECTO, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(74, 74, 74)))
                 .addContainerGap(61, Short.MAX_VALUE))
         );
@@ -332,9 +332,9 @@ public class ProyectosEnMarcha extends javax.swing.JFrame {
         buscar();
     }
     
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void FINALIZARPROYECTOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FINALIZARPROYECTOActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_FINALIZARPROYECTOActionPerformed
 
     private void btnGenerarContratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarContratoActionPerformed
         try {
@@ -414,10 +414,10 @@ public class ProyectosEnMarcha extends javax.swing.JFrame {
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton FINALIZARPROYECTO;
     private javax.swing.JButton btnGenerarContrato;
     private javax.swing.JButton btnGestionar;
     private javax.swing.JButton btnPagos;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton7;

@@ -420,7 +420,7 @@ public class PanelCotizaciones extends javax.swing.JPanel {
        buscarCot();
     }else
        System.out.println("No se ha eliminado");
-        
+         actualizarMontos();
     }//GEN-LAST:event_btnEliminarActionPerformed
     private void Presupuesto() {
         ResultSet resultado=null;
