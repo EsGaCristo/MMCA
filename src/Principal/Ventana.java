@@ -23,14 +23,18 @@ public class Ventana extends javax.swing.JFrame {
     JPanel jpnCotizaciones = new PanelCotizaciones();
     JPanel jpnProductos = new PanelProductos();
     JPanel jpnPersonal = new PanelPersonal();
+    int rango;
 
-    public Ventana() {
+    public Ventana(int rango) {
         initComponents();
         this.setLocationRelativeTo(this);
         bd.conectar();
         jpnPaneles.add(jpnClientes);
+        this.rango = rango;
+        desactivar();
         
     }
+    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -265,8 +269,8 @@ public class Ventana extends javax.swing.JFrame {
     
     
     private void btnClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClienteActionPerformed
-         jpnClientes.setVisible(true);
          
+        jpnClientes.setVisible(true); 
          jpnPersonal.setVisible(false);
          jpnProyectos.setVisible(false);
          jpnCotizaciones.setVisible(false);
@@ -278,7 +282,8 @@ public class Ventana extends javax.swing.JFrame {
     }//GEN-LAST:event_btnClienteActionPerformed
 
     private void btnCotizacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCotizacionesActionPerformed
-         jpnCotizaciones.setVisible(true);
+        
+        jpnCotizaciones.setVisible(true);
          jpnPersonal.setVisible(false);
          jpnClientes.setVisible(false);
          jpnProyectos.setVisible(false);
@@ -369,6 +374,18 @@ public class Ventana extends javax.swing.JFrame {
     private javax.swing.JPanel jpnTitulo;
     private javax.swing.JPanel jpnlogo;
     // End of variables declaration//GEN-END:variables
+
+    private void desactivar() {
+    if(rango >=3){
+        btnCotizaciones.setEnabled(false);
+        btnServicios.setEnabled(false);
+        btnPersonal.setEnabled(false);
+    } 
+    else if (rango == 2) {
+            btnPersonal.setEnabled(false);
+    }
+    
+    }
 
     
 }

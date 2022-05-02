@@ -176,7 +176,7 @@ public class login extends javax.swing.JFrame {
             if(resultado.next()){
                 if (resultado.getBoolean("ESTADO")) {
                     //permiso=true; 
-                    new Ventana().setVisible(true);  
+                    new Ventana(resultado.getInt("RANGO")).setVisible(true);  
                     this.dispose();
                 }else{
                             new FrameCambiarPassword(
@@ -242,7 +242,7 @@ public class login extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new login().setVisible(true);
-                new Ventana().setVisible(false);  
+                //new Ventana().setVisible(false);  
                 
             }
         });
