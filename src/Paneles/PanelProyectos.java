@@ -150,7 +150,7 @@ public class PanelProyectos extends javax.swing.JPanel {
         jLabel3.setBackground(new java.awt.Color(255, 102, 51));
         jLabel3.setFont(new java.awt.Font("Consolas", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(241, 172, 133));
-        jLabel3.setText("Proyectos Proximos");
+        jLabel3.setText("Eventos Proximos");
         jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/busqueda.png"))); // NOI18N
@@ -210,7 +210,7 @@ public class PanelProyectos extends javax.swing.JPanel {
                 .addGroup(pnProximosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnProximosLayout.createSequentialGroup()
                         .addComponent(jLabel3)
-                        .addContainerGap(752, Short.MAX_VALUE))
+                        .addContainerGap(769, Short.MAX_VALUE))
                     .addGroup(pnProximosLayout.createSequentialGroup()
                         .addComponent(obj9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(32, 32, 32)
@@ -253,7 +253,7 @@ public class PanelProyectos extends javax.swing.JPanel {
         jLabel1.setBackground(new java.awt.Color(255, 102, 51));
         jLabel1.setFont(new java.awt.Font("Consolas", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(241, 172, 133));
-        jLabel1.setText("Proyectos en marcha");
+        jLabel1.setText("Eventos en marcha");
         jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         obj1.addMouseListener(new java.awt.event.MouseAdapter() {
