@@ -153,7 +153,7 @@ public class Ventana extends javax.swing.JFrame {
         btnProyectos.setBackground(new java.awt.Color(241, 172, 133));
         btnProyectos.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnProyectos.setForeground(new java.awt.Color(255, 255, 255));
-        btnProyectos.setText("PROYECTOS");
+        btnProyectos.setText("EVENTOS");
         btnProyectos.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         btnProyectos.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnProyectos.addMouseListener(new java.awt.event.MouseAdapter() {
