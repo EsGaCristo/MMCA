@@ -261,13 +261,23 @@ public void eliminarTb(){
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
-      
+      actualizar();
       if(DateFin.getDate()!=null) {
       editar();
-      }
       buscar();
+      }
+      this.dispose();
     }//GEN-LAST:event_btnActualizarActionPerformed
 
+    public void actualizar(){        
+        for (int i = 0; i >=dtm.getRowCount()-1 ; i++) {
+            dtm.removeRow(i);
+        }
+    //dtm.setRowCount(0);
+    //proyectos.clear();
+    // buscar();
+    //llenarTabla();
+    }
     private void TablaPPMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablaPPMouseClicked
         
             String ID = ""+ dtm.getValueAt(TablaPP.getSelectedRow(),0);
