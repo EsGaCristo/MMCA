@@ -1,6 +1,7 @@
 
 package Principal;
 
+import Frames.FrameCambiarPassword;
 import Principal.BaseDatos;
 import Principal.Ventana;
 import java.awt.Color;
@@ -27,6 +28,8 @@ public class login extends javax.swing.JFrame {
         this.setLocationRelativeTo(this);
         
     }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -171,10 +174,18 @@ public class login extends javax.swing.JFrame {
             resultado= statement.executeQuery(selectSql);
   
             if(resultado.next()){
-                permiso=true; 
-                //System.exit(0);
-                new Ventana().setVisible(true);  
-                this.dispose();
+                if (resultado.getBoolean("ESTADO")) {
+                    //permiso=true; 
+                    new Ventana(resultado.getInt("RANGO")).setVisible(true);  
+                    this.dispose();
+                }else{
+                            new FrameCambiarPassword(
+                            resultado.getString("NOMBRE_USUARIO"),
+                            resultado.getString("CONTRASEÑA")
+                         ).setVisible(true);
+                          this.dispose();
+                }
+                
                 
             }else{
                 UIManager.put("OptionPane.background", Color.decode("#FBE5DA"));
@@ -231,7 +242,7 @@ public class login extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new login().setVisible(true);
-                new Ventana().setVisible(false);  
+                //new Ventana().setVisible(false);  
                 
             }
         });

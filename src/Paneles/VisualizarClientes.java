@@ -32,6 +32,7 @@ public class VisualizarClientes extends javax.swing.JFrame {
     public VisualizarClientes() {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         dtm=(DefaultTableModel) TablaCliente.getModel();
         buscar();
         llenarTabla();
