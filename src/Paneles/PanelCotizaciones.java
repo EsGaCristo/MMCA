@@ -529,7 +529,7 @@ public class PanelCotizaciones extends javax.swing.JPanel {
             Ctotal=resultado.getBigDecimal("TOTAL");
             lblSubtotal.setText(Csubtotal.toString());
             lblTotal.setText(Ctotal.toString());
-
+                
             
             }
            

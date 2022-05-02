@@ -66,7 +66,7 @@
                           <EmptySpace pref="32" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="1" attributes="0">
-                                  <Component id="jButton6" min="-2" pref="386" max="-2" attributes="0"/>
+                                  <Component id="btnPagos" min="-2" pref="386" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="103" alignment="1" groupAlignment="0" attributes="0">
@@ -82,7 +82,7 @@
                                   <Component id="jButton10" min="-2" pref="60" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
-                                  <Component id="jButton3" min="-2" pref="386" max="-2" attributes="0"/>
+                                  <Component id="btnGenerarContrato" min="-2" pref="386" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="jButton8" min="-2" pref="60" max="-2" attributes="0"/>
                               </Group>
@@ -119,7 +119,7 @@
                           <EmptySpace max="32767" attributes="0"/>
                           <Component id="lblCostoProy" min="-2" pref="27" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jButton3" min="-2" pref="56" max="-2" attributes="0"/>
+                          <Component id="btnGenerarContrato" min="-2" pref="56" max="-2" attributes="0"/>
                       </Group>
                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
                           <Component id="jButton8" min="-2" pref="56" max="-2" attributes="0"/>
@@ -146,7 +146,7 @@
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
-                                  <Component id="jButton6" min="-2" pref="56" max="-2" attributes="0"/>
+                                  <Component id="btnPagos" min="-2" pref="56" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -202,7 +202,7 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton3">
+        <Component class="javax.swing.JButton" name="btnGenerarContrato">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="85" green="ac" red="f1" type="rgb"/>
@@ -224,10 +224,10 @@
             <Property name="horizontalAlignment" type="int" value="2"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnGenerarContratoActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton6">
+        <Component class="javax.swing.JButton" name="btnPagos">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="85" green="ac" red="f1" type="rgb"/>
@@ -249,7 +249,7 @@
             <Property name="horizontalAlignment" type="int" value="2"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton6ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPagosActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jButton7">
