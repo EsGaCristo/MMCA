@@ -156,6 +156,9 @@ public class login extends javax.swing.JFrame {
     
     
     ////////////////////////buscar//////////////////////////////////
+    /**
+     * esta funcion ayuda a buscar el usuario que va a iniciar sesion en el sistema
+     */
      private void buscar() {
          
         ResultSet resultado=null;

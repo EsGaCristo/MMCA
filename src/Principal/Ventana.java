@@ -236,6 +236,9 @@ public class Ventana extends javax.swing.JFrame {
     
     
      //////////////////conectar/////////////////////
+    /**
+     * Conecta el proyecto con la base de datos
+     */
     private void conectar() {
 
         String URL = "jdbc:sqlserver://sql5107.site4now.net:1433;"
@@ -258,6 +261,7 @@ public class Ventana extends javax.swing.JFrame {
     
     
     ///////////////acciones botones ect ///////////////////////////
+    
     private void botonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonMouseEntered
        evt.getComponent().setBackground(new Color(170,133,111));
         
@@ -375,6 +379,10 @@ public class Ventana extends javax.swing.JFrame {
     private javax.swing.JPanel jpnlogo;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     * Esta función ayuda para que los botones correspondientes a cada rango se 
+     * activen/desactiven
+     */
     private void desactivar() {
     if(rango >=3){
         btnCotizaciones.setEnabled(false);
