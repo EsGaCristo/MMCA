@@ -53,7 +53,10 @@ String texto=txtNombre.getText();
         }
        
     }
-    
+    /**
+     * Se llenan los campos, esto se logra
+     * gracias a una consulta en la base de datos
+     */
     public void llenar() {
          
         ResultSet resultado=null;
@@ -86,7 +89,9 @@ String texto=txtNombre.getText();
     }
     public void id(){ txtID.setText(""+this.idProyecto);}
     
-         
+      /**
+       * Se llena el combobox del tipo de evento mediante una consulta en la bd
+       */  
     public void LLenarCombo(){
         ResultSet resultado=null;
         Connection connection=null;
@@ -373,13 +378,18 @@ String texto=txtNombre.getText();
         agregar();
         this.dispose();
     }//GEN-LAST:event_btnIngresarActionPerformed
+    /**
+     * Se agregan los detalles del proyecto
+     */
     public void agregar(){
     DetProyecto p = new DetProyecto(Integer.parseInt(txtID.getText()),Integer.parseInt(txtNoInvitados.getText())
             ,Integer.parseInt(txtPresupuesto.getText()),txtNombre.getText(),txtCiudad.getText(),
             txtLugar.getText(),txtDireccion.getText(),txtHora.getText(),cmbTiposEventos.getSelectedItem().toString());
     p.insertar();
     }
-
+/**
+ * Se actualizan los datos en la base de datos con los datos nuevos
+ */
 public void actualizar() {
     
 

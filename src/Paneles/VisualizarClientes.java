@@ -132,7 +132,10 @@ public class VisualizarClientes extends javax.swing.JFrame {
 
     
    
-
+    /**
+     * Con ayuda de una consulta de la base de datos se busca el cliente para que
+     * se pueda visualizar
+     */
      private void buscar() {         
         ResultSet resultado=null;
         Connection connection=null;
@@ -157,6 +160,9 @@ public class VisualizarClientes extends javax.swing.JFrame {
             llenarTabla();
         }
     }
+     /**
+      * Se llena la tabla de clientes
+      */
      public void llenarTabla(){
          Object O[]=null;
          for (int i = 0; i < clientes.size(); i++) {

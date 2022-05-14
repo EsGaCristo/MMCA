@@ -40,6 +40,12 @@ public class PanelPersonal extends javax.swing.JPanel {
         buscar();
         llenarTabla();
     }
+      /**
+       * validaCampo
+       * Esta funcion valida que los campos hayan sido llenados correctamente
+       * @param t
+       * @return true o false
+       */
  private boolean validaCampo(JTextField t){
         try{
             estaVacio(t);
@@ -49,6 +55,12 @@ public class PanelPersonal extends javax.swing.JPanel {
         }
         return false;
     }
+ /**
+  * esEntero
+  * valida que el valor introducido sea entero
+  * @param val
+  * @return true or false
+  */
     public boolean esEntero(String val){
         float cant=0;
         try{
@@ -60,7 +72,12 @@ public class PanelPersonal extends javax.swing.JPanel {
        if(cant>0){return true;
        }else{showMessageDialog(this,"El valor debe ser >0","Personal", JOptionPane.INFORMATION_MESSAGE); return false;}
     }
-
+/**
+ * estaVacio
+ * Esta funcion ayuda para revisar que no haya espacios vacios
+ * @param t
+ * @throws ProyectoExcepcion 
+ */
    private void estaVacio(JTextField t)throws ProyectoExcepcion{
         String cad=t.getText().trim();
         if(cad.equals(""))throw new ProyectoExcepcion("Campo vacio");
@@ -325,6 +342,10 @@ public class PanelPersonal extends javax.swing.JPanel {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         limpiar();
     }//GEN-LAST:event_jButton1ActionPerformed
+    /**
+     * actualizar
+     * esta funcion nos sirve para actualizar la tabla
+     */
     public void actualizar(){        
         for (int i = 0; i >=dtm.getRowCount()-1 ; i++) {
             dtm.removeRow(i);
@@ -334,12 +355,19 @@ public class PanelPersonal extends javax.swing.JPanel {
     buscar();
     llenarTabla();
     }
-
+/**
+ * limpiar
+ * nos ayuda a limpiar los campos
+ */
  public void limpiar(){
   txtNombre.setText("");
   txtPass.setText("");
   
   }
+ /**
+  * Agregar
+  * agrega al personal
+  */
     public void agregar(){
         int rango;
         if (cmbPermisos.getSelectedItem().equals("Administrador")) {
@@ -354,7 +382,10 @@ public class PanelPersonal extends javax.swing.JPanel {
         txtNombre.setText("");
         txtPass.setText("");
     }
-
+/**
+ * buscar
+ * Mediante un select en la base de datos busca al cliente que se requiere
+ */
      private void buscar() {         
         ResultSet resultado=null;
         Connection connection=null;
@@ -379,6 +410,10 @@ public class PanelPersonal extends javax.swing.JPanel {
             llenarTabla();
         }
     }
+     /**
+      * llenarTabla
+      * Se llena la tabla con los datos necesarios
+      */
      public void llenarTabla(){
          Object O[]=null;
          for (int i = 0; i < personal.size(); i++) {
@@ -388,7 +423,10 @@ public class PanelPersonal extends javax.swing.JPanel {
             dtm.setValueAt(per.getRango(), i, 1);
             }
      }
-
+     /**
+      * eliminar
+      * se elimina de la base de datos el personal
+     */
      private void eliminar() {   
         int resultado;
         try {
@@ -416,7 +454,10 @@ public class PanelPersonal extends javax.swing.JPanel {
 
     } 
 
-
+/**
+ * buscar2
+ * busca en la base de datos el personal solicitado
+     */
 private void buscar2() {
          
         ResultSet resultado=null;
@@ -462,7 +503,10 @@ private void buscar2() {
         
         
     }
-
+/**
+ * editar
+ * esta funcion sirve para actualizar datos de algun personal que se quiera editar
+ */
    private void editar(){
 
         int resultado;

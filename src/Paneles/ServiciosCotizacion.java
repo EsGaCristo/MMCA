@@ -38,7 +38,9 @@ public class ServiciosCotizacion extends javax.swing.JFrame {
         dtm=(DefaultTableModel) tblServicios.getModel();
        LLenarCombo();
     }
-
+/**
+ * LLena el combobox de los tipos de servicios agregados
+ */
     public void LLenarCombo(){
         ResultSet resultado=null;
         Connection connection=null;
@@ -209,7 +211,11 @@ public class ServiciosCotizacion extends javax.swing.JFrame {
             dispose();
        }
     }//GEN-LAST:event_tblServiciosKeyReleased
-    
+    /**
+     * Obtiene el servicio solicitado
+     * @param codd
+     * @return 
+     */
     private Servicio obtenerServicio(int codd){
         Servicio servicioo=null;
         for (int i = 0; i < servicios.size(); i++) {
@@ -224,6 +230,10 @@ public class ServiciosCotizacion extends javax.swing.JFrame {
    
     /////////////////////////////////////////////////
         ////////////////////////buscar//////////////////////////////////
+    /**
+     * Mediante un select en la base de datos busca el servicio que se busca,
+     * al igual que el tipo de servicio
+     */
      private void buscar() {
         servicios.clear();
         eliminarTb();
@@ -257,7 +267,9 @@ public class ServiciosCotizacion extends javax.swing.JFrame {
             llenarTabla();
         }
     }
-     
+     /**
+      * Llena la tabla de servicios
+      */
      public void llenarTabla(){
          Object O[]=null;
          for (int i = 0; i < servicios.size(); i++) {
@@ -269,7 +281,9 @@ public class ServiciosCotizacion extends javax.swing.JFrame {
             dtm.setValueAt(ser.getProvedor(), i, 3);
             }
      }
-     
+     /**
+      * Elimina un renglon de la tabla
+      */
     public void eliminarTb(){
         int a = tblServicios.getRowCount()-1;
         for (int i = a; i >= 0; i--) {          

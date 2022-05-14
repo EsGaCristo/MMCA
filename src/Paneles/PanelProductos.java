@@ -46,6 +46,12 @@ public class PanelProductos extends javax.swing.JPanel {
         buscar();
         //llenarTabla();
     }
+    /**
+     * validaCampo
+     * valida los campos
+     * @param t
+     * @return 
+     */
  private boolean validaCampo(JTextField t){
         try{
             estaVacio(t);
@@ -55,12 +61,20 @@ public class PanelProductos extends javax.swing.JPanel {
         }
         return false;
     }
-    
+    /**
+     * valida que ningun campo esté vacío
+     * @param t
+     * @throws ProyectoExcepcion 
+     */
     private void estaVacio(JTextField t)throws ProyectoExcepcion{
         String cad=t.getText().trim();
         if(cad.equals(""))throw new ProyectoExcepcion("Campo vacio");
     }
-
+/**
+ * valida que lo que se introdujo sea entero
+ * @param val
+ * @return 
+ */
 public boolean esEntero(String val){
         float cant=0;
         try{
@@ -75,7 +89,9 @@ public boolean esEntero(String val){
 
 
 
-
+/**
+ * Inserta un producto a través de un insert en la base de datos
+ */
   private void insertar() {
 
         int resultado;
@@ -115,7 +131,9 @@ public boolean esEntero(String val){
         }
 
     }
-  
+  /**
+   * se actualiza la tablas
+   */
     public void actualizar(){        
         for (int i = 0; i >=dtm.getRowCount()-1 ; i++) {
             dtm.removeRow(i);
@@ -126,7 +144,9 @@ public boolean esEntero(String val){
     llenarTabla();
     }
 
-
+    /**
+     * llena el combobox de tipo de servicio
+     */
     public void LLenarCombo(){
         ResultSet resultado=null;
         Connection connection=null;
@@ -147,6 +167,9 @@ public boolean esEntero(String val){
         }
     }
     
+    /**
+     * elimina un producto
+     */
  private void borrar() {   
         int resultado;
         try {
@@ -173,7 +196,9 @@ public boolean esEntero(String val){
         }
 
     }    
-    
+    /**
+     * Llena la tabla de productos
+     */
  public void llenarTabla(){
          Object O[]=null;
          for (int i = 0; i < servicios.size(); i++) {
@@ -190,6 +215,9 @@ public boolean esEntero(String val){
             
             }
      }
+ /**
+  * Valida la opción
+  */
 public void Validar(){
 int n=cmbTipo.getItemCount();
         switch (n){
@@ -227,6 +255,10 @@ int n=cmbTipo.getItemCount();
       }//cierra SWITCH
 
 }
+
+/**
+ * busca en la base de datos el servicio requerido
+ */
 
 private void buscar2() {
          
@@ -277,7 +309,9 @@ private void buscar2() {
         
     }
 
- 
+ /**
+  * busca el producto mediante un select en la base de datos
+  */
      private void buscar() {         
         ResultSet resultado=null;
         Connection connection=null;
@@ -308,6 +342,9 @@ private void buscar2() {
         }
     }
 
+     /**
+      * Esta función sirve para editar o actualizar datos de un producto
+      */
 private void editar(){
 
         int resultado;
@@ -701,6 +738,9 @@ private void editar(){
         new Tipo_Servicio_JFrame().setVisible(true);
         
     }//GEN-LAST:event_jButton1ActionPerformed
+   /**
+    * limpia los campos
+    */
     public void limpiar(){
         txtNombre.setText("");
         txtProveedor.setText("");

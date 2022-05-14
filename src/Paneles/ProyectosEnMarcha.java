@@ -29,7 +29,7 @@ public class ProyectosEnMarcha extends javax.swing.JFrame {
     /**
      * Creates new form ProyectosEnMarcha
      */
-    public ProyectosEnMarcha(int idProyecto) {
+ ProyectosEnMarcha(int idProyecto) {
         initComponents();
         this.idProyecto=idProyecto;
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -326,7 +326,9 @@ public class ProyectosEnMarcha extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    
+    /**
+     * Actualiza el estado del proyecto
+     */
     private void actualizar(){
         lblIdProy.setText("ID PROYECTO "+idProyecto);
         buscar();
@@ -354,6 +356,9 @@ public class ProyectosEnMarcha extends javax.swing.JFrame {
     }//GEN-LAST:event_btnGestionarActionPerformed
     
     ////////////////////////buscar//////////////////////////////////
+    /**
+     * Busca el proyecto mediante un sp de la base de datos
+     */
      private void buscar() {
         ResultSet resultado=null;
         Connection connection=null;
@@ -387,6 +392,9 @@ public class ProyectosEnMarcha extends javax.swing.JFrame {
      
      
      ///////////////////////buscar//////////////////////////////////
+     /**
+      * Busca un proyecto mediante un select
+      */
      private void buscarRESTANTE() {
         ResultSet resultado=null;
         Connection connection=null;

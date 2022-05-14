@@ -44,11 +44,18 @@ public class Panelclientes extends javax.swing.JPanel {
         }
         return false;
     }
-    
+    /**
+     * Revisa si hay un campo vacio
+     * @param t
+     * @throws ProyectoExcepcion 
+     */
     private void estaVacio(JTextField t)throws ProyectoExcepcion{
         String cad=t.getText().trim();
         if(cad.equals(""))throw new ProyectoExcepcion("Campo vacio");
     }
+    /**
+     * Limpia los campos
+     */
     private void limpiarcampo(){
                 txtNombre.setText("");
                 txtApellidos.setText("");
@@ -61,7 +68,11 @@ public class Panelclientes extends javax.swing.JPanel {
     
 
     }
-
+/**
+ * Valida que sea entero
+ * @param val
+ * @return 
+ */
 public boolean esEntero(String val){
         float cant=0;
         try{
@@ -442,6 +453,9 @@ public boolean esEntero(String val){
    ///////////////////////BD//////////////////////////////////////////
       ////////////////insertar//////////////////////////////////
     //HOLA
+    /**
+     * inserta a la base de datos un cliente nuevo
+     */
     private void insertar() {
 
         int resultado;
@@ -480,6 +494,9 @@ public boolean esEntero(String val){
     }
     
     ////////////////////////buscar//////////////////////////////////
+    /**
+     * Busca un cliente por medio de su nombre y apellido
+     */
      private void buscar() {
          
         ResultSet resultado=null;
@@ -525,6 +542,9 @@ public boolean esEntero(String val){
     }
     
      ////////////////////////borrar//////////////////////////////////
+     /**
+      * Elimiba un cliente por medio de su nombre y apellido
+      */
        private void borrar() {
 
         int resultado;
@@ -556,7 +576,9 @@ public boolean esEntero(String val){
     }
     
     ////////////////actualizar//////////////////////////////////
-
+       /**
+        * Actualiza los datos de un cliente
+        */
     private void actualizar(){
 
         int resultado;

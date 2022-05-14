@@ -33,12 +33,18 @@ public class Tipo_Servicio_JFrame extends javax.swing.JFrame {
         buscar();
         llenarTabla();
     }
-    
+    /**
+     * limpia los campos
+     */
     public void limpiar(){
         txtCat.setText("");
         txtID.setText("");
     }
-
+    /**
+     * Valida que los campos hayan sido llenados
+     * @param t
+     * @return 
+     */
     private boolean validaCampo(JTextField t){
             try{
                 estaVacio(t);
@@ -54,6 +60,11 @@ public class Tipo_Servicio_JFrame extends javax.swing.JFrame {
             if(cad.equals(""))throw new ProyectoExcepcion("Campo Nombre vacio");
         }
 
+        /**
+         * Verifica que el caracter ingresado sea entero
+         * @param val
+         * @return 
+         */
     public boolean esEntero(String val){
             float cant=0;
             try{
@@ -263,7 +274,10 @@ public class Tipo_Servicio_JFrame extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_tblCatMouseClicked
-     private void borrar() {   
+    /**
+     * Elimina un tipo de servicio mediante un delete de la base de datos.
+     */ 
+    private void borrar() {   
         int resultado;
         try {
             PreparedStatement enunciado;
@@ -289,7 +303,9 @@ public class Tipo_Servicio_JFrame extends javax.swing.JFrame {
         }
 
     } 
-
+    /**
+     * Actualiza los datos de la tabla
+     */
     public void actualizar(){        
         for (int i = 0; i >=dtm.getRowCount()-1 ; i++) {
             dtm.removeRow(i);
@@ -299,13 +315,18 @@ public class Tipo_Servicio_JFrame extends javax.swing.JFrame {
     buscar();
     llenarTabla();
     }
+    /** 
+     * se agrega a la tabla  
+     */
     public void agregar(){
         Categorias user = new Categorias(txtCat.getText());
         user.insertar();
         actualizar();
         txtCat.setText("");
     }
-
+    /**
+     * Mediante una consulta en la base de datos se busca el tipo de servicio 
+     */
      private void buscar() {         
         ResultSet resultado=null;
         Connection connection=null;
@@ -330,6 +351,9 @@ public class Tipo_Servicio_JFrame extends javax.swing.JFrame {
             llenarTabla();
         }
     }
+     /**
+      * Se llena la tabla de los tipos de servicio
+      */
      public void llenarTabla(){
          Object O[]=null;
          for (int i = 0; i < categorias.size(); i++) {

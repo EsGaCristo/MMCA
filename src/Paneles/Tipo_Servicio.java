@@ -24,12 +24,20 @@ private boolean validaCampo(JTextField t){
         }
         return false;
     }
-    
+    /**
+     * Valida que ningun campo esté vacío
+     * @param t
+     * @throws ProyectoExcepcion 
+     */
     private void estaVacio(JTextField t)throws ProyectoExcepcion{
         String cad=t.getText().trim();
         if(cad.equals(""))throw new ProyectoExcepcion("Campo vacio");
     }
-
+/**
+ * Verifica que sea entero
+ * @param val
+ * @return 
+ */
 public boolean esEntero(String val){
         float cant=0;
         try{

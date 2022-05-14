@@ -39,6 +39,12 @@ public class PanelCotizaciones extends javax.swing.JPanel {
         dtm=(DefaultTableModel) tblCotizacion.getModel();
         LLenarCombo();
     }
+    /**
+     * validaCampo
+     * Esta funcion valida que todos los campos necesarios estén llenos
+     * @param t
+     * @return false or true
+     */
     private boolean validaCampo(JTextField t){
         try{
             estaVacio(t);
@@ -48,6 +54,12 @@ public class PanelCotizaciones extends javax.swing.JPanel {
         }
         return false;
     }
+    /**
+     * esEntero
+     * Esta funcion valida que lo que se introduce por teclado es entero
+     * @param val
+     * @return 
+     */
     public boolean esEntero(String val){
         float cant=0;
         try{
@@ -60,6 +72,11 @@ public class PanelCotizaciones extends javax.swing.JPanel {
        }else{showMessageDialog(this,"El valor debe ser >0","Cotizaciones", JOptionPane.INFORMATION_MESSAGE); return false;}
     }
 
+    /**
+     * Nos ayuda a verificar si un campo está vacío
+     * @param t
+     * @throws ProyectoExcepcion 
+     */
    private void estaVacio(JTextField t)throws ProyectoExcepcion{
         String cad=t.getText().trim();
         if(cad.equals(""))throw new ProyectoExcepcion("Campo vacio");
@@ -422,6 +439,11 @@ public class PanelCotizaciones extends javax.swing.JPanel {
        System.out.println("No se ha eliminado");
          actualizarMontos();
     }//GEN-LAST:event_btnEliminarActionPerformed
+    
+    /**
+     * Presupuesto
+     * Esta función fue hecha para que la cotizacion no exceda el presupuesto
+     */
     private void Presupuesto() {
         ResultSet resultado=null;
         Connection connection=null;
@@ -453,6 +475,10 @@ public class PanelCotizaciones extends javax.swing.JPanel {
         }
     }
      ////////////////////////borrar//////////////////////////////////
+    /**
+     * Borrar
+     * Esta funcion sirve para eliminar
+     */
     private void borrar() {
 
 
@@ -517,6 +543,10 @@ public class PanelCotizaciones extends javax.swing.JPanel {
     
  ////////////////insertar//////////////////////////////////
     //HOLA
+    /**
+     * Insertar
+     * Esta función fue hecha para que inserte una cotización
+     */
     private void insertar() {
 
 
@@ -538,12 +568,17 @@ public class PanelCotizaciones extends javax.swing.JPanel {
         }
 
     }
+    
     private void agregar(){
         int numEntero = Integer.parseInt(txtCantidad.getText());
         int pos=servicios.size()-1;
         servicios.get(pos).setCantidad(numEntero);
     }
-    
+    /**
+     * actualizaMontos
+     * Esta funcion va actualizando el monto de la cotizacion
+     * a medida que va agregando
+     */
     /////////////////////////////////////////////////////////////
     private void actualizarMontos() {
 
@@ -636,6 +671,10 @@ public class PanelCotizaciones extends javax.swing.JPanel {
             txtConcepto.setText(concepto);
         }
     }//GEN-LAST:event_tblCotizacionMouseClicked
+    /**
+     * buscarCot
+     * Esta funcion busca en la base de datos la cotizacion ya hecha
+     */
     private void buscarCot() {
         servicios.clear();
         eliminarTb();
@@ -669,7 +708,10 @@ public class PanelCotizaciones extends javax.swing.JPanel {
             
         }
     }
-    
+    /**
+     * eliminarTb
+     * Elimina un espacio de la tabla
+     */
        public void eliminarTb(){
         int a = tblCotizacion.getRowCount()-1;
         for (int i = a; i >= 0; i--) {          
@@ -677,7 +719,10 @@ public class PanelCotizaciones extends javax.swing.JPanel {
         }
         //cargaTicket();
     }
-    
+    /**
+     * llenarTabla
+     * Esta funcion llena la tabla
+     */
      public void llenarTabla(){
          BigDecimal sum = new BigDecimal(0) ;
          Object O[]=null;
@@ -699,7 +744,10 @@ public class PanelCotizaciones extends javax.swing.JPanel {
          
          lblTotal.setText(sum.toString());
      }
-     
+     /**
+      * llenarTabla2
+      * Esta funcion borra el contenido de la tabla y lo vuelve a poner
+      */
      public void llenarTabla2(){
          BigDecimal sum = new BigDecimal(0) ;
          Object O[]=null;
@@ -721,14 +769,20 @@ public class PanelCotizaciones extends javax.swing.JPanel {
          //lblSubtotal.setText(sum.toString());
      }
     
-
+     /**
+      * llenarTxt
+      * Esta función llena el campo de PU y concepto
+      */
       public void llenarTxt(){
           try{
          txtConcepto.setText(controlServicio.getConsepto());
          txtPU.setText(controlServicio.getPrecio().toString());
           }catch(NullPointerException npe){System.out.println("no hay datos aun" );}
     }
-         
+       /**
+        * llenarCombo
+        * Esta funcion llena el combobox
+        */  
      public void LLenarCombo(){
         ResultSet resultado=null;
         Connection connection=null;

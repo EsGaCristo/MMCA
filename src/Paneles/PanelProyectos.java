@@ -59,6 +59,11 @@ public class PanelProyectos extends javax.swing.JPanel {
         
         
     }
+    /**
+     * Elimina la tabla
+     * @param tblServicios
+     * @param dtm 
+     */
     public void eliminarTb(javax.swing.JTable tblServicios, DefaultTableModel dtm){
         int a = tblServicios.getRowCount()-1;
         for (int i = a; i >= 0; i--) {          
@@ -66,7 +71,9 @@ public class PanelProyectos extends javax.swing.JPanel {
         }
         //cargaTicket();
     }
-    
+    /**
+     * Esta función sirve para que se vean los campos en la interfaz
+     */
     public void vista(){
  
         
@@ -102,6 +109,10 @@ public class PanelProyectos extends javax.swing.JPanel {
     
     
     }
+    /**
+     * Esta funcion busca mediante un select en la base de datos un proyecto 
+     * donde el estado es 1
+     */
     private void buscar() {         
         ResultSet resultado=null;
         Connection connection=null;
@@ -126,7 +137,9 @@ public class PanelProyectos extends javax.swing.JPanel {
             bd.cerrar(statement, resultado);
         }
     }
-    
+    /**
+     * Esta funcion busca un proyecto donde el estado sea 0
+     */
     private void buscar2() {         
         ResultSet resultado=null;
         Connection connection=null;
@@ -153,7 +166,11 @@ public class PanelProyectos extends javax.swing.JPanel {
     }
 
 
-    
+    /**
+     * Llena la tabla de proyectos
+     * @param dtm
+     * @param p 
+     */
      public void llenarObjeto(DefaultTableModel dtm,Proyecto p){
          Object O[]=null;
          for (int i = 0; i <5; i++) {
