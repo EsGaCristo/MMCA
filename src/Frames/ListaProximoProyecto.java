@@ -26,8 +26,10 @@ public class ListaProximoProyecto extends javax.swing.JFrame {
      //JPanel jpnProyecto = new PanelProyectos();
 
     /**
-     * Creates new form ListaProximoProyecto
-     */
+    * constructor de la clase
+    * inicializa la clase
+    * se usa al querer mostrar la interfaz de proximos proyecos
+    */
     public ListaProximoProyecto() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -38,6 +40,12 @@ public class ListaProximoProyecto extends javax.swing.JFrame {
 
     }
 
+     /**
+    * Funcion de busqueda en la base de datos
+    * realiza una bosqueda en la tabla proyectos para traer una lista de los proyectos proximos
+    * se utuliza para obtener los proximos proyectos
+    *@SQLException en qué caso de que no este disponible la bd o los datos sean incorrectos
+    */
     private void buscar() {         
         ResultSet resultado=null;
         Connection connection=null;
@@ -62,6 +70,12 @@ public class ListaProximoProyecto extends javax.swing.JFrame {
             llenarTabla();
         }
     }
+    
+    /**
+    * realizacion de llenado de tabla
+    * Realiza llenado de la tabla de proyectos con un arraylist proyectos
+    * se llama cada que se realice una demostracion de la tabla o se le haga cambio
+    */
      public void llenarTabla(){
          Object O[]=null;
          for (int i = 0; i < proyectos.size(); i++) {

@@ -34,8 +34,13 @@ public class FrameCambiarPassword extends javax.swing.JFrame {
         
         
     /**
-     * Creates new form FrameProximoProyecto
-     */
+    * Constructor de la clase PagosF
+    * inicializa el objeto de la clase
+    * se usa al querer mostrar la ventana de pagos
+    * @param usuario nombre del usuario
+    * @param con contraseña del usuario
+    */
+        
     public FrameCambiarPassword(String usuario, String cont) {
         initComponents();
         this.setLocationRelativeTo(this);
@@ -161,6 +166,13 @@ public class FrameCambiarPassword extends javax.swing.JFrame {
             }
         } catch (Exception e) {}
     }//GEN-LAST:event_btnAgregarProxActionPerformed
+    
+    /**
+    * insercion de usuario y contraseña en la bd
+    * Realiza la insersion de usuario y contraseña nuevos en la base de datos
+    * se llama cada que se requiera cambiar la contraseña al inicio de sesion
+    *@SQLException en qué caso de que no este disponible la bd o los datos sean incorrectos
+    */
     void agregar(String pass){
      int resultado;
         

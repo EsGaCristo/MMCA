@@ -34,7 +34,12 @@ public class ListaProximoProyectoEdit extends javax.swing.JFrame {
      //JPanel jpnProyecto = new PanelProyectos();
 
 
-    
+     /**
+    * Editar estado Proyecto
+    * pasa el proyecto a un estado de en marcha
+    * se utiliza al pasar un proyecto aun estado en marcha
+    */
+     
 private void editar(){
         SimpleDateFormat dFormat // Usado para dar formato a la fecha del DateChooser
                 = new SimpleDateFormat("yyyy-MM-dd"); 
@@ -72,8 +77,10 @@ private void editar(){
     }
 
     /**
-     * Creates new form ListaProximoProyecto
-     */
+    * constructor de la clase
+    * inicializa la clase
+    * se usa al querer mostrar la interfaz de proximos proyecos
+    */
     public ListaProximoProyectoEdit() {
         initComponents();
         this.setLocationRelativeTo(this);
@@ -83,6 +90,12 @@ private void editar(){
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
     }
+    
+    /**
+    * Reseteo de la tabla
+    * realiza un reseteo de la tabla para poder actualizarla con campos nuevos
+    * se utiliza al realizar una actualizacion den la tabla
+    */
 public void eliminarTb(){
         int a = TablaPP.getRowCount()-1;
         for (int i = a; i >= 0; i--) {          
@@ -90,6 +103,13 @@ public void eliminarTb(){
         }
         //cargaTicket();
     }
+
+     /**
+    * Funcion de busqueda en la base de datos
+    * realiza una bosqueda en la tabla proyectos para traer una lista de los proyectos proximos
+    * se utuliza para obtener los proximos proyectos
+    *@SQLException en qué caso de que no este disponible la bd o los datos sean incorrectos
+    */
 
     private void buscar() {         
         ResultSet resultado=null;
@@ -115,6 +135,13 @@ public void eliminarTb(){
             llenarTabla();
         }
     }
+    
+      
+    /**
+    * realizacion de llenado de tabla
+    * Realiza llenado de la tabla de proyectos con un arraylist proyectos
+    * se llama cada que se realice una demostracion de la tabla o se le haga cambio
+    */
      public void llenarTabla(){
          Object O[]=null;
          for (int i = 0; i < proyectos.size(); i++) {
@@ -269,6 +296,11 @@ public void eliminarTb(){
       this.dispose();
     }//GEN-LAST:event_btnActualizarActionPerformed
 
+      /**
+    * realizacion de actualizacion de tabla
+    * Realiza actualizacion de la tabla de Proyectos eliminando el que se cambio de estado 
+    * se llama cada que se cambie el estado de un proyecto
+    */
     public void actualizar(){        
         for (int i = 0; i >=dtm.getRowCount()-1 ; i++) {
             dtm.removeRow(i);

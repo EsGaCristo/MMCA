@@ -37,8 +37,10 @@ public class ListaMarchaProyecto extends javax.swing.JFrame {
     
 
     /**
-     * Creates new form ListaProximoProyecto
-     */
+    * constructor de la clase
+    * inicializa la clase
+    * se usa al querer mostrar la interfaz de proximos proyecos
+    */
     public ListaMarchaProyecto() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -48,7 +50,13 @@ public class ListaMarchaProyecto extends javax.swing.JFrame {
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
     }
-public void eliminarTb(){
+    
+    /**
+    * Reseteo de la tabla
+    * realiza un reseteo de la tabla para poder actualizarla con campos nuevos
+    * se utiliza al realizar una actualizacion den la tabla
+    */
+    public void eliminarTb(){
         int a = TablaPP.getRowCount()-1;
         for (int i = a; i >= 0; i--) {          
         dtm.removeRow(dtm.getRowCount()-1);
@@ -56,6 +64,12 @@ public void eliminarTb(){
         //cargaTicket();
     }
 
+    /**
+    * Funcion de busqueda en la base de datos
+    * realiza una bosqueda en la tabla proyectos para traer una lista de los proyectos en marcha
+    * se utuliza para obtener los  proyectos en marcha o ya inicicalizados
+    *@SQLException en qué caso de que no este disponible la bd o los datos sean incorrectos
+    */
     private void buscar() {         
         ResultSet resultado=null;
         Connection connection=null;
@@ -80,6 +94,12 @@ public void eliminarTb(){
             llenarTabla();
         }
     }
+    
+    /**
+    * realizacion de llenado de tabla
+    * Realiza llenado de la tabla de proyectos con un arraylist proyectos
+    * se llama cada que se realice una demostracion de la tabla o se le haga cambio
+    */
      public void llenarTabla(){
          Object O[]=null;
          for (int i = 0; i < proyectos.size(); i++) {

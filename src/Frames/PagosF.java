@@ -34,7 +34,12 @@ public class PagosF extends javax.swing.JFrame {
     private  int idCotizacion;
 
    
-
+    /**
+    * Constructor de la clase PagosF
+    * inicializa el objeto de la clase
+    * se usa al querer mostrar la ventana de pagos
+    * @param idCot id de la cotizacion
+    */
     public PagosF(int idCot) {
         initComponents();
         this.setLocationRelativeTo(this);
@@ -171,7 +176,13 @@ public class PagosF extends javax.swing.JFrame {
             insertar();
     }//GEN-LAST:event_btnAgregarPagoActionPerformed
     
-   ////////////////////////buscar//////////////////////////////////
+    /**
+    * Funcion de busqueda en la base de datos
+    * realiza una bosqueda en la tabla pagos de la cotizacion de dicha clase
+    * se utuliza para obtener informaion sobre los pagos realizados
+    *@SQLException en qué caso de que no este disponible la bd o los datos sean incorrectos
+    */
+    
      private void buscar() {
         listpagos.clear();
         eliminarTb();
@@ -203,6 +214,12 @@ public class PagosF extends javax.swing.JFrame {
         }
     }
      
+    /**
+    * realizacion de llenado de tabla
+    * Realiza llenado de la tabla de pagos con un arraylist pagos
+    * se llama cada que se realice una demostracion de la tabla o se le haga cambio
+    */
+    
      public void llenarTabla(){
          Object O[]=null;
          for (int i = 0; i < listpagos.size(); i++) {
@@ -213,6 +230,13 @@ public class PagosF extends javax.swing.JFrame {
             dtm.setValueAt(ser.getRestante(), i, 2);
             }
      }
+     
+     
+    /**
+    * Reseteo de la tabla
+    * realiza un reseteo de la tabla para poder actualizarla con campos nuevos
+    * se utiliza al realizar una actualizacion den la tabla
+    */
     
      public void eliminarTb(){
         int a = tblPagos.getRowCount()-1;
@@ -222,8 +246,13 @@ public class PagosF extends javax.swing.JFrame {
         //cargaTicket();
     }
      
-      ////////////////insertar//////////////////////////////////
-    //HOLA
+     /**
+    * insercion de pago en la bd
+    * Realiza la insersion de pagos en la base de datos
+    * se llama cada que se realice un pago
+    *@SQLException en qué caso de que no este disponible la bd o los datos sean incorrectos
+    */
+    
     private void insertar() {
 
 

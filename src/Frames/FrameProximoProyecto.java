@@ -29,8 +29,10 @@ public class FrameProximoProyecto extends javax.swing.JFrame {
         
         
     /**
-     * Creates new form FrameProximoProyecto
-     */
+    * constructor de la clase
+    * inicializa la clase
+    * se usa al querer mostrar la interfaz de creacion de un proximo proyecto
+    */
     public FrameProximoProyecto() {
         initComponents();
         this.setLocationRelativeTo(this);
@@ -38,6 +40,13 @@ public class FrameProximoProyecto extends javax.swing.JFrame {
         LLenarCombo();
     }
     
+    
+    /**
+    * lleado de combobox
+    * relaiza una busqueda de los clientes y llena un combo con ellos
+    * se usa para seleccionar el cliente del proyecto
+    *@SQLException en qué caso de que no este disponible la bd o los datos sean incorrectos
+    */
     public void LLenarCombo(){
         ResultSet resultado=null;
         Connection connection=null;
@@ -156,6 +165,14 @@ public class FrameProximoProyecto extends javax.swing.JFrame {
         } catch (Exception e) {
         }
     }//GEN-LAST:event_btnAgregarProxActionPerformed
+    
+    
+    /**
+    * seleccion de los combobox
+    * relaiza una obtencion de dato seleccionado  de los clientes  y la fecha
+    * se usa para obtener seleccion el cliente y fecha
+    */
+    
     void agregar(){
     Clientes c =(Clientes) cmbClientes.getSelectedItem();
     Proyecto p = new Proyecto(c.getIdCliente(),DateProx.getDate());
@@ -163,6 +180,7 @@ public class FrameProximoProyecto extends javax.swing.JFrame {
     //p.imp();
     
     }
+    
     /**
      * @param args the command line arguments
      */
